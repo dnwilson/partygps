@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 	     :recoverable, :rememberable, :trackable, :validatable
 
 	before_save :set_username
+	before_save :ensure_authentication_token
 
 	# has_many :authorizations
 
@@ -23,10 +24,23 @@ class User < ActiveRecord::Base
 		ROLES.index(base_role.to_s) <= ROLES.index(role)
 	end
 
+	def ensure_authentication_token
+		if authentication_token.blank?
+			self.authentication_token = generate_authentication_token
+		end
+	end
+
 	private
   
 	def set_username
 		self.username = "user_#{User.count + 1}"
+	end
+
+	def generate_authentication_token
+		loop do
+			token = Devise.friendly_token
+			break token unless User.where(authentication_token: token).first
+		end
 	end
 
 end
