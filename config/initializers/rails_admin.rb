@@ -1,5 +1,9 @@
 RailsAdmin.config do |config|
 
+  class RailsAdmin::Config::Fields::Types::Inet < RailsAdmin::Config::Fields::Base
+    RailsAdmin::Config::Fields::Types::register(self)
+  end
+
   ### Popular gems integration
 
   ## == Devise ==

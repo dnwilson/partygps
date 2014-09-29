@@ -7,20 +7,19 @@ gem 'rails', '4.1.5'
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
-gem 'haml-rails'
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'bootstrap_form'
 gem 'carrierwave'
 gem 'country_select'
 gem 'devise'
-gem 'cancan'
+gem 'cancancan'
 gem 'font-awesome-rails'
 gem "jquery-fileupload-rails"
 gem 'jquery-colorbox-rails'
 gem 'mini_magick'
-gem 'rails_admin'
+gem 'rails_admin', git: 'git@github.com:sferik/rails_admin.git'
 gem 'thin'
-gem 'bootstrap-sass-rails'
+gem 'bourbon'
 gem 'twitter'
 gem 'json'
 gem 'airbrake'
@@ -51,14 +50,12 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 group :development, :test do
-   gem 'rspec-rails'
-   gem 'guard-rspec'
-   gem 'spork-rails'
-   gem 'guard-spork'
-   gem 'childprocess'
    gem 'forgery'
    gem 'factory_girl_rails'
-   gem 'shoulda-matchers'
+   gem 'spring-commands-rspec'
+   gem 'rspec-rails'
+   gem 'guard-rspec'
+   gem 'rb-fsevent' if `uname` =~ /Darwin/
 end
 
 group :development do
@@ -67,6 +64,7 @@ group :development do
    gem 'meta_request'
    gem 'rack-mini-profiler'
    gem 'bullet'
+   gem 'rails_layout'
 end
 
 group :test do
