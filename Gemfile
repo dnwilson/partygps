@@ -7,7 +7,7 @@ gem 'rails', '4.1.5'
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
-gem 'bootstrap-sass', '~> 3.1.0'
+gem 'bootstrap-sass', '~>3.2.0'
 gem 'bootstrap_form'
 gem 'carrierwave'
 gem 'country_select'
@@ -17,7 +17,7 @@ gem 'font-awesome-rails'
 gem "jquery-fileupload-rails"
 gem 'jquery-colorbox-rails'
 gem 'mini_magick'
-gem 'rails_admin', git: 'git@github.com:sferik/rails_admin.git'
+gem 'rails_admin'
 gem 'thin'
 gem 'bourbon'
 gem 'twitter'
@@ -55,6 +55,7 @@ group :development, :test do
    gem 'spring-commands-rspec'
    gem 'rspec-rails'
    gem 'guard-rspec'
+   gem 'pry-nav'
    gem 'rb-fsevent' if `uname` =~ /Darwin/
 end
 

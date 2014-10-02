@@ -36,4 +36,34 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Omniauth configuration
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:facebook] = {
+    'provider' => 'facebook',
+    'uid' => '123545678',
+    'user_info' => {
+      'first_name' => 'John',
+      'last_name' => 'Doe',
+      'email' => 'johndoe@example.com'
+    },
+    'credentials' => {
+      'token' => 'mock_token',
+      'secret' => 'mock_secret'
+    }
+  }
+
+  OmniAuth.config.mock_auth[:google] = {
+    'provider' => 'google',
+    'uid' => '87654321',
+    'user_info' => {
+      'first_name' => 'Jane',
+      'last_name' => 'Doe',
+      'email' => 'janedoe@example.com'
+    },
+    'credentials' => {
+      'token' => 'mock_token',
+      'secret' => 'mock_secret'
+    }
+  }
 end

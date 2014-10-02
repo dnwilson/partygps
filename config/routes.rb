@@ -1,7 +1,19 @@
 Rails.application.routes.draw do
   get 'pages/home'
 
-  devise_for :users
+  devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout', 
+                                      :sign_up => 'register'},
+                      :controllers => {:registrations => "users/registrations", omniauth_callbacks: "omniauth_callbacks" }
+  devise_scope :user do
+    get "login",    :to => "users/sessions#new"
+    delete "logout",   :to => "users/sessions#destroy"
+    get "register", :to => "users/registrations#new"
+    get "delete",   :to => "users/registrations#destroy"
+    get "settings", :to => "users/registrations#edit"
+    get "settings/password", :to => "users/registrations#password"
+    patch "settings/password" => "users/registrations#settings_password"
+    put "settings/password" => "users/registrations#settings_password"
+  end 
   mount RailsAdmin::Engine => '/dashboard', as: 'rails_admin'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
