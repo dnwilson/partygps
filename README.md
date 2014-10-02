@@ -4,6 +4,9 @@ Every been stuck in the house on a Friday night with the desire to #TurnUp but y
 
 ##Version 1 (User & Authentication)
 - [ ] 1.1 Registration
+	- [ ] Add Links
+	- [ ] Modify Views
+	- [ ] Test
 - [ ] 1.2 Login/Logout
 - [ ] 1.3 Profile Dashboard
 - [ ] 1.4 Connect with Facebook
