@@ -8,6 +8,7 @@ class Ability
       if user.role? :admin
         can :manage, :all
       else
+        can :read, :all
         can :access, :rails_admin   # grant access to rails_admin
         can :dashboard 
         can :manage, User, id: user.id

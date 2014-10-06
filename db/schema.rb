@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20141001164809) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "username"
-    t.string   "dob"
+    t.date     "dob"
     t.string   "address"
     t.string   "address2"
     t.string   "state"

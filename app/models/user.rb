@@ -51,16 +51,31 @@ class User < ActiveRecord::Base
 				user.first_name = auth["info"]["first_name"]
 				user.last_name = auth["info"]["last_name"]
 				user.email = auth["info"]["email"]
-				auth.provider == "twitter" ?  user.save(:validate => false) :  user.save
+				auth[:provider] == "twitter" ?  user.save(:validate => false) :  user.save
 			end
 			# authorization.username = auth["info"]["nickname"]
-			binding.pry
 			authorization.user_id = user.id
 			authorization.save
-			binding.pry
 		end
 		authorization.user
-		binding.pry
+	end
+
+	# Admin configuration
+	rails_admin do
+		edit do
+	      field :first_name
+	      field :last_name
+	      field :dob 
+	      field :email
+	      field :address
+	      field :address2
+	      field :city
+	      field :state
+	      field :zipcode
+	      field :country
+	      field :password
+	      field :password_confirmation
+    	end
 	end
 
 	private

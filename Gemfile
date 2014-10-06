@@ -9,6 +9,7 @@ gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass', '~>3.2.0'
 gem 'bootstrap_form'
+gem 'simple_form'
 gem 'carrierwave'
 gem 'country_select'
 gem 'devise'
@@ -70,6 +71,8 @@ end
 
 group :test do
    gem 'capybara', '~> 2.1'
+   gem 'webmock'
+   gem 'vcr'
    # gem 'growl'
 end
 

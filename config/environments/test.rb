@@ -42,7 +42,7 @@ Rails.application.configure do
   OmniAuth.config.mock_auth[:facebook] = {
     'provider' => 'facebook',
     'uid' => '123545678',
-    'user_info' => {
+    'info' => {
       'first_name' => 'John',
       'last_name' => 'Doe',
       'email' => 'johndoe@example.com'
@@ -56,7 +56,7 @@ Rails.application.configure do
   OmniAuth.config.mock_auth[:google] = {
     'provider' => 'google',
     'uid' => '87654321',
-    'user_info' => {
+    'info' => {
       'first_name' => 'Jane',
       'last_name' => 'Doe',
       'email' => 'janedoe@example.com'
