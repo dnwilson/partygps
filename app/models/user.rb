@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
 		ROLES.index(base_role.to_s) <= ROLES.index(role)
 	end
 
+	def fullname
+		self.first_name + " " + self.last_name
+	end
+
 	def ensure_authentication_token
 		if authentication_token.blank?
 			self.authentication_token = generate_authentication_token

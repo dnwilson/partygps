@@ -30,6 +30,7 @@ gem 'omniauth-oauth2'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
+gem "geocoder"
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -62,9 +63,9 @@ end
 
 group :development do
    gem 'better_errors'
-   gem 'binding_of_caller'
-   gem 'meta_request'
-   gem 'rack-mini-profiler'
+   # gem 'binding_of_caller'
+   # gem 'meta_request'
+   # gem 'rack-mini-profiler'
    gem 'bullet'
    gem 'rails_layout'
 end

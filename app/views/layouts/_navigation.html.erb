@@ -1,28 +1,79 @@
-<%# navigation styled for Bootstrap 3.0 %>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to 'Home', root_path, class: 'navbar-brand' %>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <%= render 'layouts/navigation_links' %>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-            <li><%= link_to current_user.first_name, settings_path %></li>
-            <li><%= link_to "Logout", destroy_user_session_path %></li>
-          <% else %>
-            <li><%= link_to "login", login_path %></li>
-            <li><%= link_to "signup", register_path %></li>
-          <% end %>
-        </ul>
-    </div>
+<!-- <%# navigation styled for Bootstrap 3.0 %>
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <%= link_to 'Home', root_path, class: 'navbar-brand' %>
   </div>
-</nav>
+  <ul class="nav navbar-top-links navbar-right">
+    <% if user_signed_in? %>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-user">
+          <li><%= link_to settings_path do %>
+            <i class="fa fa-user fa-fw"></i> User Profile
+          <% end %>
+          </li>
+          <li><%= link_to settings_path do %>
+            <i class="fa fa-gear fa-fw"></i> Settings
+            <% end %>
+          </li>
+          <li class="divider"></li>
+          <li><%= link_to logout_path  do %>
+            <i class="fa fa-sign-out fa-fw"></i> Log out
+            <% end %>
+          </li>
+        </ul>
+        <!-- /.dropdown-user -->
+      </li>
+    <% end %>
+  </ul>
+</nav> -->
+<header class="header black-bg">
+  <div class="sidebar-toggle-box">
+    <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+  </div>
+  <!--logo start-->
+  <%= link_to 'partyGPS', root_path, class: 'logo' %>
+  <!--logo end-->
+  <div class="nav notify-row" id="top_menu">
+    <!--  notification start -->
+    <ul class="nav top-menu">
+        <!-- settings start -->
+        <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                <i class="fa fa-tasks"></i>
+                <span class="badge bg-theme">4</span>
+            </a>
+            <%= render "layouts/tasks_dropdown" %>
+        </li>
+        <!-- settings end -->
+        <!-- inbox dropdown start-->
+        <li id="header_inbox_bar" class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                <i class="fa fa-envelope-o"></i>
+                <span class="badge bg-theme">5</span>
+            </a>
+            <%= render "layouts/inbox_dropdown"  %>
+        </li>
+        <!-- inbox dropdown end -->
+    </ul>
+    <!--  notification end -->
+  </div>
+  <div class="top-menu">
+    <ul class="nav pull-right top-menu">
+    <% if user_signed_in? %>
+      <li><%= link_to "logout", logout_path, class: "logout" %></li>
+    <% else %>
+      <li><%= link_to "login", login_path, class: "logout" %></li>
+    <% end %>
+        <li></li>
+    </ul>
+  </div>
+</header>

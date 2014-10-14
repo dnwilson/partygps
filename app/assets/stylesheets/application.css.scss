@@ -14,7 +14,12 @@
  * require_self
  */
 @import "bourbon";
-// @import "bootstrap";
+@import "bootstrap";
 @import "framework_and_overrides";
+@import "font-awesome";
 @import "main_style";
 @import "pages";
+@import "gritter/css/jquery.gritter";
+// @import "lineicons/style";
+@import "style";
+@import "style-responsive";
