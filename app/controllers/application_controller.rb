@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  before_filter :authenticate_user!, :unless => :devise_controller?
+  # before_filter :authenticate_user!, :unless => :devise_controller?
 
   # This is our new function that comes before Devise's one
   # before_filter :authenticate_user_from_token!
@@ -17,8 +17,11 @@ class ApplicationController < ActionController::Base
   #   redirect_to main_app.root_path, :alert => exception.message
   # end
  
-  # private
-  
+  private
+
+    def disable_nav
+      @disable_nav = true
+    end
   # def authenticate_user_from_token!
   #   user_email = params[:user_email].presence
   #   user       = user_email && User.find_by_email(user_email)

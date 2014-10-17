@@ -1,11 +1,11 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-	prepend_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy, :password]
+	prepend_before_filter :authenticate_scope!, only: [:edit, :update, :destroy, :password]
+	before_filter :disable_nav, only: [:new]
 
     def update_password
     	@disable_chan = true
     	@user = current_user
     	Rails.logger.info "entered update_password"
-    	binding.pry
     	if @user.update_with_password(devise_parameter_sanitizer.sanitize(:edit_password))    		
     		#Sign in the user by passing validation in case his password has changed
     		sign_in @user, :bypass => true
@@ -52,7 +52,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 	def update
 		@disable_chan = true
 		@user = User.find(current_user.id)
-		binding.pry
 		email_changed = @user.email != params[:user][:email]
 		successfully_updated = if email_changed
 		@user.update_with_password(devise_parameter_sanitizer.sanitize(:account_update))
@@ -68,7 +67,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 		  # Sign in the user bypassing validation in case his password changed
 		  # sign_in @user, :bypass => true
 		  Rails.logger.info(@user.errors.inspect)
-		  binding.pry
 		  flash[:success] = "Profile updated"
 		  redirect_to settings_path
 	      # UserMailer.profile_update(@user).deliver

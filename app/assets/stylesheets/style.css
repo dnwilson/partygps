@@ -1932,7 +1932,7 @@ label {
 
 /*LOGIN CONFIGURATION PAGE*/
 .form-login {
-	max-width: 330px;
+	max-width: 400px;
 	margin: 100px auto 0;
 	background: #fff;
 	border-radius: 5px;
@@ -2006,6 +2006,7 @@ label {
   color: #fff;
   background-color: #5193ea;
   border-color: #2775e2;
+  min-width: 100px;
 }
 .btn-facebook:hover,
 .btn-facebook:focus,
@@ -2021,6 +2022,7 @@ label {
   color: #fff;
   background-color: #44ccfe;
   border-color: #2bb4e8;
+  min-width: 100px;
 }
 .btn-twitter:hover,
 .btn-twitter:focus,
@@ -2030,6 +2032,22 @@ label {
   color: #fff;
   background-color: #2bb4e8;
   border-color: #2bb4e8;
+}
+
+.btn-google {
+  color: #fff;
+  background-color: #dd4b39;
+  border-color: #C43220;
+  min-width: 100px;
+}
+.btn-google:hover,
+.btn-google:focus,
+.btn-google:active,
+.btn-google.active,
+.open .dropdown-toggle.btn-google {
+  color: #fff;
+  background-color: #C43220;
+  border-color: #C43220;
 }
 
 
