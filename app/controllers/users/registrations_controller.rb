@@ -1,10 +1,11 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 	prepend_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy, :password]
 
-    def settings_password
+    def update_password
     	@disable_chan = true
     	@user = current_user
-    	Rails.logger.info "entered if settings_password"
+    	Rails.logger.info "entered update_password"
+    	binding.pry
     	if @user.update_with_password(devise_parameter_sanitizer.sanitize(:edit_password))    		
     		#Sign in the user by passing validation in case his password has changed
     		sign_in @user, :bypass => true
@@ -13,9 +14,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
     		redirect_to settings_password_path
     	else
     		Rails.logger.info(@user.errors.inspect)
-    		# flash[:warning] = "Password not updated"
+    		flash[:warning] = "Password not updated"
     		render 'password'
     	end
+    end
+
+    def password
+    	@disable_chan = true
+    	@user = current_user
+    end
+
+    def location
+    	@disable_chan = true
+    	@user = current_user
     end
 
     def create
@@ -41,8 +52,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 	def update
 		@disable_chan = true
 		@user = User.find(current_user.id)
-
-		successfully_updated = if needs_password?(@user, params)
+		binding.pry
+		email_changed = @user.email != params[:user][:email]
+		successfully_updated = if email_changed
 		@user.update_with_password(devise_parameter_sanitizer.sanitize(:account_update))
 		else
 		  # remove the virtual current_password attribute update_without_password
@@ -54,16 +66,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
 		if successfully_updated
 		  # set_flash_message :notice, :updated
 		  # Sign in the user bypassing validation in case his password changed
-		  sign_in @user, :bypass => true
-		  redirect_to after_update_path_for(@user)
+		  # sign_in @user, :bypass => true
+		  Rails.logger.info(@user.errors.inspect)
+		  binding.pry
 		  flash[:success] = "Profile updated"
+		  redirect_to settings_path
 	      # UserMailer.profile_update(@user).deliver
 		else
 		  render "edit"
 		end
 	end
 
-		private
+	private
 	# check if we need password to update user data
 	# ie if password or email was changed
 	# extend this as needed
@@ -74,8 +88,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
 	protected
 		def after_update_path_for(resource)
-			settings_path(resource)
-			# user_path(resource)
+			session[:next] || super
 		end
 
 		def after_sign_up_path_for(resource)

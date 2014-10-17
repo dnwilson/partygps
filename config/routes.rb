@@ -11,9 +11,11 @@ Rails.application.routes.draw do
     get "delete",   :to => "users/registrations#destroy"
     get "settings", :to => "users/registrations#edit"
     get "settings/password", :to => "users/registrations#password"
-    patch "settings/password" => "users/registrations#settings_password"
-    put "settings/password" => "users/registrations#settings_password"
+    put "settings/password", :to => "users/registrations#update_password"
+    patch "settings/password", :to => "users/registrations#update_password"
+    get "settings/location", :to => "users/registrations#location"
   end 
+
   mount RailsAdmin::Engine => '/dashboard', as: 'rails_admin'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

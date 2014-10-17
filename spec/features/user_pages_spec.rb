@@ -74,4 +74,14 @@ describe "UserPages" do
 			it { is_expected.to have_text "John" }
 		end
 	end
+
+	feature "edit" do
+		before do
+			visit login_path
+			fill_in "Email Address", 		with: user.email
+			fill_in "Password", 			with: user.password
+			click_button "Log in"
+			visit settings_path
+		end
+	end
 end

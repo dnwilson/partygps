@@ -5,19 +5,28 @@
     <title><%= content_for?(:title) ? yield(:title) : "Partygps" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Partygps" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     <section id="container">
       <%= render 'layouts/navigation' %>
-      <%= render 'layouts/sidebar' %>
-      <section id="main-content">
-        <section class="wrapper">
-          <%= render 'layouts/messages' %>
-          <%= yield %>
+      <% if user_signed_in? %>
+        <%= render 'layouts/sidebar' %>
+        <section id="main-content">
+          <section class="wrapper">
+            <%= render 'layouts/messages' %>
+            <%= yield %>
+          </section>
         </section>
-      </section>
+      <% else %>
+        <section id="main-content", style="margin-left:0px;">
+          <section class="wrapper">
+            <%= render 'layouts/messages' %>
+            <%= yield %>
+          </section>
+        </section>
+      <% end %>
     </section>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </body>
 </html>

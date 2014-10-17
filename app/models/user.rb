@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
 	devise :database_authenticatable, :registerable, :omniauthable,
 	     :recoverable, :rememberable, :trackable, :validatable
 
-	before_save :set_username
-	before_save :ensure_authentication_token
-	before_save :set_role
+	before_create :set_username
+	before_create :ensure_authentication_token
+	before_create :set_role
 
 	has_many :authorizations
 

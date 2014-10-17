@@ -1,34 +1,23 @@
-<%= render "shared/admin_sidebar" %>
-<div id="page-wrapper">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Edit <%= resource_name.to_s.humanize %></h1>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-8">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <div class="row">
-            <i class="fa fa-user fa-fw"></i><%= current_user.fullname %> 
-          </div>
-        </div>
-        <div class="panel-body">
-          <%= render "form" %>
-          <% ['facebook', 'google_oauth2'].each do |provider| %>
-            <% if current_user.authorizations.pluck(:provider).include?(provider.to_s) %>
-            Connected to <%= provider.to_s.titleize %>
-            <% else %>
-              <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path('user', provider) %>
-            <% end %><br/>
-          <% end %>
-          <h3>Cancel my account</h3>
-          <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-          <%= link_to "Back", :back %>
-        </div>
+<div class="row">
+  <div class="col-lg-10 col-lg-offset-1 mt">
+    <div class="form-panel">
+      <div class="white-header">
+        <h4>
+          <i class="fa fa-user fa-fw"></i>Profile Info
+        </h4>
       </div>
+      <%= render "form" %>
+      <% ['facebook', 'google_oauth2'].each do |provider| %>
+        <% if current_user.authorizations.pluck(:provider).include?(provider.to_s) %>
+        Connected to <%= provider.to_s.titleize %>
+        <% else %>
+          <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path('user', provider) %>
+        <% end %><br/>
+      <% end %>
+      <h3>Cancel my account</h3>
+      <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+      <%= link_to "Back", :back %>
     </div>
   </div>
 </div>
-  

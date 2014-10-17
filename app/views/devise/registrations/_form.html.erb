@@ -1,43 +1,43 @@
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "registration" }) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal style-form" }) do |f| %>
   <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <div class="user_info">
-      <div class="row">
-        <div class="col-lg-6 col-md-6"><%= f.text_field :first_name, autofocus: true, required: true, placeholder: "First Name" %></div>
-        <div class="col-lg-6 col-md-6"><%= f.text_field :last_name, required: true, placeholder: "Last Name" %></div>
-      </div>
-      <%= f.email_field :email, required: true, placeholder: "Email" %>
-      <div class="row">
-        <div class="col-lg-6 col-md-6"><%= f.date_field :dob, required: true, placeholder: "__/__/____" %></div>
-        <div class="col-lg-6 col-md-6"><%= f.select :sex, ["Male", "Female"] %></div>
-      </div>
+  <div class="form-group" style="border-top: 2px solid #eff2f7; padding-top: 15px; margin-top: 15px">
+    <%= f.label :first_name, "First Name", class: "col-sm-2 col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :first_name, autofocus: true, required: true, placeholder: "First Name", class: "form-control" %>
     </div>
-    <div class="address">
-      <h2>Address</h2>
-      <%= f.text_field :address, placeholder: "Street Address" %>
-      <div class="row">
-        <div class="col-lg-4 col-md-4"><%= f.text_field :address2, placeholder: "Apt/Suite/Floor"%></div>
-        <div class="col-lg-4 col-md-4"><%= f.text_field :city, placeholder: "City/Town" %></div>
-        <div class="col-lg-4 col-md-4"><%= f.text_field :state, placeholder: "State/Province/Parish" %></div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 col-md-6"><%= f.text_field :zipcode, placeholder: "Zip/Postal Code"%></div>
-        <div class="col-lg-6 col-md-6"><%= f.country_select :country %></div>
-      </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :last_name, "Last Name", class: "col-sm-2 col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :last_name, required: true, placeholder: "Last Name", class: "form-control" %>
     </div>
-
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-
-    <%= f.password_field :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.password_field :password_confirmation, required: false %>
-    <%= f.password_field :current_password, hint: "we need your current password to confirm your changes", required: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email, "Email", class: "col-sm-2 col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.email_field :email, required: true, placeholder: "Email", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :username, "Username", class: "col-sm-2 col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :username, placeholder: "Username", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :dob, "Birthday", class: "col-sm-2 col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.date_field :dob, required: true, placeholder: "__/__/____", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :sex, "Sex", class: "col-sm-2 col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.select :sex, ["Male", "Female"], :class => "form-control" %>
+    </div>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Update", class: "btn-primary pull-right" %>
   </div>
 <% end %>
