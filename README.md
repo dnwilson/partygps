@@ -3,14 +3,16 @@
 Every been stuck in the house on a Friday night with the desire to #TurnUp but you don't know where to go? Have you had felt like going out to the club but you want to know if its popping first? Have you ever wished that with the click of a button you can find all the happening parties in and around your area? If you answered yes to any of these questions then PartyGPS is the application for you.
 
 #TO DO:
-- [ ] Fix Select box styling
+- [x] Fix Select box styling
+- [ ] Remove address fields only city/town, state/parish and zip are needed
+- [ ] Fix country select dropdown styling
 
 ##Version 1 (User & Authentication)
 - [x] 1.1 Registration
 	- [x] Add Links
 	- [x] Modify Views
 	- [ ] Test
-- [ ] 1.2 Login/Logout
+- [x] 1.2 Login/Logout
 - [ ] 1.3 Profile Dashboard
 - [ ] 1.4 Connect with Facebook
 - [ ] 1.5 Connect with Google
