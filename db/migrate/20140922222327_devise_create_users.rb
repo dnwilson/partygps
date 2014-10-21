@@ -8,7 +8,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :username
-      t.string :dob
+      t.date :dob
       t.string :address
       t.string :address2
       t.string :state 

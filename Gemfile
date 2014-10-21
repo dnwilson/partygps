@@ -7,8 +7,9 @@ gem 'rails', '4.1.5'
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
-gem 'bootstrap-sass', '~> 3.1.0'
+gem 'bootstrap-sass', '~>3.2.0'
 gem 'bootstrap_form'
+gem 'simple_form'
 gem 'carrierwave'
 gem 'country_select'
 gem 'devise'
@@ -17,7 +18,7 @@ gem 'font-awesome-rails'
 gem "jquery-fileupload-rails"
 gem 'jquery-colorbox-rails'
 gem 'mini_magick'
-gem 'rails_admin', git: 'git@github.com:sferik/rails_admin.git'
+gem 'rails_admin'
 gem 'thin'
 gem 'bourbon'
 gem 'twitter'
@@ -29,6 +30,7 @@ gem 'omniauth-oauth2'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
+gem "geocoder"
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -55,19 +57,23 @@ group :development, :test do
    gem 'spring-commands-rspec'
    gem 'rspec-rails'
    gem 'guard-rspec'
+   gem 'pry-nav'
+   gem 'rb-fsevent' if `uname` =~ /Darwin/
 end
 
 group :development do
    gem 'better_errors'
    gem 'binding_of_caller'
-   gem 'meta_request'
-   gem 'rack-mini-profiler'
+   # gem 'meta_request'
+   # gem 'rack-mini-profiler'
    gem 'bullet'
    gem 'rails_layout'
 end
 
 group :test do
    gem 'capybara', '~> 2.1'
+   gem 'webmock'
+   gem 'vcr'
    # gem 'growl'
 end
 

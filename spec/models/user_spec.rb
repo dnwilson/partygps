@@ -11,8 +11,7 @@ RSpec.describe User, :type => :model do
 								zipcode: "10001",
 								country: "USA",
 								password: "foobar123",
-								password_confirmation: "foobar123",
-								role: 'user'
+								password_confirmation: "foobar123"
 		)}
 
 	subject{ @user }
@@ -54,8 +53,15 @@ RSpec.describe User, :type => :model do
 		it{should_not be_valid}
 	end
 
-	describe "when role is not present" do
-		before{@user.role = nil}
-		it{should_not be_valid}
+	describe "before_save" do
+		before{@user = @user.reload}
+
+		it "should have the correct role" do
+			expect(@user.role).to eq "user"
+		end
+
+		it "should have the correct username" do
+			expect(@user.username).to eq "user_1"
+		end
 	end
 end

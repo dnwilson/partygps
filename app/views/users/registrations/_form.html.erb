@@ -1,0 +1,43 @@
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal style-form" }) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-group" style="border-top: 2px solid #eff2f7; padding-top: 15px; margin-top: 15px">
+    <%= f.label :first_name, "First Name", class: "col-sm-2 col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :first_name, autofocus: true, required: true, placeholder: "First Name", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :last_name, "Last Name", class: "col-sm-2 col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :last_name, required: true, placeholder: "Last Name", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :email, "Email", class: "col-sm-2 col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.email_field :email, required: true, placeholder: "Email", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :username, "Username", class: "col-sm-2 col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :username, placeholder: "Username", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :dob, "Birthday", class: "col-sm-2 col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.date_field :dob, required: true, placeholder: "__/__/____", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :sex, "Sex", class: "col-sm-2 col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.input :sex, collection: ["Male", "Female"], input_html: {class: 'form-control selectpicker'}, label: false %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Update", class: "btn-primary pull-right" %>
+  </div>
+<% end %>

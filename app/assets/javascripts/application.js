@@ -12,6 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+// require turbolinks
 //= require bootstrap
-//= require_tree .
+//= require jquery.dcjqaccordion.2.7
+//= require jquery.scrollTo.min
+//= require jquery.nicescroll
+//= require jquery.sparkline
+//= require common-scripts
+//= require gritter/js/jquery.gritter
+//= require gritter-conf
+//= require bootstrap-select.min
+// require_tree .
