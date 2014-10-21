@@ -14,9 +14,9 @@ Every been stuck in the house on a Friday night with the desire to #TurnUp but y
 	- [ ] Test
 - [x] 1.2 Login/Logout
 - [ ] 1.3 Profile Dashboard
-- [ ] 1.4 Connect with Facebook
-- [ ] 1.5 Connect with Google
-- [ ] 1.6 Connect with Twitter
+- [x] 1.4 Connect with Facebook
+- [x] 1.5 Connect with Google
+- [x] 1.6 Connect with Twitter
 - [ ] 1.7 Build & Test API
 - [ ] 1.8 Build Android app to test Authentication API
 
