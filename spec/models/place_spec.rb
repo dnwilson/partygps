@@ -24,11 +24,6 @@ RSpec.describe Place, :type => :model do
 	it{should respond_to(:events)}
 	it{should be_valid}
 
-	context "when name is not present" do
-		before{@place.name = nil}
-		it{should_not be_valid}
-	end
-
 	context "when street address is not present" do
 		before{@place.street_address = nil}
 		it{should_not be_valid}
@@ -39,10 +34,32 @@ RSpec.describe Place, :type => :model do
 		it{should_not be_valid}
 	end
 
+	context "when state or parish is to short" do
+		before{@place.state_parish = "e"}
+		it{should_not be_valid}
+	end
+
+	context "when state or parish is too long" do
+		before{@place.state_parish = "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"}
+		it{should_not be_valid}
+	end
+
 	context "when country is not present" do
 		before{@place.country = nil}
 		it{should_not be_valid}
 	end
+
+	# GPS specs
+
+	# context "when latitude is not present" do
+	# 	before{@place.latitude = nil}
+	# 	it{should_not be_valid}
+	# end
+
+	# context "when longitude is not present" do
+	# 	before{@place.longitude = nil}
+	# 	it{should_not be_valid}
+	# end
 
 
 end
