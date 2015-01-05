@@ -1,0 +1,26 @@
+div.col-lg-12
+	div.row.mt
+		div.content-panel
+			h4
+				i class="fa fa-users" style="padding-right:10px;"
+				| All Users
+			table class="table table-striped table-advance table-hover"
+				thead
+					tr
+						th.hidden-phone
+							| First Name
+						th
+							| Last Name
+						th.hidden-phone
+							| Username
+						th
+							| Email
+						th.hidden-phone
+							| City/Parish
+						th.hidden-phone
+							| Country
+						th.hidden-phone
+							| Account
+						th
+				tbody
+					= render @users

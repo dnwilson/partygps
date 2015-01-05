@@ -1,0 +1,22 @@
+tr
+	td.hidden-phone
+		= image_tag(location.photo)
+	td
+		= location.name
+	td
+		= location.address
+	td.hidden-phone
+		= location.city
+	td
+		= location.state
+	td
+		= location.country
+	td
+		= link_to admin_location_path(location), class: "btn btn-success btn-xs" do
+			i class="fa fa-check"
+		|  
+		= link_to edit_admin_location_path(location), class: "btn btn-warning btn-xs" do
+			i class="fa fa-pencil"
+		|   
+		= link_to admin_location_path(location), method: :delete, class: "btn btn-danger btn-xs" do
+			i class="fa fa-trash-o"

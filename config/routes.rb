@@ -13,17 +13,30 @@ Rails.application.routes.draw do
     delete "logout",   :to => "users/sessions#destroy"
     get "register", :to => "users/registrations#new"
     get "delete",   :to => "users/registrations#destroy"
-    get "settings", :to => "users/registrations#edit"
-    # get "users/:id" => "users#show"
-    
-    get "settings/password", :to => "users/registrations#password"
-    put "settings/password", :to => "users/registrations#update_password"
-    patch "settings/password", :to => "users/registrations#update_password"
-    get "settings/location", :to => "users/registrations#location"
+    get "dashboard",  to: "users/registrations#edit"
+    get "dashboard/password",   to: "users/registrations#password"
+    put "dashboard/password",   to: "users/registrations#update_password"
+    patch "dashboard/password", to: "users/registrations#update_password"
+    get "dashboard/location",   to: "users/registrations#location"
   end 
 
   resources :users do
     get "users/:id" => "users#show"
+  end
+
+  get 'admin', to: 'admin/dashboard#index'
+
+  namespace :admin do
+    get 'dashboard', to: 'dashboard#index'
+    resources :users,           controller: 'users'
+    resources :locations,       controller: 'locations'
+    resources :events do
+      get 'manager', to: 'events#manager'
+    end
+    # resources :ticket_types do
+    #   put "add",   to: "ticket_types#add"
+    #   patch "add", to: "ticket_types#add"
+    # end
   end
 
   mount RailsAdmin::Engine => '/dashboard', as: 'rails_admin'

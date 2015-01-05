@@ -1,0 +1,52 @@
+	div.row.mt
+		div.content-panel
+			h4
+				i class="fa fa-map-marker"
+				|  All Events
+			= render 'add_ticket_type'
+			- if @ticket_types.present?
+				table class="table table-striped table-advance table-hover"
+					thead
+						tr
+							th
+								| QTY
+							th
+								| TYPE
+							th
+								| ADM
+							th
+					tbody
+						- @ticket_types.each do |ticket_type|
+							tr
+								td
+									= ticket_type.qty
+								td
+									= ticket_type.name
+								td
+									= ticket_type.price
+								td
+									= link_to edit_admin_ticket_type_path(ticket_type), class: "btn btn-warning btn-xs" do
+										i class="fa fa-pencil"
+									|   
+									= link_to admin_ticket_type_path(ticket_type), method: :delete, class: "btn btn-danger btn-xs" do
+										i class="fa fa-trash-o"
+			- else
+				= form_for(event.ticket_types.new, url: admin_ticket_types_path, html: {class: "form-horizontal style-form" }) do |f|
+					= f.hidden_field :event_id, value: event.id
+					div.row
+						div class="form-group col-md-12" style="border-top: 2px solid #eff2f7; padding-top: 15px; margin-top: 15px"
+							= f.label :name, class: "col-sm-2 col-sm-2 control-label"
+							div.col-sm-10
+								= f.select :name, TicketType::TICKET_OPTIONS, class: "col-md-3 col-sm-3 form-control"
+
+						div class="form-group" style="border-top: 2px solid #eff2f7; padding-top: 15px; margin-top: 15px"
+							= f.label :price, class: "col-sm-2 col-sm-2 control-label"
+							div.col-sm-10
+								= f.number_field :price, placeholder: 0.00, class: "form-control"
+
+						div class="form-group" style="border-top: 2px solid #eff2f7; padding-top: 15px; margin-top: 15px"
+							= f.label :qty, class: "col-sm-2 col-sm-2 control-label"
+							div.col-sm-10
+								= f.number_field :qty, placeholder: 1, class: "form-control"
+						div class="box-footer" style="text-align:right;"
+							= f.submit "Submit", class: "btn btn-primary"

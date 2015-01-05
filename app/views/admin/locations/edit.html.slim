@@ -1,0 +1,9 @@
+= content_for(:title, 'Edit Location')
+div.row
+  div.col-lg-10.col-lg-offset-1.mt
+    div.form-panel
+      div.white-header
+        h4
+          i.fa.fa-user.fa-fw
+          |  Edit #{@location.name}
+      = render 'form'

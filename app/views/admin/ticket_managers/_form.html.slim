@@ -1,0 +1,11 @@
+= form_for(@ticket_type, url: admin_ticket_manager_path, html: { method: :put, class: "form-horizontal style-form" }) do |f| 
+	div class="form-group" style="border-top: 2px solid #eff2f7; padding-top: 15px; margin-top: 15px"
+		= f.label :name, "Ticket Type", class: "col-sm-2 col-sm-2 control-label"
+		div class="col-sm-10"
+			= f.select :name, TicketType::TICKET_OPTIONS
+	div class="form-group"
+		= f.label :price, "Price", class: "col-sm-2 col-sm-2 control-label"
+		div class="col-sm-10"
+			= f.number_field :price
+	div class="form-actions right"
+		= f.submit "Update"

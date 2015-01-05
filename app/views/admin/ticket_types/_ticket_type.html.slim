@@ -1,0 +1,16 @@
+tr
+	td
+		= ticket_type.event.name
+	td
+		= ticket_type.name
+	td
+		= ticket_type.price
+	td
+		= link_to "", class: "btn btn-success btn-xs" do
+			i class="fa fa-check"
+		|   
+		= link_to "", class: "btn btn-warning btn-xs" do
+			i class="fa fa-pencil"
+		|   
+		= link_to "", method: :delete, class: "btn btn-danger btn-xs" do
+			i class="fa fa-trash-o"

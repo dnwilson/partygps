@@ -1,0 +1,24 @@
+div.col-lg-12
+	div.row.mt
+		div.content-panel
+			h4
+				i class="fa fa-map-marker"
+				|  All Users
+			table class="table table-striped table-advance table-hover"
+				thead
+					tr
+						th.hidden-phone
+							
+						th
+							| Name
+						th
+							| Address
+						th.hidden-phone
+							| Town
+						th
+							| Parish
+						th
+							| Country
+						th
+				tbody
+					= render @locations
