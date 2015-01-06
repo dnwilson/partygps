@@ -39,7 +39,6 @@ Rails.application.routes.draw do
     # end
   end
 
-  mount RailsAdmin::Engine => '/dashboard', as: 'rails_admin'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   # resources :users
