@@ -1,0 +1,29 @@
+header class="header black-bg"
+  div class="sidebar-toggle-box"
+    div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"
+  a class="logo" href="#{root_path}"
+    b PARTYGPS
+ 
+  / Notification Area
+  div class="nav notify-row" id="top_menu"
+    ul class="nav top-menu"
+      li class="dropdown"
+        a data-toggle="dropdown" class="dropdown-toggle" href="#"
+          i class="fa fa-tasks"
+          span class="badge bg-theme"
+            | 4
+            
+      li class="dropdown"
+        a data-toggle="dropdown" class="dropdown-toggle" href="#"
+          i class="fa fa-user"
+          span class="badge bg-theme"
+            | 2
+        ul class="dropdown-menu extended"
+          div class="notify-arrow notify-arrow-green"
+          li = link_to "Profile", dashboard_path, :input_html => {role: "menu-item"}
+          li = link_to "Edit Profile", dashboard_path, :input_html => {role: "menu-item"}
+          li = link_to "Logout", dashboard_path, :input_html => {role: "menu-item"}
+  
+  / Actual Nav Links
+  div class="top-menu"
+    = render 'layouts/navigation_links'

@@ -1,0 +1,109 @@
+$orange: #FF4100;
+$lightOrange: #ff7140;
+$lightestOrange: #FF9773;
+$darkOrange: #bf5530;
+$mainGreen: #00B25C;
+$darkGreen: #218555;
+$darkestGreen: #00733C;
+$lightGreen: #36D88A;
+$lightestGreen: #61D89F;
+
+$brand-primary: $lightOrange;
+
+@import "bootstrap";
+@import "font-awesome";
+@import "gritter/css/jquery.gritter";
+@import "style";
+@import "style-responsive";
+@import "bootstrap-select.min";
+@import "base";
+
+.nav-dropdown{
+	left: -40px !important;;
+	min-width: 100px;
+	text-align: right;
+}
+
+
+.btn-logout{
+	color: $lightOrange;
+	font-size: 12px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border: 1px solid #fff;
+	padding: 5px 15px;
+	background: #fff;
+	margin-top: 15px;
+	&:hover, &:active{
+		color: #fff;
+		background: $mainGreen;
+		border: 1px solid $mainGreen;
+	}
+}
+
+.open .dropdown-toggle.btn-logout{
+	color: #fff;
+	background: $mainGreen;
+	border: 1px solid $mainGreen;
+}
+
+.center{
+	text-align: center;
+}
+
+
+/*===========================
+--- User Pages ----
+=========================== */
+
+#registration, #login{
+	background-color: white;
+	margin-top: 30px;
+	padding: 20px;
+	h2{
+		text-transform: uppercase;
+	}
+	input{
+		width: 100%;
+	}
+	.form-inputs{
+		position: relative;
+		text-align: left;
+		input[type="text"], input[type="password"],
+		input[type="email"], select{
+			padding: 5px;
+			border: 2px solid #ddd;
+			margin-bottom: 12.5px;
+			width: 100%;
+			height: 40px;
+		}
+		// i{
+		// 	position: absolute;
+		// 	padding: 12px 15px;
+		// 	pointer-events: none;
+		// 	color: white;
+		// 	background-color: #ddd;
+		// }
+		input#user_remember_me{
+			width: auto;
+			float: left;
+			margin-right: 15px;
+			margin-bottom: 12.5px;
+			height: 21px;
+			padding: 0px;
+		}
+		.remember_label{
+			padding-top: 5px;
+		}
+		label{
+			float: left;
+		}
+		.btn{
+			height: 40px;
+		}
+	}
+	.devise-links {
+		padding-top: 12.5px;
+		text-align: left;
+	}
+}

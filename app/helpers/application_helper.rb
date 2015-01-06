@@ -1,11 +1,10 @@
 module ApplicationHelper
-	def full_title(page_title)
-		base_title = "partyGPS"
-		@page_site_name = "partyGPS"
-		if page_title.empty?
-			base_title
+	def full_title
+		basetitle = "PARTYGPS"
+		if content_for(:title).present?
+			"#{basetitle} | #{content_for(:title)}"
 		else
-			"#{base_title} | #{page_title}"
+			basetitle
 		end
 	end
 end

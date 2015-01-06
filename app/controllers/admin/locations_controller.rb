@@ -48,11 +48,11 @@ class Admin::LocationsController < Admin::BaseController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_location
-      @location = location.find(params[:id])
+      @location = Location.find(params[:id])
     end
 
     def location_params
-      params.require(:location).permit(:name, :address, :address2, :city, :state, :zipcode, 
+      params.require(:location).permit(:name, :street_address, :street_address2, :city_town, :state_parish, :zipcode, 
                                     :country, :description, :photo )
     end
 end

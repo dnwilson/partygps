@@ -36,10 +36,11 @@ ActiveRecord::Schema.define(version: 20141022214740) do
 
   add_index "events", ["id", "place_id"], name: "index_events_on_id_and_place_id", using: :btree
 
-  create_table "places", force: true do |t|
+  create_table "locations", force: true do |t|
     t.string   "name"
     t.string   "image"
     t.string   "street_address"
+    t.string   "street_address2"
     t.string   "city_town"
     t.string   "state_parish"
     t.string   "zipcode"
@@ -50,8 +51,8 @@ ActiveRecord::Schema.define(version: 20141022214740) do
     t.datetime "updated_at"
   end
 
-  add_index "places", ["id", "longitude", "latitude"], name: "index_places_on_id_and_longitude_and_latitude", using: :btree
-  add_index "places", ["longitude", "latitude"], name: "index_places_on_longitude_and_latitude", unique: true, using: :btree
+  add_index "locations", ["id", "longitude", "latitude"], name: "index_locations_on_id_and_longitude_and_latitude", using: :btree
+  add_index "locations", ["longitude", "latitude"], name: "index_locations_on_longitude_and_latitude", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

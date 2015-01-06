@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'dashboard', to: 'dashboard#index'
     resources :users,           controller: 'users'
-    resources :locations,       controller: 'locations'
+    resources :locations,          controller: 'locations'
     resources :events do
       get 'manager', to: 'events#manager'
     end

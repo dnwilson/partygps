@@ -10,18 +10,6 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- * require_tree .
- * require_self
+ *= require_self
+ *= require main
  */
-@import "bourbon";
-@import "bootstrap";
-// @import "framework_and_overrides";
-@import "font-awesome";
-// @import "main_style";
-@import "pages";
-@import "gritter/css/jquery.gritter";
-// @import "lineicons/style";
-@import "style";
-@import "style-responsive";
-@import "bootstrap-select.min";
-@import "base";

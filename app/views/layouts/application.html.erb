@@ -2,30 +2,20 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Partygps" %></title>
+    <title><%= full_title %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Partygps" %>">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'application', params[:controller], media: 'all', 'data-turbolinks-track' => true %>
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= csrf_meta_tags %>
   </head>
+
   <body>
     <section id="container">
-      <%= render 'layouts/navigation' unless @disable_nav %>
-      <% if user_signed_in? %>
-        <%= render 'layouts/sidebar' %>
-        <section id="main-content">
-          <section class="wrapper">
-            <%= render 'layouts/messages' %>
-            <%= yield %>
-          </section>
-        </section>
-      <% else %>
-        <section id="main-content", style="margin-left:0px;">
-          <section class="wrapper">
-            <%= render 'layouts/messages' %>
-            <%= yield %>
-          </section>
-        </section>
-      <% end %>
+      <%= render 'layouts/navigation' %>
+      <section class="wrapper site-min-height">
+        <%= render 'layouts/messages' %>
+        <%= yield %>
+      </section>
     </section>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <% if current_page?(login_path) || current_page?(register_path) %>

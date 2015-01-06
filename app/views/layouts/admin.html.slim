@@ -1,0 +1,16 @@
+doctype html
+html
+	head
+		title
+			= full_title
+		= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+		= csrf_meta_tags
+	body
+		section id="container"
+			= render 'layouts/admin_nav'
+			= render 'layouts/sidebar'
+			section id="main-content"
+				section.wrapper.site-min-height
+					= render 'layouts/messages'
+					= yield
+	= javascript_include_tag 'application', 'data-turbolinks-track' => true

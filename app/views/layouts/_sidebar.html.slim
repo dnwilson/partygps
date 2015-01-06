@@ -1,0 +1,23 @@
+/ sidebar
+aside
+  div id="sidebar"  class="nav-collapse"
+    ul class="sidebar-menu" id="nav-accordion"
+      p class="centered"
+        = link_to dashboard_path(current_user) do
+        img src="assets/img/ui-sam.jpg" class="img-circle" width="60"
+      h5 class="centered"
+        = current_user.fullname
+      
+      li class="mt"
+        = link_to dashboard_path(current_user) do 
+          i class="fa fa-dashboard"
+            span style="padding-left: 10px;"
+             | Dashboard
+
+      = render 'admin/sidebar_nav_item', admin_action: "my_profile"
+
+      = render 'admin/sidebar_nav_item', admin_action: "admin_users", heading: "Users", item: "users", icon: "users"
+
+      = render 'admin/sidebar_nav_item', admin_action: "admin_locations", heading: "Locations", item: "locations", icon: "map-marker"
+
+      = render 'admin/sidebar_nav_item', admin_action: "admin_events", heading: "Events", item: "events", icon: "calendar"
