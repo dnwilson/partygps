@@ -2,7 +2,7 @@ class Location < ActiveRecord::Base
 
 	has_many :events
 
-	geocoded_by :address               # can also be an IP address
+	geocoded_by :address, if: ->(obj){ obj.address.present? and obj.address_changed? }
 	after_validation :geocode          # auto-fetch coordinates
 
 	validates :street_address, presence: true
@@ -14,6 +14,6 @@ class Location < ActiveRecord::Base
 	# validates :longitude, presence: true
 
 	def address
-		[self.street_address, self.street_address2, self.city_town, self.state_parish, self.country].map(&:inspect).join(', ')
+		[self.street_address, self.street_address2, self.city_town, self.state_parish, self.country].compact.join(', ')
 	end
 end
