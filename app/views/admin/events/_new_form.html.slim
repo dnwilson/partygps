@@ -9,14 +9,18 @@
     div.col-sm-10
       = f.file_field :photo, class: "form-control"
 
-  / div class="form-group"
-  /   = f.label :location_id, "Location", class: "col-sm-2 col-sm-2 control-label"
-  /   div.col-sm-10
-  /     = f.collection_select :location_id, Location.all, :id, :name, {}, { class: "form-control"}
-  / div class="form-group"
-  /   = f.label :date_time, class: "col-sm-2 col-sm-2 control-label"
-  /   div.col-sm-10
-  /     = f.date_field :date_time, placeholder: "Event Date", class: "form-control"
+  div class="form-group"
+    = f.label :location_id, "Location", class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.collection_select :location_id, Location.all, :id, :name, {}, { class: "form-control"}
+  div class="form-group"
+    = f.label :date, class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.date_field :date, placeholder: "Event Date", class: "form-control"
+  div class="form-group"
+    = f.label :time, class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.time_field :time, placeholder: '12:00 AM', class: "form-control"
   / div class="form-group"
   /   = f.label :adm, class: "col-sm-2 col-sm-2 control-label"
   /   div.col-sm-10

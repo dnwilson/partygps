@@ -71,6 +71,7 @@ group :development do
    # gem 'rack-mini-profiler'
    gem 'bullet'
    gem 'rails_layout'
+   gem 'pry-rails'
 end
 
 group :test do

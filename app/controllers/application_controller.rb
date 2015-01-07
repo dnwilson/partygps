@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
   end
 
   def block_outside_access
-    binding.pry
     unless current_page.eql?(root_url) 
       unless location.country.eql?("Jamaica")
         flash[:warning] = "Unfortunately, our service is not yet available in your area"
