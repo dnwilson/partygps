@@ -23,3 +23,16 @@
 //= require gritter-conf
 //= require bootstrap-select.min
 // require_tree .
+
+function showAdvancedOptions () {
+	if ($('.advanced-event').css('display') == 'none') {
+		$('.advanced-event').show();
+		$('.date-entry').fadeOut();
+		$('.time-entry').fadeOut();
+	} else{
+		$('.advanced-event').hide();
+		$('.date-entry').fadeIn();
+		$('.time-entry').fadeIn();
+	};
+};
+$('.advanced-toggle').click(showAdvancedOptions);

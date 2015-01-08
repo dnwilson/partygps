@@ -17,7 +17,7 @@
         <%= yield %>
       </section>
     </section>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application',params[:controller], 'data-turbolinks-track' => true %>
     <% if current_page?(login_path) || current_page?(register_path) %>
       <script type="text/javascript" src="/assets/jquery.backstretch.min.js"></script>
       <script>
