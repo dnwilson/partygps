@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20150108001647) do
     t.time     "time"
     t.string   "occurrence"
     t.text     "description"
-    t.decimal  "adm",                precision: 8, scale: 2
-    t.string   "occurrence_details"
+    t.decimal  "adm",             precision: 8, scale: 2
+    t.string   "occurrence_type"
   end
 
   add_index "events", ["date"], name: "index_events_on_date", using: :btree

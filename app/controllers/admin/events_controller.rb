@@ -10,11 +10,6 @@ class Admin::EventsController < Admin::BaseController
   # GET /events/1
   # GET /events/1.json
   def show
-    if @event.ticket_types.present?
-      @ticket_types = @event.ticket_types
-    else
-      @ticket_type = @event.ticket_types.new
-    end
   end
 
   def manager
@@ -66,6 +61,7 @@ class Admin::EventsController < Admin::BaseController
     end
 
     def event_params
-      params.require(:event).permit(:name, :photo)
+      params.require(:event).permit(:name, :image, :location_id, :date, :time, :occurrence, 
+                                    :adm, :occurrence_type, :description, :occurs, :day_of_occurrence)
     end
 end

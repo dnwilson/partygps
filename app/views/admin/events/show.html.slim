@@ -1,0 +1,25 @@
+p#notice= notice
+
+p
+  b Name:
+  = @event.name
+p
+  b Photo:
+  = @event.image
+p
+  b Date time:
+  = @event.date
+- unless @event.occurrence.eql?(Event::SINGLE_EVENT)
+  p
+    b When:
+    = @event.occurrence_type
+p
+  b Adm:
+  = @event.adm
+p
+  b Location:
+  = @event.location.name
+
+= link_to 'Edit', edit_admin_event_path(@event)
+| \|
+= link_to 'Back', admin_events_path
