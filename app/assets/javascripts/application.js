@@ -23,27 +23,3 @@
 //= require gritter-conf
 //= require bootstrap-select.min
 // require_tree .
-function showAdvancedOptions () {
-	if ($('.advanced-event').css('display') == 'none') {
-		$('.advanced-event').show();
-		$('.date-entry').hide();
-	} else{
-		$('.advanced-event').hide();
-		$('.date-entry').show();
-	};
-};
-
-function showEventOccurrenceType() {
-	var eventOccurrence = $('.occurrence').find(":selected").text();
-	if ( eventOccurrence == 'WEEKLY' ) {
-		$('.occurrency-type').show();
-	} else if( eventOccurrence == 'MONTHLY' ){
-		$('.occurrency-type').hide();
-		$('.occurs').show();
-	}
-	else{
-		$('.occurrency-type').hide();
-	};
-}
-$('.advanced-toggle').click(showAdvancedOptions);
-$('.occurrence').change(showEventOccurrenceType);
