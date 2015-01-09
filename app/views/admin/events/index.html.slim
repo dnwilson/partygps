@@ -1,9 +1,10 @@
 div.col-lg-12
 	div.row.mt
 		div.content-panel
-			h4
+			h4.col-sm-8
 				i class="fa fa-map-marker"
 				|  All Events
+			div.new-event.col-sm-4 = link_to "Add Event", new_admin_event_path, class: "btn btn-sm btn-primary"
 			table class="table table-striped table-advance table-hover"
 				thead
 					tr

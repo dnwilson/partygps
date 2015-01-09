@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
 
 	before_save :check_advanced, :check_occurrence
 
-	attr_accessor :occurs, :day_of_occurrence
+	attr_accessor :occurs, :day_of_occurrence, :day_of_occurrence_mthly, :month_of_occurrence
 
 	belongs_to :location
 
@@ -12,9 +12,6 @@ class Event < ActiveRecord::Base
 	BI_MONTHLY_EVENT	= 'BI-MONTHLY'
 	MONTHLY_EVENT 		= 'MONTHLY'
 	ANNUALLY_EVENT 		= "ANNUAL"
-	EVENT_OCCURRENCE 	= [SINGLE_EVENT, WEEKLY_EVENT, MONTHLY_EVENT, ANNUALLY_EVENT]
-
-	WEEKLY_OCCURRENCE_DETAILS = Date::DAYNAMES.map{|day| day = "Every " + day}
 
 	OTHER		= "Every Other"
 	FIRST		= "Every First"
@@ -22,8 +19,12 @@ class Event < ActiveRecord::Base
 	THIRD		= "Every Third"
 	FOURTH	= "Every Fourth"
 	LAST		= "Every Last"
-	INTERMITTENT_OCCURRENCE = [FIRST, SECOND, THIRD, FOURTH, LAST, OTHER]
 
+	INTERMITTENT_OCCURRENCE 		= [FIRST, SECOND, THIRD, FOURTH, LAST, OTHER]
+	EVENT_OCCURRENCE 						= [SINGLE_EVENT, WEEKLY_EVENT, MONTHLY_EVENT, ANNUALLY_EVENT]
+	WEEKLY_OCCURRENCE_DETAILS 	= Date::DAYNAMES.map{|day| day = "Every " + day}
+	MONTHLY_OCCURRENCE_DETAILS 	= Date::MONTHNAMES.compact.map{|m| m = "in " + m unless m.nil?}
+	
 	private
 		def set_location(current_location)
 			result = Location.where(latitude: current_location.latitude, longitude: current_location.longitude)
@@ -41,10 +42,16 @@ class Event < ActiveRecord::Base
 		end
 
 		def check_occurrence
-			binding.pry
-			if occurs.present? && day_of_occurrence.present?
+			case occurrence
+			when SINGLE_EVENT
+				self.occurrence_type = occurrence
+			when WEEKLY_EVENT
+				self.occurrence_type = occurrence_type
+			when MONTHLY_EVENT
+				self.occurrence_type = occurs + " " + day_of_occurrence_mthly
 				binding.pry
-				self.occurrence_type = self.occurs + self.day_of_occurrence
+			else
+				self.occurrence_type = occurs + " " + day_of_occurrence + " " + month_of_occurrence
 				binding.pry
 			end
 		end

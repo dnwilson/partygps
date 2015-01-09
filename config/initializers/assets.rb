@@ -9,5 +9,5 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( jquery.backstretch.min.js )
 
 %w( events locations pages users admin/events admin/locations admin/users ).each do |controller|
-  Rails.application.config.assets.precompile += ["#{controller}.js", "#{controller}.js.coffee", "#{controller}.css"]
+  Rails.application.config.assets.precompile += ["#{controller}.js", "#{controller}.js.coffee", "#{controller}.css", "#{controller}.css.scss"]
 end
