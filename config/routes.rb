@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   get "contact", to: 'pages#contact'
 
   # You can have the root of your site routed with "root"
-  root 'pages#home'
+  root 'events#index'
 
   namespace :api do
     namespace :v1 do

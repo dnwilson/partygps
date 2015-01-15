@@ -6,4 +6,4 @@ div.row
 				h4
 					i.fa.fa-user.fa-fw
 					|  Add Event
-			= render 'new_form'
+			= render 'form', path: admin_events_path(@event), type: :post

@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title
+      = full_title
+    = stylesheet_link_tag 'application', params[:controller], media: 'all', 'data-turbolinks-track' => true
+    = favicon_link_tag 'favicon.ico'
+    = csrf_meta_tags
+
+  body
+    section id="container"
+      = render 'layouts/navigation'
+      section class="wrapper site-min-height"
+        = render 'layouts/messages'
+        div.col-lg-12
+          div.row.mt
+            div.col-lg-12 
+              = yield 
+              = debug(params) if Rails.env.development?
+      = render 'layouts/footer'
+    = javascript_include_tag 'application', params[:controller], 'data-turbolinks-track' => true
+    - if current_page?(login_path) || current_page?(register_path)
+      script type="text/javascript" src="/assets/jquery.backstretch.min.js"
+      javascript:
+        $.backstretch("/assets/login-bg.jpg");

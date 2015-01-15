@@ -4,9 +4,10 @@ class User < ActiveRecord::Base
 	devise :database_authenticatable, :registerable, :omniauthable,
 	     :recoverable, :rememberable, :trackable, :validatable
 
-	before_create :set_username
+	before_validation :set_role, on: :create
+	# before_create :set_role
+	before_validation :set_username, on: :create
 	before_create :ensure_authentication_token
-	before_create :set_role
 
 	has_many :authorizations
 
@@ -17,15 +18,24 @@ class User < ActiveRecord::Base
 	validates :state, length: {maximum: 50 }
 	validates :city, length: {maximum: 50 } 
 	validates :zipcode, length: {maximum: 20 }
-
-	ROLES = %w[user promoter admin]
+	validates :role, presence: true
+	
+	ROLES = %w[user admin]
 
 	def role?(base_role)
-		ROLES.index(base_role.to_s) <= ROLES.index(role)
+		role.present? && ROLES.index(base_role.to_s) <= ROLES.index(role)
 	end
 
 	def fullname
 		self.first_name + " " + self.last_name
+	end
+
+	def is_admin?
+		role.eql?("admin")
+	end
+
+	def is_user?
+		role.eql?("user")
 	end
 
 	def ensure_authentication_token
@@ -47,6 +57,7 @@ class User < ActiveRecord::Base
 
 	def self.from_omniauth(auth, current_user)
 		authorization = Authorization.where(:provider => auth["provider"], :uid => auth["uid"].to_s, :token => auth["credentials"]["token"], :secret => auth["credentials"]["secret"]).first_or_initialize
+		binding.pry
 		if authorization.user.blank?
 			user = current_user.nil? ? User.where('email = ?', auth["info"]["email"]).first : current_user
 			if user.blank?
@@ -55,13 +66,24 @@ class User < ActiveRecord::Base
 				user.first_name = auth["info"]["first_name"]
 				user.last_name = auth["info"]["last_name"]
 				user.email = auth["info"]["email"]
-				auth[:provider] == "twitter" ?  user.save(:validate => false) :  user.save
+				auth[:provider].eql?("twitter") ?  user.save(:validate => false) :  user.save
 			end
 			# authorization.username = auth["info"]["nickname"]
 			authorization.user_id = user.id
 			authorization.save
 		end
 		authorization.user
+	end
+
+	def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+	  model = Model.where(:provider => auth.provider, :uid => auth.uid).first
+	  return model if model
+	  model = Model.create(name:auth.extra.raw_info.name,
+	                         provider:auth.provider,
+	                         uid:auth.uid,
+	                         email:auth.info.email,
+	                         password:Devise.friendly_token[0,20]
+	                         )
 	end
 
 	# Admin configuration

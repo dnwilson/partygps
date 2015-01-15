@@ -3,8 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_filter :disable_nav, :current_page
-  before_action :block_outside_access
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_location
+  # before_action :access_filter
 
   # before_filter :authenticate_user!, :unless => :devise_controller?
 
@@ -18,12 +19,14 @@ class ApplicationController < ActionController::Base
     redirect_to main_app.root_path, :alert => exception.message
   end
 
-  def block_outside_access
-    unless current_page.eql?(root_url) 
-      unless location.country.eql?("Jamaica")
-        flash[:warning] = "Unfortunately, our service is not yet available in your area"
-        redirect_to root_path
-      end
+  def access_filter
+    region_blocker unless root_path 
+  end
+
+  def region_blocker
+    unless @location.try(:country).eql?("Jamaica")
+      flash[:warning] = "Unfortunately, our service is not yet available in your area"
+      redirect_to root_path
     end
   end
 
@@ -36,10 +39,10 @@ class ApplicationController < ActionController::Base
     def current_page
       @current_page = request.url
     end  
-  
-    def location
+
+    def set_location
       if params[:location].blank?
-        if Rails.env.test? || Rails.env.development?
+        if Rails.env.development? || Rails.env.test?
           # kingston  = "72.252.211.198"
           # portmore  = "72.27.99.0"
           # negril    = "208.131.163.126"
@@ -48,7 +51,6 @@ class ApplicationController < ActionController::Base
           kgn = "Kingston, Jamaica"
           nyc = "New York, NY"
           @location ||= Geocoder.search(kgn).first
-
         else
           @location ||= request.location
         end
@@ -58,6 +60,7 @@ class ApplicationController < ActionController::Base
         @location
       end
     end
+  
  
   # def authenticate_user_from_token!
   #   user_email = params[:user_email].presence
@@ -74,7 +77,7 @@ class ApplicationController < ActionController::Base
   protected
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:username, 
-                  :email, :first_name, :last_name, :dob)}
+                  :email, :first_name, :last_name, :dob, :password, :password_confirmation)}
       devise_parameter_sanitizer.for(:account_update) {|u| u.permit(:username, 
                   :email, :first_name, :last_name, :dob, :sex, :address, 
                   :address2, :city, :state, :zipcode, :sex, :country )}

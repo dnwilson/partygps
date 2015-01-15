@@ -32,7 +32,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     def create
     	@disable_chan = true
 	    build_resource(sign_up_params)
-
+	    binding.pry
 	    if resource.save
 	      if resource.active_for_authentication?
 	        # set_flash_message :notice, :signed_up if is_navigational_format?

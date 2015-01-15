@@ -1,0 +1,17 @@
+div class="col-lg-3 col-md-4 col-sm-4 mb"
+
+	div class="content-panel pn"
+		div class="event-#{event.id}" id="event-panel" style="background: url('') no-repeat center top;"
+			div.event-hover
+				h2= event.name
+				- if event.occurrence == "Single"
+					h4= event.date 
+				- else
+					h4= event.occurrence_type
+				h5= "@ #{event.location_name}"
+				button.btn.btn-ticket.btn.sm GET DIRECTIONS
+			div.event-info-top
+				/ div.event-date= event.short_date
+			div.event-info-bot
+				div.title= link_to event.name.truncate(20), event
+				//div.details= number_to_currency(event.adm, precision: 0)

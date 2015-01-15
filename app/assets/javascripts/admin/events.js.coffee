@@ -28,7 +28,7 @@ resetForm = () ->
 	$('.style-form')[0].reset()
 
 $ ->
-	$(document).ready(resetForm)
-	$(document).on('page:load', resetForm)
+	# $(document).ready(resetForm)
+	# $(document).on('page:load', resetForm)
 	$('.advanced-toggle').on 'click', showAdvancedOptions
 	$('.occurrence').on 'change', showEventOccurrenceType

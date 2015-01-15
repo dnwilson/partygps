@@ -25,22 +25,21 @@ describe "UserPages" do
 			it { is_expected.to have_link "signup" }
 			it { is_expected.to have_link "about" }
 			it { is_expected.to have_link "contact" }
-
-			it { is_expected.to have_selector ".new_user" }
+			it { is_expected.to have_selector ".registration" }
 			it { is_expected.to have_selector "#user_email" }
 			it { is_expected.to have_selector "#user_password" }
-			it { is_expected.to have_link "Forgot your password?" }
-			it { is_expected.to have_link "Join the party" }
-			it { is_expected.to have_link "Log in using Facebook" }
-			it { is_expected.to have_link "Log in using Google" }
+			it { is_expected.to have_link "Forgot Password?" }
+			it { is_expected.to have_link "Find a party now!" }
+			it { is_expected.to have_link "Facebook" }
+			it { is_expected.to have_link "Google" }
 		end
 
 		context "when user is valid" do
 			before do
 				visit login_path
-				fill_in "Email Address", 		with: user.email
+				fill_in "Email", 				with: user.email
 				fill_in "Password", 			with: user.password
-				click_button "Log in"
+				click_button "LOGIN"
 			end
 
 			it { is_expected.to have_text "#{user.first_name}" }
@@ -49,9 +48,9 @@ describe "UserPages" do
 		context "when user is invalid" do
 			before do
 				visit login_path
-				fill_in "Email Address", 		with: "someguy@test.com"
+				fill_in "Email", 				with: "someguy@test.com"
 				fill_in "Password", 			with: "password"
-				click_button "Log in"
+				click_button "LOGIN"
 			end
 
 			it { is_expected.to have_text "Invalid email address or password." }
@@ -66,7 +65,7 @@ describe "UserPages" do
          with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.0'}).
          to_return(:status => 200, :body => "", :headers => {})
 			visit login_path
-			click_link "Log in using Facebook"
+			click_link "Facebook"
 		end
 
 		context "when trying to signin with facebook" do
@@ -80,7 +79,7 @@ describe "UserPages" do
 			visit login_path
 			fill_in "Email Address", 		with: user.email
 			fill_in "Password", 			with: user.password
-			click_button "Log in"
+			click_button "LOGIN"
 			visit settings_path
 		end
 	end

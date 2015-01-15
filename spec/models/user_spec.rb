@@ -53,8 +53,26 @@ RSpec.describe User, :type => :model do
 		it{should_not be_valid}
 	end
 
-	describe "before_save" do
-		before{@user = @user.reload}
+	# it "should assign a username if one is not present" do
+	# 	before{ @user.save }
+	# 	.to change{ @user.username }
+	# end
+
+	# it "should assign a role if is one is not present" do
+	# 	expect{ @user.save }.to change{ @user.role }
+	# end
+
+	# it "should assign a username if one is not present" do
+	# 	before{@user.username = nil}
+	# 	@user.should_receive(:username)
+	# 	@user.save
+	# end
+
+	describe "after creation" do
+		before do
+			@user.save
+			@user = @user.reload
+		end
 
 		it "should have the correct role" do
 			expect(@user.role).to eq "user"

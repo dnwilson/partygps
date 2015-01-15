@@ -9,6 +9,6 @@ ul class="nav pull-right top-menu"
 				li = link_to "Dashboard", admin_dashboard_path, role: "menu-item"
 			li = link_to "Profile", dashboard_path, role: "menu-item"
 			li = link_to "Change Info", dashboard_path, role: "menu-item"
-			li = link_to "Logout", dashboard_path, role: "menu-item"
+			li = link_to "Logout", logout_path, method: :delete, role: "menu-item"
   - else
     li= link_to "login", login_path, class: "logout"

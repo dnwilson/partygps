@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Location, :type => :model do
-	before{@place = Location.create(name: "Some Place",
+	before{@place = Location.create(name: "Test HQ",
 								street_address: "1 Testing Way",
 								city_town: "Testville",
-								state_parish: "New York",
-								zipcode: "10001",
-								country: "USA"
+								state_parish: "Kingston",
+								country: "Jamaica"
 								# image: File.new(Rails.root + "spec/fixtures/rails.png")
 	)}
 
@@ -24,28 +23,13 @@ RSpec.describe Location, :type => :model do
 	it{should respond_to(:events)}
 	it{should be_valid}
 
-	context "when street address is not present" do
-		before{@place.street_address = nil}
+	context "when latitude is not present" do
+		before{@place.latitude = nil}
 		it{should_not be_valid}
 	end
 
-	context "when state or parish is not present" do
-		before{@place.state_parish = nil}
-		it{should_not be_valid}
-	end
-
-	context "when state or parish is to short" do
-		before{@place.state_parish = "e"}
-		it{should_not be_valid}
-	end
-
-	context "when state or parish is too long" do
-		before{@place.state_parish = "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"}
-		it{should_not be_valid}
-	end
-
-	context "when country is not present" do
-		before{@place.country = nil}
+	context "when longitude is not present" do
+		before{@place.longitude = nil}
 		it{should_not be_valid}
 	end
 

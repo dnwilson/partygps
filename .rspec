@@ -1,2 +1,5 @@
 --color
+--profile
+--format documentation
+--format html --out rspec.html
 --require spec_helper

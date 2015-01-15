@@ -18,12 +18,23 @@ $brand-primary: $lightOrange;
 @import "bootstrap-select.min";
 @import "base";
 
+@media screen and (min-width: 1199px) {
+	max-width: 1200px;
+}
+
 .nav-dropdown{
 	left: -40px !important;;
 	min-width: 100px;
 	text-align: right;
 }
 
+.logout{
+	margin-right: 0px !important;
+}
+
+#container{
+	max-width: 1200px !important;
+}
 
 .btn-logout{
 	color: $lightOrange;

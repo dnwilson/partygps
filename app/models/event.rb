@@ -25,15 +25,23 @@ class Event < ActiveRecord::Base
 	WEEKLY_OCCURRENCE_DETAILS 	= Date::DAYNAMES.map{|day| day = "Every " + day}
 	MONTHLY_OCCURRENCE_DETAILS 	= Date::MONTHNAMES.compact.map{|m| m = "in " + m unless m.nil?}
 	
+	def location_name
+		location.name
+	end
+
+	def address
+		[location.street_address, location.city_town, location.state_parish]
+	end
+
 	private
-		def set_location(current_location)
-			result = Location.where(latitude: current_location.latitude, longitude: current_location.longitude)
-			if result.present?
-				self.location = result
-			else
-				new_location = Location.build(city_town: current_location.city, state_parish: current_location.city, country: current_location.country)
-			end
-		end
+		# def set_location(current_location)
+		# 	result = Location.where(latitude: current_location.latitude, longitude: current_location.longitude)
+		# 	if result.present?
+		# 		self.location = result
+		# 	else
+		# 		new_location = Location.build(city_town: current_location.city, state_parish: current_location.city, country: current_location.country)
+		# 	end
+		# end
 
 		def check_advanced
 			unless self.occurrence.present?
