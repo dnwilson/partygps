@@ -65,6 +65,7 @@ GEM
       mime-types (>= 1.16)
     celluloid (0.16.0)
       timers (~> 4.0.0)
+    chunky_png (1.3.3)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -258,6 +259,8 @@ GEM
     rdoc (4.1.2)
       json (~> 1.4)
     remotipart (1.2.1)
+    rqrcode-with-patches (0.5.4)
+      chunky_png
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
       rspec-expectations (~> 3.1.0)
@@ -405,6 +408,7 @@ DEPENDENCIES
   rails_admin
   rails_layout
   rb-fsevent
+  rqrcode-with-patches (~> 0.5.4)
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
