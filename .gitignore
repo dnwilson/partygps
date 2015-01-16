@@ -18,3 +18,4 @@
 .DS_Store
 /config/secrets.yml
 /config/social_keys.yml
+/public/uploads
