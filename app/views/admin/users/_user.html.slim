@@ -1,4 +1,6 @@
 tr
+	td
+		= link_to image_tag(user.photo.thumb, class: "avatar")
 	td.hidden-phone
 		= user.first_name
 	td

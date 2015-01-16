@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115231203) do
+ActiveRecord::Schema.define(version: 20150115232220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20150115231203) do
   create_table "events", force: true do |t|
     t.integer  "location_id"
     t.string   "name"
-    t.string   "image"
+    t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "date"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20150115231203) do
 
   create_table "locations", force: true do |t|
     t.string   "name"
-    t.string   "image"
+    t.string   "photo"
     t.string   "street_address"
     t.string   "street_address2"
     t.string   "city_town"
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 20150115231203) do
     t.datetime "updated_at"
     t.string   "authentication_token"
     t.string   "sex"
-    t.string   "avatar"
+    t.string   "photo"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree

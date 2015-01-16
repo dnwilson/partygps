@@ -6,6 +6,8 @@ class Event < ActiveRecord::Base
 
 	belongs_to :location
 
+	mount_uploader :photo, ImageUploader
+
 	SINGLE_EVENT 			= 'SINGLE'
 	WEEKLY_EVENT 			= 'WEEKLY'
 	BI_WEEKLY_EVENT 	= 'BI-WEEKLY'

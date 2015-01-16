@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::BaseController
-  before_action :set_user, only: [:show, :create, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
 
   def index
@@ -11,6 +11,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def create
+    @user = User.new(user_params)
     if @user.save
       flash[:notice] = "Successfully created User." 
       redirect_to admin_users_path
@@ -48,8 +49,9 @@ class Admin::UsersController < Admin::BaseController
     end
 
     def user_params
-     params.require(:user).permit(:username, 
+      params.require(:user).permit(:username, 
                   :email, :first_name, :last_name, :dob, :sex, :address, 
-                  :address2, :city, :state, :zipcode, :sex, :country)
+                  :address2, :city, :state, :zipcode, :country, :photo, :password, 
+                  :password_confirmation)
     end
 end

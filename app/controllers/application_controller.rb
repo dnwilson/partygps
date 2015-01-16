@@ -76,11 +76,11 @@ class ApplicationController < ActionController::Base
 
   protected
     def configure_permitted_parameters
-      devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:username, 
+      devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:username, :photo,
                   :email, :first_name, :last_name, :dob, :password, :password_confirmation)}
       devise_parameter_sanitizer.for(:account_update) {|u| u.permit(:username, 
                   :email, :first_name, :last_name, :dob, :sex, :address, 
-                  :address2, :city, :state, :zipcode, :sex, :country )}
+                  :address2, :city, :state, :zipcode, :sex, :country, :photo )}
       devise_parameter_sanitizer.for(:edit_password) {|u| u.permit(:password, :password_confirmation, :current_password)}
     end
 end

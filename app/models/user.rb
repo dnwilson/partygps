@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
 	has_many :authorizations
 
+	mount_uploader :photo, ImageUploader
+
 	validates :first_name, presence: true, length: {minimum: 2, maximum: 50 }
 	validates :last_name, presence: true, length: {minimum: 2, maximum: 50 }
 	validates :address, length: {maximum: 100 }
@@ -86,23 +88,6 @@ class User < ActiveRecord::Base
 	                         )
 	end
 
-	# Admin configuration
-	rails_admin do
-		edit do
-	      field :first_name
-	      field :last_name
-	      field :dob 
-	      field :email
-	      field :address
-	      field :address2
-	      field :city
-	      field :state
-	      field :zipcode
-	      field :country
-	      field :password
-	      field :password_confirmation
-    	end
-	end
 
 	private
   
