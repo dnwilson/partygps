@@ -44,12 +44,12 @@ class ImageUploader < CarrierWave::Uploader::Base
   
   version :sm do
     process :fix_exif_rotation
-    process :resize_to_fill => [500, 500]
+    process :resize_to_fill => [300, 300]
   end
 
   version :lg do
     process :fix_exif_rotation
-    process :resize_to_limit => [1024, 1024]
+    process :resize_to_limit => [600, 600]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

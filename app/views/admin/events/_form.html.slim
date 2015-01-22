@@ -6,9 +6,9 @@
     div.col-sm-10
       = f.text_field :name, autofocus: true, placeholder: "Event Name", class: "form-control"
   div class="form-group"
-    = f.label :image, "Flyer", class: "col-sm-2 col-sm-2 control-label"
+    = f.label :photo, "Flyer", class: "col-sm-2 col-sm-2 control-label"
     div.col-sm-10
-      = f.file_field :image, class: "form-control"
+      = f.file_field :photo, class: "form-control", accept: "image/*"
 
   div class="form-group"
     = f.label :location_id, "Location", class: "col-sm-2 col-sm-2 control-label"

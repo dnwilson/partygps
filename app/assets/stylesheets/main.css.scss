@@ -1,15 +1,4 @@
-$orange: #FF4100;
-$lightOrange: #ff7140;
-$lightestOrange: #FF9773;
-$darkOrange: #bf5530;
-$mainGreen: #00B25C;
-$darkGreen: #218555;
-$darkestGreen: #00733C;
-$lightGreen: #36D88A;
-$lightestGreen: #61D89F;
-
-$brand-primary: $lightOrange;
-
+@import "variables";
 @import "bootstrap";
 @import "font-awesome";
 @import "gritter/css/jquery.gritter";
@@ -18,9 +7,25 @@ $brand-primary: $lightOrange;
 @import "bootstrap-select.min";
 @import "base";
 
-@media screen and (min-width: 1199px) {
-	max-width: 1200px;
+.container{
+	max-width: 1179px;
 }
+
+@media (max-width: 768px) { 
+	.container{
+		min-width: 320px;
+	}
+	.event .social{
+		font-size: 12px !important;
+	}
+	.social{
+    	padding: 24.5px 0 !important;
+    	.like, .map{
+    		width: 20% !important;
+    	}
+	}
+}
+// @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { }
 
 .nav-dropdown{
 	left: -40px !important;;
@@ -32,10 +37,6 @@ $brand-primary: $lightOrange;
 	margin-right: 0px !important;
 }
 
-#container{
-	max-width: 1200px !important;
-}
-
 .btn-logout{
 	color: $lightOrange;
 	font-size: 12px;
@@ -44,7 +45,7 @@ $brand-primary: $lightOrange;
 	border: 1px solid #fff;
 	padding: 5px 15px;
 	background: #fff;
-	margin-top: 15px;
+	margin: 15px 0;
 	&:hover, &:active{
 		color: #fff;
 		background: $mainGreen;
@@ -128,3 +129,14 @@ $brand-primary: $lightOrange;
 	display: none;
 }
 
+.center{
+	text-align: center;
+}
+
+.mar-top15{
+	margin-top: 15px
+}
+
+.mar-bot15{
+	margin-bottom: 15px
+}
