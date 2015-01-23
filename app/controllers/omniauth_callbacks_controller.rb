@@ -4,7 +4,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 	
 	def all
 		p env["omniauth.auth"]
-		binding.pry
 		user = User.from_omniauth(env["omniauth.auth"], current_user)
 		Rails.logger.info("PARAMS: #{params.inspect}")
 		if user.persisted?

@@ -1,15 +1,4 @@
-$orange: #FF4100;
-$lightOrange: #ff7140;
-$lightestOrange: #FF9773;
-$darkOrange: #bf5530;
-$mainGreen: #00B25C;
-$darkGreen: #218555;
-$darkestGreen: #00733C;
-$lightGreen: #36D88A;
-$lightestGreen: #61D89F;
-
-$brand-primary: $lightOrange;
-
+@import "variables";
 @import "bootstrap";
 @import "font-awesome";
 @import "gritter/css/jquery.gritter";
@@ -18,9 +7,118 @@ $brand-primary: $lightOrange;
 @import "bootstrap-select.min";
 @import "base";
 
-@media screen and (min-width: 1199px) {
-	max-width: 1200px;
+.container{
+	max-width: 1179px;
 }
+
+@media (max-width: 768px) { 
+	.container{
+		min-width: 320px;
+	}
+	.event .social{
+		font-size: 12px !important;
+	}
+	.social{
+    	padding: 24.5px 0 !important;
+    	.like, .map{
+    		width: 20% !important;
+    	}
+	}
+}
+
+.banner{
+	background-position: top center;
+	background: url(/assets/banner.jpg) top center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: absolute;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+	max-height: 300px;
+	display: block;
+	top: 0px;
+	.headline{
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.6);
+	}
+	a.logo{
+		width: 100%;
+		padding-top: 15%; 
+		font-size: 30px;
+	}
+	.form-group{
+		width: 100%;
+		display: inline-block;
+		margin-bottom: 0;
+		vertical-align: middle;
+	}
+	.btn{
+		width: auto;
+		display: inline-block;
+		padding: 10px 16px;
+		margin-left: 10px;
+	}
+	.btn-notify{
+		height: 38px;
+		color: $lightGray;
+		background-color: $mainGreen;
+		&:hover, &:active{
+			color: darken($lightGray, 5%);
+			background-color: $darkGreen;
+		}
+	}
+	.form-control{
+		background-color: #FFFFFF;
+		border: 1px solid $mainGreen;
+		border-radius: 4px;
+		box-shadow: none;
+		color: #444444;
+		height: 38px;
+		padding: 6px 16px;
+		width: 85%;
+		&:hover, &:active{
+			color: $lightGray;
+		}
+	}
+	.transparent {
+		background-color: rgba(255, 255, 255, 0.07);
+		// border: 1px solid rgba(238, 238, 238, 0.27);
+		color: #FFFFFF;
+	}
+}
+.main{
+	margin-top: 320px;
+}
+// .banner{
+// 	background: url(/assets/banner.jpg) top;
+// 	background-position: center center;
+// 	-webkit-background-size: cover;
+// 	background-size: cover;
+// 	height: auto;
+// 	left: 0;
+// 	min-height: 100%;
+// 	min-width: 100%;
+// 	position: absolute;
+// 	top: 0;
+// 	width: auto;
+// }
+
+// @media (min-width: 320px) { 
+// 	.container{
+// 		min-width: 320px;
+// 	}
+// 	.event .social{
+// 		font-size: 12px !important;
+// 	}
+// 	.social{
+//     	padding: 24.5px 0 !important;
+//     	.like, .map{
+//     		width: 20% !important;
+//     	}
+// 	}
+// }
+// @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { }
 
 .nav-dropdown{
 	left: -40px !important;;
@@ -32,10 +130,6 @@ $brand-primary: $lightOrange;
 	margin-right: 0px !important;
 }
 
-#container{
-	max-width: 1200px !important;
-}
-
 .btn-logout{
 	color: $lightOrange;
 	font-size: 12px;
@@ -44,7 +138,7 @@ $brand-primary: $lightOrange;
 	border: 1px solid #fff;
 	padding: 5px 15px;
 	background: #fff;
-	margin-top: 15px;
+	margin: 15px 0;
 	&:hover, &:active{
 		color: #fff;
 		background: $mainGreen;
@@ -128,3 +222,14 @@ $brand-primary: $lightOrange;
 	display: none;
 }
 
+.center{
+	text-align: center;
+}
+
+.mar-top15{
+	margin-top: 15px
+}
+
+.mar-bot15{
+	margin-bottom: 15px
+}

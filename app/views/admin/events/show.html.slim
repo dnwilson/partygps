@@ -9,7 +9,7 @@ p
 p
   b Date time:
   = @event.date
-- unless @event.occurrence.eql?(Event::SINGLE_EVENT)
+- unless @event.occurrence.eql?(Event::ONE_TIME_EVENT)
   p
     b When:
     = @event.occurrence_type

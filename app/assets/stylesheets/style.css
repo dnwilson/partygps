@@ -18,8 +18,8 @@ Premium: http://www.gridgum.com
 
 /* BASIC THEME CONFIGURATION */
 body {
-    color: #797979;
-    background: #f2f2f2;
+    color: $darkGray;
+    background: $lightGray;
     font-family: 'Ruda', sans-serif;
     padding: 0px !important;
     margin: 0px !important;
@@ -229,7 +229,7 @@ ul.top-menu > li > .logout {
     padding: 5px 15px;
     margin-right: 15px;
     background: #fff;
-    margin-top: 15px;
+    margin: 15px 0;
 }
 
 
@@ -438,7 +438,7 @@ a.logo {
     font-size: 20px;
     color: #ffffff;
     float: left;
-    margin-top: 15px;
+    margin: 15px 0;
     text-transform: uppercase;
 }
 

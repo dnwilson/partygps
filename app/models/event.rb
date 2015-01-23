@@ -8,8 +8,8 @@ class Event < ActiveRecord::Base
 
 	mount_uploader :photo, ImageUploader
 
-	SINGLE_EVENT 			= 'SINGLE'
-	WEEKLY_EVENT 			= 'WEEKLY'
+	ONE_TIME_EVENT 		= 'ONE TIME'
+	WEEKLY_EVENT 		= 'WEEKLY'
 	BI_WEEKLY_EVENT 	= 'BI-WEEKLY'
 	BI_MONTHLY_EVENT	= 'BI-MONTHLY'
 	MONTHLY_EVENT 		= 'MONTHLY'
@@ -17,13 +17,13 @@ class Event < ActiveRecord::Base
 
 	OTHER		= "Every Other"
 	FIRST		= "Every First"
-	SECOND	= "Every Second"
+	SECOND		= "Every Second"
 	THIRD		= "Every Third"
-	FOURTH	= "Every Fourth"
+	FOURTH		= "Every Fourth"
 	LAST		= "Every Last"
 
 	INTERMITTENT_OCCURRENCE 		= [FIRST, SECOND, THIRD, FOURTH, LAST, OTHER]
-	EVENT_OCCURRENCE 						= [SINGLE_EVENT, WEEKLY_EVENT, MONTHLY_EVENT, ANNUALLY_EVENT]
+	EVENT_OCCURRENCE 						= [ONE_TIME_EVENT, WEEKLY_EVENT, MONTHLY_EVENT, ANNUALLY_EVENT]
 	WEEKLY_OCCURRENCE_DETAILS 	= Date::DAYNAMES.map{|day| day = "Every " + day}
 	MONTHLY_OCCURRENCE_DETAILS 	= Date::MONTHNAMES.compact.map{|m| m = "in " + m unless m.nil?}
 	
@@ -31,8 +31,28 @@ class Event < ActiveRecord::Base
 		location.name
 	end
 
+	def location_address
+		location.address
+	end
+
 	def address
 		[location.street_address, location.city_town, location.state_parish]
+	end
+
+	def occurs_once?
+		occurrence_type.eql?(ONE_TIME_EVENT)
+	end
+
+	def short_date
+		date.strftime("%b %-d")
+	end
+
+	def long_date
+		date.strftime("%a. %B %-d, %Y")
+	end
+
+	def self.on_this_date(event_date)
+		where(date: event_date)
 	end
 
 	private
@@ -47,13 +67,13 @@ class Event < ActiveRecord::Base
 
 		def check_advanced
 			unless self.occurrence.present?
-				self.occurrence = SINGLE_EVENT
+				self.occurrence = ONE_TIME_EVENT
 			end
 		end
 
 		def check_occurrence
 			case occurrence
-			when SINGLE_EVENT
+			when ONE_TIME_EVENT
 				self.occurrence_type = occurrence
 			when WEEKLY_EVENT
 				self.occurrence_type = occurrence_type

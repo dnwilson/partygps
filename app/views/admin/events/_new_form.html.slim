@@ -5,9 +5,9 @@
     div.col-sm-10
       = f.text_field :name, autofocus: true, placeholder: "Event Name", class: "form-control"
   div class="form-group"
-    = f.label :image, "Flyer", class: "col-sm-2 col-sm-2 control-label"
+    = f.label :photo, "Flyer", class: "col-sm-2 col-sm-2 control-label"
     div.col-sm-10
-      = f.file_field :image, class: "form-control"
+      = f.file_field :photo, class: "form-control", html: {accept: "image/*"}
 
   div class="form-group"
     = f.label :location_id, "Location", class: "col-sm-2 col-sm-2 control-label"
@@ -23,7 +23,7 @@
     div class="form-group"
       = f.label :occurrence, "Type", class: "col-sm-2 col-sm-2 control-label"
       div.col-sm-10
-        = f.select :occurrence, options_for_select(Event::EVENT_OCCURRENCE, selected: Event::SINGLE_EVENT),{}, {class: "form-control occurrence-edi"}
+        = f.select :occurrence, options_for_select(Event::EVENT_OCCURRENCE, selected: Event::ONE_TIME_EVENT),{}, {class: "form-control occurrence-edi"}
     div class="form-group weekly"
       = f.label :occurrence_type, "When", class: "col-sm-2 col-sm-2 control-label"
       div.col-sm-10

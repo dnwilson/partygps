@@ -42,7 +42,8 @@ class ApplicationController < ActionController::Base
 
     def set_location
       if params[:location].blank?
-        if Rails.env.development? || Rails.env.test?
+        if Rails.env.test?
+          # Rails.env.development? ||
           # kingston  = "72.252.211.198"
           # portmore  = "72.27.99.0"
           # negril    = "208.131.163.126"
