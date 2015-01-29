@@ -10,10 +10,10 @@ div.headline
 	  div.col-md-offset-2.col-md-8
 	    a class="logo" href="#{root_path}"
 	        b PARTYGPS
-	    form.form-inline.search-form
+	    = form_tag search_path, method: :get, class: "form-inline search-form" do 
 	    	div.form-group
-				div.row
     			div.col-md-12
-						input type="text" class="form-control transparent" value="#{params[:keyword]}" name="keyword" placeholder="Find an event..."
-						button type="submit" class="btn btn-notify"
-							i.fa.fa-search
+    				= text_field_tag :query, params[:query], placeholder: "Find an event...", class: "form-control transparent"
+						/ input type="text" class="form-control transparent" value="#{params[:keyword]}" name="keyword" placeholder="Find an event..."
+					button type="submit" class="btn btn-notify"
+						i.fa.fa-search

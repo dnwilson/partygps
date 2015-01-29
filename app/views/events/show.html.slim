@@ -20,9 +20,9 @@ div.col-lg-5.col-md-5.col-sm-5.hidden-xs.sidebar
     div.panel-body
       h2 = @event.location_name 
       hr.mar-top15.mar-bot15
-      = @event.location.street_address 
-      br 
-      = @event.location.city_town + ", " + @event.location.state_parish + ", " + @event.location.country 
+      = @event.location_address 
+      / br 
+      / = @event.location.city_town + ", " + @event.location.state_parish + ", " + @event.location.country 
   div.panel.event-photo-panel
     div.panel-body
       div class="map" style="background:#888;height:346px;color:white;font-size:30px;text-weight:bold;text-align:center;line-height:300px;" PLACE MAP HERE

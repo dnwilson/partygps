@@ -10,6 +10,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
 
+  # Reprocess all images
+  # instance = MyUploader.new
+  # instance.recreate_versions!(:thumb, :large)
+
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
@@ -44,12 +48,12 @@ class ImageUploader < CarrierWave::Uploader::Base
   
   version :sm do
     process :fix_exif_rotation
-    process :resize_to_fill => [300, 300]
+    process :resize_to_fill => [250, 250]
   end
 
   version :lg do
     process :fix_exif_rotation
-    process :resize_to_limit => [600, 600]
+    process :resize_to_fill => [500, 500]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

@@ -4,6 +4,11 @@ class PagesController < ApplicationController
   def home
   end
 
+  def search
+    @pg_search_documents = PgSearch.multisearch(params[:query])
+    @query = params[:query]
+  end
+
   def contact
   end
 

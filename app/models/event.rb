@@ -1,5 +1,18 @@
 class Event < ActiveRecord::Base
 
+	include PgSearch
+
+	# Set up search 
+	# To remove search documents for this class
+	# PgSearch::Document.delete_all(searchable_type: "Event") 
+	# To build seach documents for this class
+	# rake pg_search:multisearch:rebuild[Event] or PgSearch::Document.rebuild(Event)
+	# pg_search_scope :search_full_text, 
+	# 								:against => [[:name, 'A'], [:description, 'B']],
+	# 								:using => [ :tsearch => [:dictionary => "simple", :prefix => true]],
+	# 								:ignoring => [:accents]
+	multisearchable against: [:name, :description, :occurrence_type]
+
 	before_save :check_advanced, :check_occurrence
 
 	attr_accessor :occurs, :day_of_occurrence, :day_of_occurrence_mthly, :month_of_occurrence
@@ -79,10 +92,8 @@ class Event < ActiveRecord::Base
 				self.occurrence_type = occurrence_type
 			when MONTHLY_EVENT
 				self.occurrence_type = occurs + " " + day_of_occurrence_mthly
-				binding.pry
 			else
 				self.occurrence_type = occurs + " " + day_of_occurrence + " " + month_of_occurrence
-				binding.pry
 			end
 		end
 end

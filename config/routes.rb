@@ -34,9 +34,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   # resources :users
   get 'pages/home'
-  get 'admin', to: 'admin/dashboard#index'
-  get "about", to: 'pages#about'
-  get "contact", to: 'pages#contact'
+  get 'search',   to: 'pages#search'
+  get 'admin',    to: 'admin/dashboard#index'
+  get "about",    to: 'pages#about'
+  get "contact",  to: 'pages#contact'
 
   # You can have the root of your site routed with "root"
   root 'events#index'

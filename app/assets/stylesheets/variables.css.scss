@@ -1,13 +1,13 @@
 $orange: #FF4100;
-$lightOrange: #ff7140;
+$lightOrange: rgb(255, 113, 64);
 $lightestOrange: #FF9773;
 $darkOrange: #bf5530;
-$mainGreen: #00B25C;
-$darkGreen: #218555;
+$mainGreen: rgb(0, 178, 92);
+$darkGreen: darken($mainGreen, 10%);
 $darkestGreen: #00733C;
 $lightGreen: #36D88A;
 $lightestGreen: #61D89F;
-$mainGray: #707070;
+$mainGray: rgb(112, 112, 112);
 $darkGray: darken($mainGray, 5%);
 $lightGray: #e5e5e5;
 

@@ -1,11 +1,9 @@
-div.col-lg-12.col-md-12.col-sm-12
-	div.row
+div.center
 		div.col-lg-8.col-md-8.col-sm-12
-			= render @events
+			- if params[:query]
+				= render 'search'
+			- else
+				= render @events
 		div.col-lg-4.col-md-4.hidden-sm.hidden-xs
 			div.panel
 				div.panel-body Some Sidebar Stuff
-		/ - if signed_in? && current_user.try(:is_admin?)
-		/ div.col-lg-4.col-md-4.col-sm-4.mb
-		/ 	div.panel.pn
-		/ 		= link_to "Add Event", new_admin_event_path, id: "add-event-panel"

@@ -1,0 +1,10 @@
+div.col-lg-8.col-md-8.col-sm-12
+	div.row
+		- if @pg_search_documents.present?
+			- @pg_search_documents.each do |search_item|
+				= render 'search_item', search_item: get_search_item(search_item)
+		- else
+			p Could not find anything matching what you searched for.
+div.col-lg-4.col-md-4.hidden-sm.hidden-xs
+	div.panel
+		div.panel-body Some Sidebar Stuff
