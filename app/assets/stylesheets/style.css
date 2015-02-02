@@ -18,8 +18,8 @@ Premium: http://www.gridgum.com
 
 /* BASIC THEME CONFIGURATION */
 body {
-    color: $darkGray;
-    background: $lightGray;
+    color: $darkMain;
+    background: $gray;
     font-family: 'Ruda', sans-serif;
     padding: 0px !important;
     margin: 0px !important;
@@ -36,11 +36,11 @@ a, a:hover, a:focus {
 }
 ::selection {
 
-    background: $mainGreen;
+    background: $brand;
     color: #fff;
 }
 ::-moz-selection {
-    background: $mainGreen;
+    background: $brand;
     color: #fff;
 }
 
@@ -51,7 +51,7 @@ a, a:hover, a:focus {
 
 /* Bootstrap Modifications */
 .modal-header {
-    background: $mainGreen;
+    background: $brand;
 }
 
 .modal-title {
@@ -81,7 +81,7 @@ a, a:hover, a:focus {
 /*Theme Backgrounds*/
 
 .bg-theme {
-    background-color: $mainGreen;
+    background-color: $brand;
 }
 
 .bg-theme02 {
@@ -99,7 +99,7 @@ a, a:hover, a:focus {
 
 .btn-theme {
   color: #fff;
-  background-color: $mainGreen;
+  background-color: $brand;
   border-color: #48bcb4;
 }
 .btn-theme:hover,
@@ -213,15 +213,15 @@ hr {
 /*Exclusive Theme Colors Configuration*/
 
 .label-theme {
-    background-color: $mainGreen;
+    background-color: $brand;
 }
 
 .bg-theme {
-    background-color: $mainGreen;
+    background-color: $brand;
 }
 
 ul.top-menu > li > .logout {
-    color: $lightOrange;
+    color: $alt;
     font-size: 12px;
     border-radius: 4px;
     -webkit-border-radius: 4px;
@@ -332,7 +332,7 @@ ul.sidebar-menu li ul.sub li a:hover {
 }
 
 ul.sidebar-menu li ul.sub li.active a {
-    color: $mainGreen;
+    color: $brand;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
@@ -371,7 +371,7 @@ ul.sidebar-menu li a{
 }
 
 ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
-    background: $mainGreen;
+    background: $brand;
     color: #fff;
     display: block;
 
@@ -420,7 +420,7 @@ ul.sidebar-menu li a.active i {
 }
 
 .black-bg {
-    background: $lightOrange;
+    background: $alt;
     // border-bottom: 1px solid #c9aa5f;
 }
 
@@ -452,7 +452,7 @@ a.logo:hover, a.logo:focus {
 }
 
 a.logo span {
-    color: $mainGreen;
+    color: $brand;
 }
 
 
@@ -485,9 +485,9 @@ ul.top-menu > li > a {
 }
 
 ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
-    border:1px solid $mainGreen !important;
-    background-color: $mainGreen !important;
-    border-color: $mainGreen !important;
+    border:1px solid $brand !important;
+    background-color: $brand !important;
+    border-color: $brand !important;
     text-decoration: none;
     border-radius: 4px;
     -webkit-border-radius: 4px;
@@ -530,7 +530,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 .dropdown-menu.extended li p.green {
-    background-color: $mainGreen;
+    background-color: $brand;
     color: #fff;
 }
 
@@ -734,9 +734,9 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     border-top-color: #FCB322 !important;
 }
 .notify-arrow-green {
-    border-color: transparent transparent $mainGreen;
-    border-bottom-color: $mainGreen !important;
-    border-top-color: $mainGreen !important;
+    border-color: transparent transparent $brand;
+    border-bottom-color: $brand !important;
+    border-top-color: $brand !important;
 }
 
 
@@ -832,7 +832,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 .ds a {
-    color: $mainGreen;
+    color: $brand;
 }
 
 /* LINE ICONS CONFIGURATION */
@@ -928,7 +928,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     position: absolute;
     bottom: 0;
     background: #ff865c;
-    color: $mainGreen;
+    color: $brand;
     width: 100%;
     -webkit-border-radius: 5px 5px 0 0;
     -moz-border-radius: 5px 5px 0 0;
@@ -1062,7 +1062,7 @@ PANELS CONFIGURATIONS
 /*Green Panel*/
 .green-panel {
     text-align: center;
-    background: $mainGreen;
+    background: $brand;
 }
 .green-panel .green-header {
     background: #43b1a9;
@@ -1106,7 +1106,7 @@ PANELS CONFIGURATIONS
 }
 
 .white-panel i {
-    color: $mainGreen;
+    color: $brand;
     padding-right: 4px;
     font-size: 14px;
 }
@@ -1522,7 +1522,7 @@ PANELS CONFIGURATIONS
     font-weight: 900;
 }
 .profile-01 {
-    background: $mainGreen;
+    background: $brand;
     height: 50px;
 }
 .profile-01:hover {
@@ -1545,7 +1545,7 @@ PANELS CONFIGURATIONS
 
 
 .profile-01 {
-    background: $mainGreen;
+    background: $brand;
     height: 50px;
     p {
         color: white;
@@ -1593,7 +1593,7 @@ PANELS CONFIGURATIONS
     color: #cdcdcd;
 }
 .pr2-social a:hover {
-    color: $mainGreen;
+    color: $brand;
 }
 .pr2-social i {
     margin-top: 15px;
@@ -1649,7 +1649,7 @@ PANELS CONFIGURATIONS
     font-size: 12px;
 }
 .panel.terques-chart .chart-tittle .value a:hover, .panel.terques-chart .chart-tittle .value a.active {
-    color: $mainGreen;
+    color: $brand;
     font-size: 12px;
 }
 .panel.terques-chart .chart-tittle {
@@ -1704,7 +1704,7 @@ PANELS CONFIGURATIONS
   display: block;
   position: relative;
   overflow: hidden;
-  background-color: $mainGreen;
+  background-color: $brand;
   -webkit-transition: background-color 0.4s;
   -moz-transition: background-color 0.4s;
   -o-transition: background-color 0.4s;
@@ -1724,7 +1724,7 @@ PANELS CONFIGURATIONS
 }
 
 .project:hover .photo-wrapper {
-  background-color: $mainGreen;
+  background-color: $brand;
     background-image:url(../img/zoom.png);
     background-repeat:no-repeat;
     background-position:center;
@@ -1967,7 +1967,7 @@ label {
     margin: 0;
     padding: 25px 20px;
     text-align: center;
-    background: $mainGreen;
+    background: $brand;
     border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
     color: #fff;
@@ -2265,7 +2265,7 @@ label {
 
 /*footer*/
 .site-footer {
-    background: $mainGreen;
+    background: $brand;
     color: #fff;
     padding: 10px 0;
 }

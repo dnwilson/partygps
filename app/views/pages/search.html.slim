@@ -1,8 +1,12 @@
+- content_for :head do
+	= stylesheet_link_tag :events
 div.col-lg-8.col-md-8.col-sm-12
 	div.row
+		p.col-lg-12.col-md-12.col-sm-12.search-message Search results for "#{@query}"
 		- if @pg_search_documents.present?
-			- @pg_search_documents.each do |search_item|
-				= render 'search_item', search_item: get_search_item(search_item)
+			- get_events(@pg_search_documents)
+			- @events.each do |event|
+				= render 'events/event', event: event
 		- else
 			p Could not find anything matching what you searched for.
 div.col-lg-4.col-md-4.hidden-sm.hidden-xs

@@ -22,7 +22,7 @@ class Event < ActiveRecord::Base
 	mount_uploader :photo, ImageUploader
 
 	ONE_TIME_EVENT 		= 'ONE TIME'
-	WEEKLY_EVENT 		= 'WEEKLY'
+	WEEKLY_EVENT 			= 'WEEKLY'
 	BI_WEEKLY_EVENT 	= 'BI-WEEKLY'
 	BI_MONTHLY_EVENT	= 'BI-MONTHLY'
 	MONTHLY_EVENT 		= 'MONTHLY'
@@ -30,9 +30,9 @@ class Event < ActiveRecord::Base
 
 	OTHER		= "Every Other"
 	FIRST		= "Every First"
-	SECOND		= "Every Second"
+	SECOND	= "Every Second"
 	THIRD		= "Every Third"
-	FOURTH		= "Every Fourth"
+	FOURTH	= "Every Fourth"
 	LAST		= "Every Last"
 
 	INTERMITTENT_OCCURRENCE 		= [FIRST, SECOND, THIRD, FOURTH, LAST, OTHER]

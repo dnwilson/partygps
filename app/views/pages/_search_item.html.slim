@@ -1,18 +1,12 @@
-/ - binding.pry
-div class="search_item mar-bot15" id="search_item-#{search_item.id}"
-	div.image
-		= link_to image_tag(search_item.photo.url), search_item
-	div.desc
-		div.name = link_to search_item.name, search_item
-		/ - if event.occurs_once?
-		/ 	div.date = event.long_date 
-		/ - else
-		/ 	div.date = event.occurrence_type
-		/ div.location= link_to event.location_name, event.location
-	div.social
-		div.like
-			a href="" class="btn btn-bordered"
-				i.fa.fa-thumbs-up 
-					span.count 10
-		div.map
-			a href="" class="btn btn-bordered" MAP
+div class="col-lg-4 col-md-4 col-sm-12 mar-bot15"
+	div class="content-panel pn" id="search_item-#{search_item.id}"
+		div id="search_item" style="background:url('#{search_item.photo.lg.url}') no-repeat center top" 
+			div.name= link_to search_item.name, search_item
+		div.pn-footer.left
+			div.date
+				div.day 1
+				div.mon JAN
+			div.details
+				=link_to search_item.location do
+					i.fa.fa-map-marker 
+					span.location=search_item.location_name

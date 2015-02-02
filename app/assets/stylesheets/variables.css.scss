@@ -1,14 +1,27 @@
-$orange: #FF4100;
-$lightOrange: rgb(255, 113, 64);
-$lightestOrange: #FF9773;
-$darkOrange: #bf5530;
-$mainGreen: rgb(0, 178, 92);
-$darkGreen: darken($mainGreen, 10%);
-$darkestGreen: #00733C;
-$lightGreen: #36D88A;
-$lightestGreen: #61D89F;
-$mainGray: rgb(112, 112, 112);
-$darkGray: darken($mainGray, 5%);
-$lightGray: #e5e5e5;
+// $orange: #FF4100;
+// $lightestOrange: #FF9773;
+// $darkOrange: #bf5530;
 
-$brand-primary: $lightOrange;
+$brand: rgb(0, 178, 92);
+$darkBrand: darken($brand, 10%);
+
+$alt: rgb(255, 113, 64);
+$darkAlt: darken($alt, 10%);
+
+$main: rgb(112, 112, 112);
+$darkMain: darken($main, 10%);
+
+$gray: #9c9c9c;
+$white: #fff;
+$offWhite: darken($white, 2%);
+
+// $darkestGreen: #00733C;
+// $lightGreen: #36D88A;
+// $lightestGreen: #61D89F;
+// $mainGray: rgb(112, 112, 112);
+// $darkGray: darken($mainGray, 5%);
+// $lightGray: #e5e5e5;
+// $white: #efefef;
+// $offWhite: 
+
+$brand-primary: $brand;

@@ -19,7 +19,14 @@ class Location < ActiveRecord::Base
 	# validates :latitude, presence: {message: "Not a valid location on Google Maps. Please check name, address and parish on fields."}
 	# validates :longitude, presence: {message: "Not a valid location on Google Maps. Please check name, address and parish on fields."}
 
+	# scope :upcoming_events, 
+
+
 	def address
 		[self.street_address, self.city_town, self.state_parish, self.country].compact.join(', ')
+	end
+
+	def upcoming_events
+		self.events.where("date IS NULL OR date >= ?", Date.today)
 	end
 end

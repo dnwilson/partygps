@@ -1,46 +1,12 @@
 div class="col-lg-4 col-md-4 col-sm-12 mar-bot15"
-	/ div class="content-panel pn"
-	div class="event-panel" id="event-#{event.id}"
-		div.event-container
-			= image_tag(event.photo.lg.url)
-			div.event-info.left
-				- if event.occurs_once?
-					div.date = event.short_date 
-				- else
-					div.date = event.occurrence_type 
-				h2.name = event.name
+	div class="content-panel pn" id="event-#{event.id}"
+		div id="event" style="background:url('#{event.photo.lg.url}') no-repeat center top" 
+			div.name= link_to event.name, event
+		div.pn-footer.left
+			div.date
+				div.day 1
+				div.mon JAN
 			div.details
-				= event.location_name
-				
-			/ 	= link_to "GET DIRECTIONS", event, class:"btn btn-ticket btn-sm" 
-			/ div.event-info-top
-				/ div.event-date= event.short_date
-			/ div.event-info-bot
-			/ 	div.title= event.name.truncate(30)
-				//div.details= number_to_currency(event.adm, precision: 0)
-/ div.col-md-4.mar-bot15
-/ 	div.events-item
-/ 		= link_to image_tag(event.photo.lg.url), event_path(event.id)
-/ 		= link_to event, class: "events-desc center" do
-/ 			h3 = event.name
-/ 			h6 = "@ #{event.location.name}"
-/ 			h6 = event.date
-/ 			h3 CLICK FOR DIRECTIONS
-
-/ div class="event mar-bot15" id="event-#{event.id}"
-/ 	div.image
-/ 		= link_to image_tag(event.photo.sm.url), event
-/ 	div.desc
-/ 		div.name = link_to event.name, event
-/ 		- if event.occurs_once?
-/ 			div.date = event.long_date 
-/ 		- else
-/ 			div.date = event.occurrence_type
-/ 		div.location= link_to event.location_name, event.location
-/ 	div.social
-/ 		div.like
-/ 			a href="" class="btn btn-bordered"
-/ 				i.fa.fa-thumbs-up 
-/ 					span.count 10
-/ 		div.map
-/ 			a href="" class="btn btn-bordered" MAP
+				=link_to event.location do
+					i.fa.fa-map-marker 
+					span.location=event.location_name

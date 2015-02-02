@@ -38,22 +38,22 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   version :thumb do
     process :fix_exif_rotation
-    process :resize_to_fill => [100, 100]
+    process :resize_to_fill => [100, 100, 'North']
   end
 
   # version :xxs do
   #   process :fix_exif_rotation
   #   process :resize_to_fill => [25, 25]
   # end
-  
+
   version :sm do
     process :fix_exif_rotation
-    process :resize_to_fill => [250, 250]
+    process :resize_to_fill => [300, 240, 'North']
   end
 
   version :lg do
     process :fix_exif_rotation
-    process :resize_to_fill => [500, 500]
+    process :resize_to_fill => [500, 400, 'North']
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
