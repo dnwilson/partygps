@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20150202202653) do
   enable_extension "plpgsql"
   enable_extension "pg_trgm"
   enable_extension "fuzzystrmatch"
+  enable_extension "unaccent"
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
