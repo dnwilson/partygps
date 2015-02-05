@@ -11,11 +11,13 @@ class Event < ActiveRecord::Base
 	# 								:against => [[:name, 'A'], [:description, 'B']],
 	# 								:using => [ :tsearch => [:dictionary => "simple", :prefix => true]],
 	# 								:ignoring => [:accents]
-	multisearchable against: [:name, :description, :occurrence_type]
+	multisearchable against: [:name, :description]
 
-	before_save :check_advanced, :check_occurrence
+	before_save :check_occurrence  
 
-	attr_accessor :occurs, :day_of_occurrence, :day_of_occurrence_mthly, :month_of_occurrence
+	validate :day_of_occurrence, presence: true
+
+	# attr_accessor :occurs, :day_of_occurrence, :day_of_occurrence_mthly, :month_of_occurrence
 
 	belongs_to :location
 
@@ -29,16 +31,18 @@ class Event < ActiveRecord::Base
 	ANNUALLY_EVENT 		= "ANNUAL"
 
 	OTHER		= "Every Other"
-	FIRST		= "Every First"
-	SECOND	= "Every Second"
-	THIRD		= "Every Third"
-	FOURTH	= "Every Fourth"
-	LAST		= "Every Last"
+	FIRST		= "First"
+	SECOND	= "Second"
+	THIRD		= "Third"
+	FOURTH	= "Fourth"
+	LAST		= "Last"
+	# EVERY		= "Every"
+	ONCE 		= "Once"
 
-	INTERMITTENT_OCCURRENCE 		= [FIRST, SECOND, THIRD, FOURTH, LAST, OTHER]
-	EVENT_OCCURRENCE 						= [ONE_TIME_EVENT, WEEKLY_EVENT, MONTHLY_EVENT, ANNUALLY_EVENT]
-	WEEKLY_OCCURRENCE_DETAILS 	= Date::DAYNAMES.map{|day| day = "Every " + day}
-	MONTHLY_OCCURRENCE_DETAILS 	= Date::MONTHNAMES.compact.map{|m| m = "in " + m unless m.nil?}
+	FREQUENCY 									= [FIRST, SECOND, THIRD, FOURTH, LAST, OTHER]
+	EVENT_OCCURRENCE 						= [WEEKLY_EVENT, BI_WEEKLY_EVENT, MONTHLY_EVENT, ANNUALLY_EVENT, ONE_TIME_EVENT]
+	WEEKLY_OCCURRENCE_DETAILS 	= Date::DAYNAMES.map{|m| m = m + "s"}
+	MONTHLY_OCCURRENCE_DETAILS 	= Date::MONTHNAMES.compact.map{|m| m unless m.nil?}
 	
 	def location_name
 		location.name
@@ -53,7 +57,15 @@ class Event < ActiveRecord::Base
 	end
 
 	def occurs_once?
-		occurrence_type.eql?(ONE_TIME_EVENT)
+		category.eql?(ONE_TIME_EVENT)
+	end
+
+	def date_or_type
+		if self.occurs_once?
+			date.strftime("%b %-d, %Y")
+		else
+			frequency + " " + day_of_occurrence
+		end
 	end
 
 	def short_date
@@ -85,15 +97,10 @@ class Event < ActiveRecord::Base
 		end
 
 		def check_occurrence
-			case occurrence
-			when ONE_TIME_EVENT
-				self.occurrence_type = occurrence
-			when WEEKLY_EVENT
-				self.occurrence_type = occurrence_type
-			when MONTHLY_EVENT
-				self.occurrence_type = occurs + " " + day_of_occurrence_mthly
-			else
-				self.occurrence_type = occurs + " " + day_of_occurrence + " " + month_of_occurrence
+			binding.pry
+			if category.eql?(ONE_TIME_EVENT)
+				self.month_of_occurrence = date.strftime("%B")
+				self.day_of_occurrence   = date.strftime("%A")
 			end
 		end
 end

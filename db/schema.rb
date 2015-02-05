@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150202202653) do
+ActiveRecord::Schema.define(version: 20150203041409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,20 +33,21 @@ ActiveRecord::Schema.define(version: 20150202202653) do
     t.integer  "location_id"
     t.string   "name"
     t.string   "photo"
+    t.string   "frequency"
+    t.string   "day_of_occurrence"
+    t.string   "month_of_occurrence"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "date"
     t.time     "time"
-    t.string   "occurrence"
     t.text     "description"
-    t.decimal  "adm",             precision: 8, scale: 2
-    t.string   "occurrence_type"
+    t.decimal  "adm",                 precision: 8, scale: 2
+    t.string   "category"
   end
 
   add_index "events", ["date"], name: "index_events_on_date", using: :btree
   add_index "events", ["id", "date"], name: "index_events_on_id_and_date", using: :btree
   add_index "events", ["id", "location_id"], name: "index_events_on_id_and_location_id", using: :btree
-  add_index "events", ["location_id"], name: "index_events_on_location_id", using: :btree
 
   create_table "locations", force: true do |t|
     t.string   "name"

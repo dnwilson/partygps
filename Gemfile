@@ -33,6 +33,8 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 gem "geocoder"
+gem 'gmaps4rails'
+gem 'underscore-rails'
 gem 'slim-rails'
 gem "browser"
 

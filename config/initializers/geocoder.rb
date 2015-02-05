@@ -1,5 +1,5 @@
 # config/initializers/geocoder.rb
-if Rails.env.development? || Rails.env.test?
+if Rails.env.test?
   Geocoder.configure(:lookup => :test)
 
   Geocoder::Lookup::Test.add_stub(
@@ -66,8 +66,10 @@ else
   Geocoder.configure(
     # geocoding service (see below for supported options):
     # :lookup => :yandex,
-    lookup: :bing,
-    key: "AsfNsF1veuhARaTdpIlFSk7czMXyscbi0YCWpZeyF4ns4KCMxyQR4GFmJJ7La6vC",
+    # lookup: :bing,
+    # key: "AsfNsF1veuhARaTdpIlFSk7czMXyscbi0YCWpZeyF4ns4KCMxyQR4GFmJJ7La6vC",
+    # lookup: :google
+    # api_key: 
 
     # IP address geocoding service (see below for supported options):
     ip_lookup: :telize,

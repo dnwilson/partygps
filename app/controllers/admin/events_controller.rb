@@ -61,8 +61,8 @@ class Admin::EventsController < Admin::BaseController
     end
 
     def event_params
-      params.require(:event).permit(:name, :photo, :location_id, :date, :time, :occurrence, 
-                                    :adm, :occurrence_type, :description, :occurs, :day_of_occurrence,
+      params.require(:event).permit(:name, :photo, :location_id, :date, :time, :frequency, 
+                                    :adm, :category, :description, :occurs, :day_of_occurrence,
                                     :day_of_occurrence_mthly, :month_of_occurrence)
     end
 end

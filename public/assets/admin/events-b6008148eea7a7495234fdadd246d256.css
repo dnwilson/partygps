@@ -1,0 +1,16 @@
+/* line 1, /Users/dwilson/Documents/my_apps/partygps/app/assets/stylesheets/admin/events.css.scss */
+.weekly, .monthly, .annual {
+  display: none;
+}
+
+/* line 5, /Users/dwilson/Documents/my_apps/partygps/app/assets/stylesheets/admin/events.css.scss */
+.new-event {
+  text-align: right;
+  padding-top: 10px;
+  margin: 10px 0;
+}
+
+/* line 11, /Users/dwilson/Documents/my_apps/partygps/app/assets/stylesheets/admin/events.css.scss */
+.content-panel h4 {
+  margin-left: 0px !important;
+}

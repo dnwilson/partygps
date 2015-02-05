@@ -18,6 +18,8 @@
 //= require jquery.scrollTo.min
 //= require jquery.nicescroll
 //= require jquery.sparkline
+//= require underscore
+//= require gmaps/google
 //= require common-scripts
 //= require gritter/js/jquery.gritter
 //= require gritter-conf

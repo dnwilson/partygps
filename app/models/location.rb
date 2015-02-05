@@ -8,7 +8,7 @@ class Location < ActiveRecord::Base
 
 	mount_uploader :photo, ImageUploader
 
-	geocoded_by :address, if: ->(obj){ obj.address.present? and obj.address_changed? }
+	geocoded_by :get_coordinates, if: ->(obj){ obj.address.present? and obj.address_changed? }
 	after_validation :geocode          # auto-fetch coordinates
 	
 	# validates :street_address, presence: true
@@ -24,6 +24,10 @@ class Location < ActiveRecord::Base
 
 	def address
 		[self.street_address, self.city_town, self.state_parish, self.country].compact.join(', ')
+	end
+
+	def get_coordinates
+		[self.name, self.street_address, self.city_town, self.state_parish, self.country].compact.join(' ')
 	end
 
 	def upcoming_events
