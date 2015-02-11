@@ -13,37 +13,23 @@ class Event < ActiveRecord::Base
 	# 								:ignoring => [:accents]
 	multisearchable against: [:name, :description]
 
-	before_save :check_occurrence  
-
-	validate :day_of_occurrence, presence: true
-
-	# attr_accessor :occurs, :day_of_occurrence, :day_of_occurrence_mthly, :month_of_occurrence
-
 	belongs_to :location
+	has_one :listing, -> { includes :category }
 
 	mount_uploader :photo, ImageUploader
 
-	ONE_TIME_EVENT 		= 'ONE TIME'
-	WEEKLY_EVENT 			= 'WEEKLY'
-	BI_WEEKLY_EVENT 	= 'BI-WEEKLY'
-	BI_MONTHLY_EVENT	= 'BI-MONTHLY'
-	MONTHLY_EVENT 		= 'MONTHLY'
-	ANNUALLY_EVENT 		= "ANNUAL"
+	# before_save :set_default_category, if: ->(obj){ obj.category_changed? }
 
-	OTHER		= "Every Other"
-	FIRST		= "First"
-	SECOND	= "Second"
-	THIRD		= "Third"
-	FOURTH	= "Fourth"
-	LAST		= "Last"
-	# EVERY		= "Every"
-	ONCE 		= "Once"
+	# validates :name, presence: true, length: { minimum: 2, maximum: 30 }
+	# validates :start_dt, date: {on_or_after: DateTime.now}
 
-	FREQUENCY 									= [FIRST, SECOND, THIRD, FOURTH, LAST, OTHER]
-	EVENT_OCCURRENCE 						= [WEEKLY_EVENT, BI_WEEKLY_EVENT, MONTHLY_EVENT, ANNUALLY_EVENT, ONE_TIME_EVENT]
-	WEEKLY_OCCURRENCE_DETAILS 	= Date::DAYNAMES.map{|m| m = m + "s"}
-	MONTHLY_OCCURRENCE_DETAILS 	= Date::MONTHNAMES.compact.map{|m| m unless m.nil?}
-	
+	REG 			= "Regular"
+	WEEKLY 	 	= "Weekly"
+	BI_WEEKLY	= "Bi-Weekly"
+	MONTHLY 	= "Monthly"
+	ANNUAL 		= "Annual"
+	EVENT_TYPE = [WEEKLY, BI_WEEKLY, MONTHLY, ANNUAL]
+
 	def location_name
 		location.name
 	end
@@ -56,51 +42,58 @@ class Event < ActiveRecord::Base
 		[location.street_address, location.city_town, location.state_parish]
 	end
 
-	def occurs_once?
-		category.eql?(ONE_TIME_EVENT)
-	end
+	# def occurs_once?
+	# 	listing.category.name.eql?(REG) || listing.category.name.nil?
+	# end
 
-	def date_or_type
-		if self.occurs_once?
-			date.strftime("%b %-d, %Y")
-		else
-			frequency + " " + day_of_occurrence
-		end
-	end
+	# def recurring?
+	# 	true unless occurs_once? 
+	# end
 
-	def short_date
-		date.strftime("%b %-d")
-	end
+	# def build_recurring_event
+	# 	case listing.category.name
+	# 	when WEEKLY
+	# 		self.build_weekly_event
+	# 	when BI_WEEKLY || MONTHLY
+	# 		self.build_monthly_event
+	# 	when ANNUAL
+	# 		self.build_annual_event
+	# 	end
+	# end
 
-	def long_date
-		date.strftime("%a. %B %-d, %Y")
-	end
+	# def display_date_or_category
+	# 	if self.occurs_once?
+	# 		event_date.strftime("%b %-d, %Y")
+	# 	else
+	# 		listing.category.name.name
+	# 	end
+	# end
 
-	def self.on_this_date(event_date)
-		where(date: event_date)
-	end
+	# def short_date
+	# 	event_date.strftime("%b %-d")
+	# end
+
+	# def long_date
+	# 	event_date.strftime("%a. %B %-d, %Y")
+	# end
+
+	# def self.on_this_date(event_date)
+	# 	where(event_date: event_date)
+	# end
 
 	private
-		# def set_location(current_location)
-		# 	result = Location.where(latitude: current_location.latitude, longitude: current_location.longitude)
-		# 	if result.present?
-		# 		self.location = result
-		# 	else
-		# 		new_location = Location.build(city_town: current_location.city, state_parish: current_location.city, country: current_location.country)
+		# def set_default_category
+		# 	self.listing.category.name = REG if listing.category.name.nil? && event_date.present?
+		# end
+
+		# def check_date_format
+		# 	errors.add(:event_date, "must be a valid date") unless DateTime.parse(self.event_date) rescue false
+		# end
+
+		# def category_or_date
+		# 	if listing.category.name.nil? && event_date.nil?
+		# 		errors.add(:category_date, "You must enter a date or select a recurring event category.") 
 		# 	end
 		# end
 
-		def check_advanced
-			unless self.occurrence.present?
-				self.occurrence = ONE_TIME_EVENT
-			end
-		end
-
-		def check_occurrence
-			binding.pry
-			if category.eql?(ONE_TIME_EVENT)
-				self.month_of_occurrence = date.strftime("%B")
-				self.day_of_occurrence   = date.strftime("%A")
-			end
-		end
 end

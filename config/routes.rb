@@ -23,10 +23,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'dashboard', to: 'dashboard#index'
-    resources :users,           controller: 'users'
-    resources :locations,          controller: 'locations'
+    resources :users, controller: 'users'
+    resources :locations, controller: 'locations'
     resources :events do
       get 'manager', to: 'events#manager'
+      get 'render_snippet', on: :collection
     end
   end
 
@@ -38,6 +39,8 @@ Rails.application.routes.draw do
   get 'admin',    to: 'admin/dashboard#index'
   get "about",    to: 'pages#about'
   get "contact",  to: 'pages#contact'
+
+  # get "/admin/events/render_snippet",  as: "render_snippet", to:"admin/events#render_snippet"
 
   # You can have the root of your site routed with "root"
   root 'events#index'

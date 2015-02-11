@@ -1,7 +1,3 @@
-// .weekly, .bi-weekly, .monthly, .annual{
-// 	display: none;
-// }
-
 .new-event{
 	text-align: right;
 	padding-top: 10px;
@@ -10,4 +6,17 @@
 
 .content-panel h4{
 	margin-left: 0px !important;
+}
+
+.visible{
+	display: block;
+}
+
+
+.recurring-event{
+	line-height: 34px;
+}
+
+input[type="checkbox"]{
+	width: 100%;
 }

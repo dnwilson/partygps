@@ -11,6 +11,7 @@ class CreateLocations < ActiveRecord::Migration
       t.string :country
       t.float :latitude
       t.float :longitude
+      t.string :photo
 
       t.timestamps
     end

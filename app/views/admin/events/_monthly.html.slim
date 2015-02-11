@@ -1,0 +1,17 @@
+/ = fields_for :monthly_event, @event.monthly_event do |monthly|
+/   = monthly.label :event_day, "When", class: "col-sm-2 control-label"
+/   div.col-sm-5
+/     = monthly.select :occurrence, options_for_select(OCCURRENCE, {}), {}, {class: "form-control"}
+/   div.col-sm-5
+/     = monthly.select :event_day, options_for_select(DAYNAMES, @event.monthly_event.event_day), {}, {class: "form-control"}
+-binding.pry
+label class="col-sm-2 control-label" for="weekly_event_event_day" When
+	div class="col-sm-5"
+	select class="form-control" id="weekly_event_occurrence" name="weekly_event[occurrence]"
+		= OCCURRENCE.each do |occurrence|
+			option value="#{occurrence}" = occurrence
+
+	div class="col-sm-5"
+		select class="form-control" id="weekly_event_event_day" name="weekly_event[event_day]" 
+		= DAYNAMES.each do |daynames|
+			option value="#{daynames}" = daynames

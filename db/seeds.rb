@@ -7,18 +7,18 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.destroy_all
-Event.destroy_all
+Category.destroy_all
+# Event.destroy_all
 Location.destroy_all
 
 User.create!(first_name: "Admin", last_name:"Admin", email: "admin@pgps.com", username: "admin", password: "foobar123", password_confirmation: "foobar123", role: "admin")
 User.create!(first_name: "Test", last_name:"User", email: "tester@pgps.com",username: "tester", password: "foobar123", password_confirmation: "foobar123", role: "user")
 p "Created #{User.count} users"
 
-# Location.create!(name: "The Quad", city_town: "New Kingston", state_parish: "Kingston")
-# Location.create!(name: "Cuddy'z", street_address: "Dominica Drive", city_town: "New Kingston", state_parish: "Kingston")
-# Location.create!(name: "Fiction", street_address: "67 Constant Spring Rd", city_town: "Kingston 10", state_parish: "Kingston")
-# Location.create!(name: "Mass Camp", street_address: "Arthur Wint Drive", city_town: "Kingston", state_parish: "Kingston")
-# Location.create!(name: "Sugarman's Beach", street_address: "Hellshire", city_town: "Portmore", state_parish: "St. Catherine")
+Event::EVENT_TYPE.each do |category|
+  Category.create!(name: category)
+end
+p "Created #{Category.count} event categories"
 
 l1 = Location.create!(name: "The Quad", state_parish: "Kingston", country: "Jamaica")
 l2 = Location.create!(name: "Cuddyz", state_parish: "Kingston", country: "Jamaica")
@@ -31,8 +31,6 @@ l8 = Location.create!(name: "Tracks & Records", state_parish: "Kingston", countr
 l9 = Location.create!(name: "Mr Tires", street_address: "Waltham Park Road", state_parish: "Kingston", country: "Jamaica")
 l10 = Location.create!(name: "Oneil's Place", state_parish: "Kingston", country: "Jamaica")
 l10 = Location.create!(name: "Tripple Century", state_parish: "Kingston", country: "Jamaica")
-
 p "Created #{Location.count} locations"
-
 
 # Event.create!()

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203041409) do
+ActiveRecord::Schema.define(version: 20150211024220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,29 +29,42 @@ ActiveRecord::Schema.define(version: 20150203041409) do
     t.datetime "updated_at"
   end
 
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", force: true do |t|
     t.integer  "location_id"
     t.string   "name"
     t.string   "photo"
-    t.string   "frequency"
-    t.string   "day_of_occurrence"
-    t.string   "month_of_occurrence"
+    t.datetime "start_dt"
+    t.datetime "end_dt"
+    t.text     "description"
+    t.decimal  "adm",           precision: 8, scale: 2
+    t.integer  "listing_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.date     "date"
-    t.time     "time"
-    t.text     "description"
-    t.decimal  "adm",                 precision: 8, scale: 2
-    t.string   "category"
+    t.boolean  "recurring_flg",                         default: false
   end
 
-  add_index "events", ["date"], name: "index_events_on_date", using: :btree
-  add_index "events", ["id", "date"], name: "index_events_on_id_and_date", using: :btree
-  add_index "events", ["id", "location_id"], name: "index_events_on_id_and_location_id", using: :btree
+  add_index "events", ["id", "listing_id"], name: "index_events_on_id_and_listing_id", using: :btree
+  add_index "events", ["id", "location_id"], name: "index_events_on_id_and_location_id", unique: true, using: :btree
+
+  create_table "listings", force: true do |t|
+    t.integer  "category_id"
+    t.integer  "event_id"
+    t.string   "listed_day"
+    t.string   "listed_month"
+    t.string   "listed_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "locations", force: true do |t|
     t.string   "name"
-    t.string   "photo"
+    t.string   "image"
     t.string   "street_address"
     t.string   "street_address2"
     t.string   "city_town"
@@ -60,6 +73,7 @@ ActiveRecord::Schema.define(version: 20150203041409) do
     t.string   "country"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -91,6 +105,8 @@ ActiveRecord::Schema.define(version: 20150203041409) do
     t.string   "provider"
     t.string   "uid"
     t.string   "role"
+    t.string   "sex"
+    t.string   "photo"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -102,8 +118,6 @@ ActiveRecord::Schema.define(version: 20150203041409) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "authentication_token"
-    t.string   "sex"
-    t.string   "photo"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree

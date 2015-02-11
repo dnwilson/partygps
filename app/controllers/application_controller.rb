@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
   before_filter :disable_nav, :current_page
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_action :set_location
+  around_filter :set_time_zone
+
+  def set_time_zone(&block)
+    time_zone = current_user.try(:time_zone) || 'UTC'
+    Time.use_zone(time_zone, &block)
+  end
   # before_action :access_filter
 
   # before_filter :authenticate_user!, :unless => :devise_controller?

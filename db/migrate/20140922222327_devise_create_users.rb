@@ -17,7 +17,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :country
       t.string :provider
       t.string :uid 
-      t.string :role 
+      t.string :role
+      t.string :sex
+      t.string :photo 
 
       ## Recoverable
       t.string   :reset_password_token

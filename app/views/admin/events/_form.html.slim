@@ -1,60 +1,51 @@
-= form_for(@event, url: path , html: { method: type, class: "form-horizontal style-form" }) do |f|
+= form_for(@event_listing_form, url: path , html: { method: type, class: "form-horizontal style-form" }) do |f|
   
   / = devise_error_messages!
   div class="form-group" style="border-top: 2px solid #eff2f7; padding-top: 15px; margin-top: 15px"
-    = f.label :name, class: "col-sm-2 col-sm-2 control-label"
+    = f.label :name, class: "col-sm-2 col-md-2 control-label"
     div.col-sm-10
       = f.text_field :name, autofocus: true, placeholder: "Event Name", class: "form-control"
   div class="form-group"
-    = f.label :photo, "Flyer", class: "col-sm-2 col-sm-2 control-label"
+    = f.label :photo, "Flyer", class: "col-sm-2 col-md-2 control-label"
     div.col-sm-10
       = f.file_field :photo, class: "form-control", accept: "image/*"
 
   div class="form-group"
-    = f.label :location_id, "Location", class: "col-sm-2 col-sm-2 control-label"
+    = f.label :location_id, "Location", class: "col-sm-2 col-md-2 control-label"
     div.col-sm-10
       = f.collection_select :location_id, Location.all, :id, :name, {}, { class: "form-control"}
   div class="form-group date-entry"
-    = f.label :date, class: "col-sm-2 col-sm-2 control-label"
-    div.col-sm-5
-      = f.date_field :date, placeholder: "Event Date", class: "form-control"
-    div.col-offset-sm-2.col-sm-5
-      = f.time_field :time, class: "form-control"
-  div class="advanced-event" 
+    = f.label :start_dt, "Date", class: "col-sm-2 col-md-2 control-label"
+    div.col-sm-10
+      = f.date_field :start_dt, class: "form-control"
+  div class="advanced-event hidden"
     div class="form-group"
-      = f.label :category, "Category", class: "col-sm-2 col-sm-2 control-label"
-      div.col-sm-10.category-select
-        = f.select :category, options_for_select(Event::EVENT_OCCURRENCE, params[:category]),{}, {class: "form-control category"}
+      = f.label :location_id, "Category", class: "col-sm-2 col-md-2 control-label"
+      div class="col-sm-10" id="category-select"
+        = f.collection_select :category_id, Category.where.not(name: "Regular"), :id, :name,{}, {class: "form-control category"}
     div class="form-group frequency"
-      = f.label :day_of_occurrence, "When", class: "col-sm-2 col-sm-2 control-label"
-      div.col-sm-10
-        = f.select :day_of_occurrence, options_for_select(Event::WEEKLY_OCCURRENCE_DETAILS, params[:day_of_occurrence]), {}, {class: "form-control"}
-    / div class="form-group monthly"
-    /   = f.label :frequency, "When", class: "col-sm-2 col-sm-2 control-label"
-    /   div.col-sm-5
-    /     = f.select :frequency, options_for_select(Event::FREQUENCY, params[:frequency]), {}, {class: "form-control"}
-    /   div.col-offset-sm-1.col-sm-5
-    /     = f.select :day_of_occurrence, options_for_select(Event::WEEKLY_OCCURRENCE_DETAILS, params[:day_of_occurrence]), {}, {class: "form-control"}
-    / div class="form-group annual"
-    /   = f.label :frequency, "When", class: "col-sm-2 col-sm-2 control-label"
-    /   div.col-sm-3
-    /     = f.select :frequency, options_for_select(Event::FREQUENCY, params[:frequency]), {}, {class: "form-control"}
-    /   div.col-offset-sm-1.col-sm-3
-    /     = f.select :day_of_occurrence, options_for_select(Event::WEEKLY_OCCURRENCE_DETAILS, params[:day_of_occurrence]), {}, {class: "form-control"}
-    /   div.col-offset-sm-1.col-sm-4
-    /     = f.select :month_of_occurrence, options_for_select(Event::MONTHLY_OCCURRENCE_DETAILS, params[:month_of_occurrence]), {}, {class: "form-control"}
+        = f.label :listed_day, "When", class: "col-sm-2 control-label"
+        div.col-sm-3
+          = f.select :listed_type, options_for_select(OCCURRENCE, @event_listing_form.listed_type), {}, {class: "form-control"}
+        div.col-sm-3
+          = f.select :listed_day, options_for_select(DAYNAMES, @event_listing_form.listed_day), {}, {class: "form-control"}
+        div.col-sm-4
+          = f.select :listed_month, options_for_select(MONTHNAMES, @event_listing_form.listed_month), {}, {class: "form-control"}
+
   div class="form-group"
-    = f.label :adm, class: "col-sm-2 col-sm-2 control-label"
+    = f.label :adm, class: "col-sm-2 col-md-2 control-label"
     div.col-sm-10
       = f.number_field :adm, placeholder: "0.00", class: "form-control"
   div class="form-group"
-    = f.label :description, class: "col-sm-2 col-sm-2 control-label"
+    = f.label :description, class: "col-sm-2 col-md-2 control-label"
     div.col-sm-10
       = f.text_area :description, placeholder: "Describe your event...", class: "form-control"
 
   div class="form-group"
+    div.col-sm-2
+      = f.label "Recurring?"
     div.col-sm-10
-      div class='advanced-toggle' style="cursor:pointer;" + Recurring Event?
+      = f.check_box :recurring_flg, {id: 'recurring'}, true, false
 
   div class="box-footer" style="text-align:right;"
     = f.submit "Submit", class: "btn btn-primary"

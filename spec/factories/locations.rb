@@ -2,14 +2,10 @@
 
 FactoryGirl.define do
   factory :location do
-    name "MyString"
-    image "MyString"
-    street_address "MyString"
-    city_town "MyString"
-    state_parish "MyString"
-    zipcode "MyString"
-    country "MyString"
-    latitude 1.5
-    longitude 1.5
+    name "Test HQ"
+    street_address "1 Testing Way"
+    city_town "Testville"
+    state_parish "Kingston"
+    country "Jamaica"
   end
 end

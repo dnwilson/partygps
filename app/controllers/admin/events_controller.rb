@@ -1,5 +1,5 @@
 class Admin::EventsController < Admin::BaseController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  # before_action :set_event, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
   # GET /events
   # GET /events.json
@@ -21,13 +21,27 @@ class Admin::EventsController < Admin::BaseController
     end
   end
 
+  def render_snippet
+    begin
+      snippet = params[:category].eql?('bi-weekly') ? 'monthly' : params[:category]
+      # binding.pry
+      unless params[:category].eql?('regular') || params[:category].nil?
+        # @event = Event.new
+        # @event.send("build_#{snippet}_event")
+        render partial: "admin/events/#{snippet}", f: @event, layout: nil
+      end
+    rescue
+      render nothing: true
+    end
+  end
+
   def new
-    @event = Event.new
+    @event_listing_form = EventListingForm.new
   end
 
   def create
-    @event = Event.new(event_params)
-    if @event.save
+    @event_listing_form = EventListingForm.new(params[:event_listing_form])
+    if @event_listing_form.submit(params[:event_listing_form])
       flash[:notice] = "Successfully created event." 
       redirect_to admin_events_path
     else
@@ -36,6 +50,11 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def edit
+    @event_listing = EventListing.submit(event_params)
+    # @event.build_weekly_event
+    # if @event.recurring? 
+    #   @event.build_recurring_event
+    # end
   end
 
   def update
@@ -56,13 +75,17 @@ class Admin::EventsController < Admin::BaseController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
+    # def set_event
+    #   @event = Event.find(params[:id])
+    # end
 
-    def event_params
-      params.require(:event).permit(:name, :photo, :location_id, :date, :time, :frequency, 
-                                    :adm, :category, :description, :occurs, :day_of_occurrence,
-                                    :day_of_occurrence_mthly, :month_of_occurrence)
-    end
+    # def set_location
+    #   @location = Location.find(params[:event][:location_id])
+    # end
+
+    # def event_params
+    #   params.require(:event).permit(:name, :photo, :location_id, :event_date, :adm, 
+    #                                 :event_category_id, :description, 
+    #                                 event_category_attributes: [:occurs, :event_day, :event_month])
+    # end
 end

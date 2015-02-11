@@ -1,9 +1,9 @@
 = content_for(:title, 'New Event')
 div.row
-	div.col-lg-10.col-lg-offset-1.mt
+	div.col-sm-8.col-sm-offset-2.mt
 		div.form-panel
 			div.white-header
 				h4
 					i.fa.fa-user.fa-fw
 					|  Add Event
-			= render 'form', path: admin_events_path(@event), type: :post
+			= render 'form', path: admin_events_path(@event_listing_form), type: :post
