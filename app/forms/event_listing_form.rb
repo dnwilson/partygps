@@ -44,7 +44,7 @@ class EventListingForm
     start_dt      = params[:start_dt]
     end_dt        = params[:end_dt]
     adm           = params[:adm]
-    recurring_flg = params[:recurring_flg]
+    recurring_flg = params[:recurring_flg].present? ? params[:recurring_flg] : false
     description   = params[:description]
     location_id   = params[:location_id]
     
@@ -73,15 +73,8 @@ class EventListingForm
                                     listed_day: listed_day,
                                     listed_month: listed_month,
                                     category_id: category_id)
-    # binding.pry 
 
-    # event.attributes    = params.slice(:name, :photo, :start_dt, :end_dt, :adm, :recurring_flg, :description, :location_id)
-    # listing.attributes  = params.slice(:listed_type, :listed_day, :listed_month, :category_id)
-
-    binding.pry
-    # If validation passes save
     if valid?
-      binding.pry
       @event.save
       @listing.save
       true

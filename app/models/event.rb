@@ -42,6 +42,14 @@ class Event < ActiveRecord::Base
 		[location.street_address, location.city_town, location.state_parish]
 	end
 
+	# def display_date
+ #    if @event.recurring_flg?
+ #      @event.start_dt.strftime("%b %-d, %Y")
+ #    else
+ #      @event.listing.category.name
+ #    end
+ #  end
+
 	# def occurs_once?
 	# 	listing.category.name.eql?(REG) || listing.category.name.nil?
 	# end

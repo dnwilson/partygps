@@ -1,21 +1,22 @@
-tr
-	td.hidden-phone
-		= image_tag(event.photo.thumb)
-	td
-		= event.name
-	td
-		= event.location.name
-	td
-		= event.display_date_or_category
-	td
-		= link_to "#", :'data-toggle' =>  "modal", :'data-target' => "#ticketTypeModal",  class: "btn btn-success btn-xs" do
-			i class="fa fa-map-marker"
-		|   
-		= link_to admin_event_path(event), class: "btn btn-success btn-xs" do
-			i class="fa fa-check"
-		|   
-		= link_to edit_admin_event_path(event), class: "btn btn-warning btn-xs" do
-			i class="fa fa-pencil"
-		|   
-		= link_to admin_event_path(event), method: :delete, class: "btn btn-danger btn-xs" do
-			i class="fa fa-trash-o"
+- present(event) do |event_presenter|
+	tr
+		td.hidden-phone
+			= event_presenter.photo
+		td
+			= event.name
+		td
+			= event.location.name
+		td
+			= event_presenter.display_date
+		td
+			= link_to "#", :'data-toggle' =>  "modal", :'data-target' => "#ticketTypeModal",  class: "btn btn-success btn-xs" do
+				i class="fa fa-map-marker"
+			|   
+			= link_to admin_event_path(event), class: "btn btn-success btn-xs" do
+				i class="fa fa-check"
+			|   
+			= link_to edit_admin_event_path(event), class: "btn btn-warning btn-xs" do
+				i class="fa fa-pencil"
+			|   
+			= link_to admin_event_path(event), method: :delete, class: "btn btn-danger btn-xs" do
+				i class="fa fa-trash-o"
