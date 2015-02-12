@@ -40,8 +40,9 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def create
+    binding.pry
     @event_listing_form = EventListingForm.new(params[:event_listing_form])
-    if @event_listing_form.submit(params[:event_listing_form])
+    if @event_listing_form.submit
       flash[:notice] = "Successfully created event." 
       redirect_to admin_events_path
     else
@@ -84,8 +85,12 @@ class Admin::EventsController < Admin::BaseController
     # end
 
     # def event_params
-    #   params.require(:event).permit(:name, :photo, :location_id, :event_date, :adm, 
-    #                                 :event_category_id, :description, 
-    #                                 event_category_attributes: [:occurs, :event_day, :event_month])
+    #   params.require(:event).permit(:name, :photo, :location_id, :start_dt, 
+    #                                 :end_dt, :adm, :description, :recurring_flg)
     # end
+
+    # def event_listing_params
+    #   params.require(:event).permit( :name, :photo, :recurring_flg, :start_dt, :end_dt, :adm,:description, :location_id, :listed_day, :listed_month, :listed_type, :category_id)
+    # end
+
 end

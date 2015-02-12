@@ -25,11 +25,11 @@
         = f.collection_select :category_id, Category.where.not(name: "Regular"), :id, :name,{}, {class: "form-control category"}
     div class="form-group frequency"
         = f.label :listed_day, "When", class: "col-sm-2 control-label"
-        div.col-sm-3
+        div.col-sm-3.listed_type
           = f.select :listed_type, options_for_select(OCCURRENCE, @event_listing_form.listed_type), {}, {class: "form-control"}
-        div.col-sm-3
+        div.col-sm-3.listed_day
           = f.select :listed_day, options_for_select(DAYNAMES, @event_listing_form.listed_day), {}, {class: "form-control"}
-        div.col-sm-4
+        div.col-sm-4.listed_month
           = f.select :listed_month, options_for_select(MONTHNAMES, @event_listing_form.listed_month), {}, {class: "form-control"}
 
   div class="form-group"

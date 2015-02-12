@@ -23,60 +23,28 @@ class EventListingForm
     :category_id
   )
 
-  # def self.model_name
-  #   ActiveModel::Name.new(self, nil, "Event")
-  # end
-
-  # def listing
-  #   @listing || event.build_listing
-  # end
-
-  # def event
-  #   @event || Event.new
-  # end
-  # def initialize(user)
-  #   @user = user
-  # end
+  def create_event
+    setup_listing
+    @event ||= Event.new( name: name, 
+                          photo: photo, 
+                          start_dt: start_dt.to_date, 
+                          adm: adm,
+                          recurring_flg: recurring,
+                          description: description,
+                          location_id: location_id
+                        )
+    @listing = @event.build_listing(  listed_type: listed_type,
+                                      listed_day: listed_day,
+                                      listed_month: listed_month,
+                                      category_id: category_id
+                                    )
+    @event.save
+    @listing.save
+  end
   
-  def submit(params)
-    name          = params[:name]
-    photo         = params[:photo]
-    start_dt      = params[:start_dt]
-    end_dt        = params[:end_dt]
-    adm           = params[:adm]
-    recurring_flg = params[:recurring_flg].present? ? params[:recurring_flg] : false
-    description   = params[:description]
-    location_id   = params[:location_id]
-    
-    if recurring_flg.present? 
-      listed_day    = params[:listed_day] 
-      listed_type   = params[:listed_type]
-      listed_month  = params[:listed_month]
-      category_id   = params[:category_id]
-    else
-      listed_day    = params[:start_dt].to_datetime.strftime("%A")
-      listed_type   = Event::REG
-      listed_month  = params[:start_dt].to_datetime.strftime("%B")
-      category_id   = Category.where(name: Event::REG).first.id 
-    end
-
-    # create_event(name, photo, start_dt, end_dt, adm, recurring_flg, description, location_id)
-    @event = Event.new( name: name, 
-                        photo: photo, 
-                        start_dt: start_dt.to_date, 
-                        adm: adm,
-                        recurring_flg: recurring_flg,
-                        description: description,
-                        location_id: location_id)
-    
-    @listing = @event.build_listing(listed_type: listed_type,
-                                    listed_day: listed_day,
-                                    listed_month: listed_month,
-                                    category_id: category_id)
-
+  def submit
     if valid?
-      @event.save
-      @listing.save
+      create_event
       true
     else
       false
@@ -92,5 +60,18 @@ class EventListingForm
 
   def valid_start_dt
     errors.add(:start_dt, "must be a valid date") unless DateTime.parse(self.start_dt) > DateTime.now rescue false
+  end
+
+  def recurring
+    self.recurring_flg = recurring_flg.present? ? recurring_flg : false
+  end
+
+  def setup_listing
+    unless recurring
+      listed_day    = listed_day.to_datetime.strftime("%A")
+      listed_type   = Event::REG
+      listed_month  = listed_month.to_datetime.strftime("%B")
+      category_id   = Category.where(name: Event::REG).first.id 
+    end
   end
 end

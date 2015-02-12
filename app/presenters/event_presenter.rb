@@ -18,7 +18,6 @@ class EventPresenter
   end
 
   def photo
-    # binding.pry
     photo = @event.photo? ? @event.photo.thumb  : 'default.svg' 
     h.image_tag(photo)
   end
