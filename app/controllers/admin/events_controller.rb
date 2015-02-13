@@ -21,26 +21,11 @@ class Admin::EventsController < Admin::BaseController
     end
   end
 
-  def render_snippet
-    begin
-      snippet = params[:category].eql?('bi-weekly') ? 'monthly' : params[:category]
-      # binding.pry
-      unless params[:category].eql?('regular') || params[:category].nil?
-        # @event = Event.new
-        # @event.send("build_#{snippet}_event")
-        render partial: "admin/events/#{snippet}", f: @event, layout: nil
-      end
-    rescue
-      render nothing: true
-    end
-  end
-
   def new
     @event_listing_form = EventListingForm.new
   end
 
   def create
-    binding.pry
     @event_listing_form = EventListingForm.new(params[:event_listing_form])
     if @event_listing_form.submit
       flash[:notice] = "Successfully created event." 

@@ -14,21 +14,16 @@ class Event < ActiveRecord::Base
 	multisearchable against: [:name, :description]
 
 	belongs_to :location
-	has_one :listing, -> { includes :category }
+	has_one :listing, dependent: :destroy 
 
 	mount_uploader :photo, ImageUploader
-
-	# before_save :set_default_category, if: ->(obj){ obj.category_changed? }
-
-	# validates :name, presence: true, length: { minimum: 2, maximum: 30 }
-	# validates :start_dt, date: {on_or_after: DateTime.now}
 
 	REG 			= "Regular"
 	WEEKLY 	 	= "Weekly"
 	BI_WEEKLY	= "Bi-Weekly"
 	MONTHLY 	= "Monthly"
 	ANNUAL 		= "Annual"
-	EVENT_TYPE = [WEEKLY, BI_WEEKLY, MONTHLY, ANNUAL]
+	EVENT_TYPE = [WEEKLY, MONTHLY, ANNUAL]
 
 	def location_name
 		location.name
@@ -90,18 +85,6 @@ class Event < ActiveRecord::Base
 	# end
 
 	private
-		# def set_default_category
-		# 	self.listing.category.name = REG if listing.category.name.nil? && event_date.present?
-		# end
 
-		# def check_date_format
-		# 	errors.add(:event_date, "must be a valid date") unless DateTime.parse(self.event_date) rescue false
-		# end
-
-		# def category_or_date
-		# 	if listing.category.name.nil? && event_date.nil?
-		# 		errors.add(:category_date, "You must enter a date or select a recurring event category.") 
-		# 	end
-		# end
 
 end

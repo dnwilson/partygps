@@ -4,6 +4,7 @@ THIRD   = "Third"
 FOURTH  = "Fourth"
 LAST    = "Last"
 OTHER   = "Other"
+EVERY   = "Every"
 
 OCCURRENCE = [FIRST, SECOND, THIRD, FOURTH, LAST, OTHER]
 DAYNAMES   = Date::DAYNAMES.map{|m| m = m + "s"}

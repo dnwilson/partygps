@@ -61,30 +61,28 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 group :development, :test do
-   gem 'forgery'
-   gem 'factory_girl_rails'
-   gem 'spring-commands-rspec'
-   gem 'rspec-rails'
-   gem 'guard-rspec'
-   gem 'pry-nav'
-   gem 'rb-fsevent' if `uname` =~ /Darwin/
+  gem 'forgery'
+  gem 'factory_girl_rails'
+  gem 'spring-commands-rspec'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers', require: false
+  gem 'guard-rspec'
+  gem 'pry-nav'
+  gem 'rb-fsevent' if `uname` =~ /Darwin/
 end
 
 group :development do
-   gem 'better_errors'
-   gem 'binding_of_caller'
-   # gem 'meta_request'
-   # gem 'rack-mini-profiler'
-   gem 'bullet'
-   gem 'rails_layout'
-   gem 'pry-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'bullet'
+  gem 'rails_layout'
+  gem 'pry-rails'
 end
 
 group :test do
-   gem 'capybara', '~> 2.1'
-   gem 'webmock'
-   gem 'vcr'
-   # gem 'growl'
+  gem 'capybara', '~> 2.1'
+  gem 'capybara-webkit'
+  gem 'database_cleaner'
 end
 
 group :production do

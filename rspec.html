@@ -281,509 +281,491 @@ a {
 <div class="results">
 <div id="div_group_1" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_1" class="passed">Event</dt>
-    <script type="text/javascript">makeRed('rspec-header');</script>
-    <script type="text/javascript">makeRed('div_group_1');</script>
-    <script type="text/javascript">makeRed('example_group_1');</script>
-    <script type="text/javascript">moveProgressBar('7.1');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/models/event_spec.rb:13</span>
-      <span class="duration">0.87817s</span>
-      <div class="failure" id="failure_1">
-        <div class="message"><pre>unknown attribute: event_date</pre></div>
-        <div class="backtrace"><pre>/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:50:in `rescue in _assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:45:in `_assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:32:in `block in assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `each&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:455:in `init_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:198:in `initialize&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/persistence.rb:33:in `create&#39;
-./spec/models/event_spec.rb:4:in `block (2 levels) in &lt;top (required)&gt;&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
--e:1:in `&lt;main&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">48</span>        raise
-<span class="linenum">49</span>      <span class="keyword">else</span>
-<span class="offending"><span class="linenum">50</span>        raise <span class="constant">UnknownAttributeError</span>.new(<span class="predefined-constant">self</span>, k)</span>
-<span class="linenum">51</span>      <span class="keyword">end</span>
-<span class="linenum">52</span>    <span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('14.2');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/models/event_spec.rb:14</span>
-      <span class="duration">0.77390s</span>
-      <div class="failure" id="failure_2">
-        <div class="message"><pre>unknown attribute: event_date</pre></div>
-        <div class="backtrace"><pre>/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:50:in `rescue in _assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:45:in `_assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:32:in `block in assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `each&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:455:in `init_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:198:in `initialize&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/persistence.rb:33:in `create&#39;
-./spec/models/event_spec.rb:4:in `block (2 levels) in &lt;top (required)&gt;&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
--e:1:in `&lt;main&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">48</span>        raise
-<span class="linenum">49</span>      <span class="keyword">else</span>
-<span class="offending"><span class="linenum">50</span>        raise <span class="constant">UnknownAttributeError</span>.new(<span class="predefined-constant">self</span>, k)</span>
-<span class="linenum">51</span>      <span class="keyword">end</span>
-<span class="linenum">52</span>    <span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('21.4');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/models/event_spec.rb:15</span>
-      <span class="duration">0.77958s</span>
-      <div class="failure" id="failure_3">
-        <div class="message"><pre>unknown attribute: event_date</pre></div>
-        <div class="backtrace"><pre>/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:50:in `rescue in _assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:45:in `_assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:32:in `block in assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `each&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:455:in `init_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:198:in `initialize&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/persistence.rb:33:in `create&#39;
-./spec/models/event_spec.rb:4:in `block (2 levels) in &lt;top (required)&gt;&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
--e:1:in `&lt;main&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">48</span>        raise
-<span class="linenum">49</span>      <span class="keyword">else</span>
-<span class="offending"><span class="linenum">50</span>        raise <span class="constant">UnknownAttributeError</span>.new(<span class="predefined-constant">self</span>, k)</span>
-<span class="linenum">51</span>      <span class="keyword">end</span>
-<span class="linenum">52</span>    <span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('28.5');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/models/event_spec.rb:16</span>
-      <span class="duration">0.79531s</span>
-      <div class="failure" id="failure_4">
-        <div class="message"><pre>unknown attribute: event_date</pre></div>
-        <div class="backtrace"><pre>/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:50:in `rescue in _assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:45:in `_assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:32:in `block in assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `each&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:455:in `init_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:198:in `initialize&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/persistence.rb:33:in `create&#39;
-./spec/models/event_spec.rb:4:in `block (2 levels) in &lt;top (required)&gt;&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
--e:1:in `&lt;main&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">48</span>        raise
-<span class="linenum">49</span>      <span class="keyword">else</span>
-<span class="offending"><span class="linenum">50</span>        raise <span class="constant">UnknownAttributeError</span>.new(<span class="predefined-constant">self</span>, k)</span>
-<span class="linenum">51</span>      <span class="keyword">end</span>
-<span class="linenum">52</span>    <span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('35.7');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/models/event_spec.rb:17</span>
-      <span class="duration">0.80280s</span>
-      <div class="failure" id="failure_5">
-        <div class="message"><pre>unknown attribute: event_date</pre></div>
-        <div class="backtrace"><pre>/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:50:in `rescue in _assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:45:in `_assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:32:in `block in assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `each&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:455:in `init_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:198:in `initialize&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/persistence.rb:33:in `create&#39;
-./spec/models/event_spec.rb:4:in `block (2 levels) in &lt;top (required)&gt;&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
--e:1:in `&lt;main&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">48</span>        raise
-<span class="linenum">49</span>      <span class="keyword">else</span>
-<span class="offending"><span class="linenum">50</span>        raise <span class="constant">UnknownAttributeError</span>.new(<span class="predefined-constant">self</span>, k)</span>
-<span class="linenum">51</span>      <span class="keyword">end</span>
-<span class="linenum">52</span>    <span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('42.8');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/models/event_spec.rb:18</span>
-      <span class="duration">0.78143s</span>
-      <div class="failure" id="failure_6">
-        <div class="message"><pre>unknown attribute: event_date</pre></div>
-        <div class="backtrace"><pre>/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:50:in `rescue in _assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:45:in `_assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:32:in `block in assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `each&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:455:in `init_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:198:in `initialize&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/persistence.rb:33:in `create&#39;
-./spec/models/event_spec.rb:4:in `block (2 levels) in &lt;top (required)&gt;&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
--e:1:in `&lt;main&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">48</span>        raise
-<span class="linenum">49</span>      <span class="keyword">else</span>
-<span class="offending"><span class="linenum">50</span>        raise <span class="constant">UnknownAttributeError</span>.new(<span class="predefined-constant">self</span>, k)</span>
-<span class="linenum">51</span>      <span class="keyword">end</span>
-<span class="linenum">52</span>    <span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('50.0');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/models/event_spec.rb:19</span>
-      <span class="duration">0.81076s</span>
-      <div class="failure" id="failure_7">
-        <div class="message"><pre>unknown attribute: event_date</pre></div>
-        <div class="backtrace"><pre>/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:50:in `rescue in _assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:45:in `_assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:32:in `block in assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `each&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:455:in `init_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:198:in `initialize&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/persistence.rb:33:in `create&#39;
-./spec/models/event_spec.rb:4:in `block (2 levels) in &lt;top (required)&gt;&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
--e:1:in `&lt;main&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">48</span>        raise
-<span class="linenum">49</span>      <span class="keyword">else</span>
-<span class="offending"><span class="linenum">50</span>        raise <span class="constant">UnknownAttributeError</span>.new(<span class="predefined-constant">self</span>, k)</span>
-<span class="linenum">51</span>      <span class="keyword">end</span>
-<span class="linenum">52</span>    <span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('57.1');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/models/event_spec.rb:20</span>
-      <span class="duration">0.79434s</span>
-      <div class="failure" id="failure_8">
-        <div class="message"><pre>unknown attribute: event_date</pre></div>
-        <div class="backtrace"><pre>/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:50:in `rescue in _assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:45:in `_assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:32:in `block in assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `each&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:455:in `init_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:198:in `initialize&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/persistence.rb:33:in `create&#39;
-./spec/models/event_spec.rb:4:in `block (2 levels) in &lt;top (required)&gt;&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
--e:1:in `&lt;main&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">48</span>        raise
-<span class="linenum">49</span>      <span class="keyword">else</span>
-<span class="offending"><span class="linenum">50</span>        raise <span class="constant">UnknownAttributeError</span>.new(<span class="predefined-constant">self</span>, k)</span>
-<span class="linenum">51</span>      <span class="keyword">end</span>
-<span class="linenum">52</span>    <span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('64.2');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/models/event_spec.rb:21</span>
-      <span class="duration">0.78057s</span>
-      <div class="failure" id="failure_9">
-        <div class="message"><pre>unknown attribute: event_date</pre></div>
-        <div class="backtrace"><pre>/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:50:in `rescue in _assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:45:in `_assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:32:in `block in assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `each&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:455:in `init_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:198:in `initialize&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/persistence.rb:33:in `create&#39;
-./spec/models/event_spec.rb:4:in `block (2 levels) in &lt;top (required)&gt;&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
--e:1:in `&lt;main&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">48</span>        raise
-<span class="linenum">49</span>      <span class="keyword">else</span>
-<span class="offending"><span class="linenum">50</span>        raise <span class="constant">UnknownAttributeError</span>.new(<span class="predefined-constant">self</span>, k)</span>
-<span class="linenum">51</span>      <span class="keyword">end</span>
-<span class="linenum">52</span>    <span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('71.4');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/models/event_spec.rb:22</span>
-      <span class="duration">0.80549s</span>
-      <div class="failure" id="failure_10">
-        <div class="message"><pre>unknown attribute: event_date</pre></div>
-        <div class="backtrace"><pre>/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:50:in `rescue in _assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:45:in `_assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:32:in `block in assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `each&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:455:in `init_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:198:in `initialize&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/persistence.rb:33:in `create&#39;
-./spec/models/event_spec.rb:4:in `block (2 levels) in &lt;top (required)&gt;&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
--e:1:in `&lt;main&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">48</span>        raise
-<span class="linenum">49</span>      <span class="keyword">else</span>
-<span class="offending"><span class="linenum">50</span>        raise <span class="constant">UnknownAttributeError</span>.new(<span class="predefined-constant">self</span>, k)</span>
-<span class="linenum">51</span>      <span class="keyword">end</span>
-<span class="linenum">52</span>    <span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
+  <dt id="example_group_1" class="passed">PagesController</dt>
   </dl>
 </div>
 <div id="div_group_2" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_2" class="passed">name</dt>
+  <dt id="example_group_2" class="passed">home page</dt>
   </dl>
 </div>
 <div id="div_group_3" class="example_group passed">
   <dl style="margin-left: 30px;">
-  <dt id="example_group_3" class="passed">when nil</dt>
-    <script type="text/javascript">makeRed('div_group_3');</script>
-    <script type="text/javascript">makeRed('example_group_3');</script>
-    <script type="text/javascript">moveProgressBar('78.5');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/models/event_spec.rb:27</span>
-      <span class="duration">0.78137s</span>
-      <div class="failure" id="failure_11">
-        <div class="message"><pre>unknown attribute: event_date</pre></div>
-        <div class="backtrace"><pre>/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:50:in `rescue in _assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:45:in `_assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:32:in `block in assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `each&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:455:in `init_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:198:in `initialize&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/persistence.rb:33:in `create&#39;
-./spec/models/event_spec.rb:4:in `block (2 levels) in &lt;top (required)&gt;&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
--e:1:in `&lt;main&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">48</span>        raise
-<span class="linenum">49</span>      <span class="keyword">else</span>
-<span class="offending"><span class="linenum">50</span>        raise <span class="constant">UnknownAttributeError</span>.new(<span class="predefined-constant">self</span>, k)</span>
-<span class="linenum">51</span>      <span class="keyword">end</span>
-<span class="linenum">52</span>    <span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
+  <dt id="example_group_3" class="passed">when not logged in</dt>
+    <script type="text/javascript">moveProgressBar('1.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have link &quot;login&quot;</span><span class='duration'>0.11502s</span></dd>
+    <script type="text/javascript">moveProgressBar('2.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have link &quot;signup&quot;</span><span class='duration'>0.03569s</span></dd>
+    <script type="text/javascript">moveProgressBar('3.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have link &quot;about&quot;</span><span class='duration'>0.02230s</span></dd>
+    <script type="text/javascript">moveProgressBar('4.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have link &quot;contact&quot;</span><span class='duration'>0.02182s</span></dd>
   </dl>
 </div>
 <div id="div_group_4" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_4" class="passed">when less than 2 characters</dt>
-    <script type="text/javascript">makeRed('div_group_4');</script>
-    <script type="text/javascript">makeRed('example_group_4');</script>
-    <script type="text/javascript">moveProgressBar('85.7');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/models/event_spec.rb:31</span>
-      <span class="duration">0.78366s</span>
-      <div class="failure" id="failure_12">
-        <div class="message"><pre>unknown attribute: event_date</pre></div>
-        <div class="backtrace"><pre>/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:50:in `rescue in _assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:45:in `_assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:32:in `block in assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `each&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:455:in `init_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:198:in `initialize&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/persistence.rb:33:in `create&#39;
-./spec/models/event_spec.rb:4:in `block (2 levels) in &lt;top (required)&gt;&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
--e:1:in `&lt;main&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">48</span>        raise
-<span class="linenum">49</span>      <span class="keyword">else</span>
-<span class="offending"><span class="linenum">50</span>        raise <span class="constant">UnknownAttributeError</span>.new(<span class="predefined-constant">self</span>, k)</span>
-<span class="linenum">51</span>      <span class="keyword">end</span>
-<span class="linenum">52</span>    <span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_4" class="passed">UserPages</dt>
   </dl>
 </div>
 <div id="div_group_5" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_5" class="passed">when more than 30 characters</dt>
-    <script type="text/javascript">makeRed('div_group_5');</script>
-    <script type="text/javascript">makeRed('example_group_5');</script>
-    <script type="text/javascript">moveProgressBar('92.8');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/models/event_spec.rb:35</span>
-      <span class="duration">0.77935s</span>
-      <div class="failure" id="failure_13">
-        <div class="message"><pre>unknown attribute: event_date</pre></div>
-        <div class="backtrace"><pre>/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:50:in `rescue in _assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:45:in `_assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:32:in `block in assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `each&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:455:in `init_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:198:in `initialize&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/persistence.rb:33:in `create&#39;
-./spec/models/event_spec.rb:4:in `block (2 levels) in &lt;top (required)&gt;&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
--e:1:in `&lt;main&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">48</span>        raise
-<span class="linenum">49</span>      <span class="keyword">else</span>
-<span class="offending"><span class="linenum">50</span>        raise <span class="constant">UnknownAttributeError</span>.new(<span class="predefined-constant">self</span>, k)</span>
-<span class="linenum">51</span>      <span class="keyword">end</span>
-<span class="linenum">52</span>    <span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_5" class="passed">login</dt>
   </dl>
 </div>
 <div id="div_group_6" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_6" class="passed">when date_time is in the past</dt>
-    <script type="text/javascript">makeRed('div_group_6');</script>
-    <script type="text/javascript">makeRed('example_group_6');</script>
-    <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/models/event_spec.rb:41</span>
-      <span class="duration">0.78839s</span>
-      <div class="failure" id="failure_14">
-        <div class="message"><pre>unknown attribute: event_date</pre></div>
-        <div class="backtrace"><pre>/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:50:in `rescue in _assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:45:in `_assign_attribute&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:32:in `block in assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `each&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/attribute_assignment.rb:26:in `assign_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:455:in `init_attributes&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/core.rb:198:in `initialize&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/inheritance.rb:30:in `new&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activerecord-4.1.5/lib/active_record/persistence.rb:33:in `create&#39;
-./spec/models/event_spec.rb:4:in `block (2 levels) in &lt;top (required)&gt;&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `block in load&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:232:in `load_dependency&#39;
-/Users/dwilson/.rvm/gems/ruby-2.1.3@pgps/gems/activesupport-4.1.5/lib/active_support/dependencies.rb:241:in `load&#39;
--e:1:in `&lt;main&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">48</span>        raise
-<span class="linenum">49</span>      <span class="keyword">else</span>
-<span class="offending"><span class="linenum">50</span>        raise <span class="constant">UnknownAttributeError</span>.new(<span class="predefined-constant">self</span>, k)</span>
-<span class="linenum">51</span>      <span class="keyword">end</span>
-<span class="linenum">52</span>    <span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_6" class="passed">when not logged in</dt>
+    <script type="text/javascript">moveProgressBar('5.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have link &quot;login&quot;</span><span class='duration'>0.04652s</span></dd>
+    <script type="text/javascript">moveProgressBar('6.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have link &quot;signup&quot;</span><span class='duration'>0.02653s</span></dd>
+    <script type="text/javascript">moveProgressBar('7.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have link &quot;about&quot;</span><span class='duration'>0.03746s</span></dd>
+    <script type="text/javascript">moveProgressBar('8.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have link &quot;contact&quot;</span><span class='duration'>0.02577s</span></dd>
+    <script type="text/javascript">moveProgressBar('9.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have css &quot;.registration&quot;</span><span class='duration'>0.02736s</span></dd>
+    <script type="text/javascript">moveProgressBar('10.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have css &quot;#user_email&quot;</span><span class='duration'>0.02662s</span></dd>
+    <script type="text/javascript">moveProgressBar('11.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have css &quot;#user_password&quot;</span><span class='duration'>0.03601s</span></dd>
+    <script type="text/javascript">moveProgressBar('12.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have link &quot;Forgot Password?&quot;</span><span class='duration'>0.02487s</span></dd>
+    <script type="text/javascript">moveProgressBar('13.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have link &quot;Find a party now!&quot;</span><span class='duration'>0.02702s</span></dd>
+    <script type="text/javascript">moveProgressBar('14.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have link &quot;Facebook&quot;</span><span class='duration'>0.02775s</span></dd>
+    <script type="text/javascript">moveProgressBar('15.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have link &quot;Google&quot;</span><span class='duration'>0.03371s</span></dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>11.21141 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "14 examples, 14 failures";</script>
+<div id="div_group_7" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_7" class="passed">when user is valid</dt>
+    <script type="text/javascript">moveProgressBar('16.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should text &quot;John&quot;</span><span class='duration'>0.13808s</span></dd>
+  </dl>
+</div>
+<div id="div_group_8" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_8" class="passed">when user is invalid</dt>
+    <script type="text/javascript">moveProgressBar('17.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should text &quot;Invalid email address or password.&quot;</span><span class='duration'>0.08110s</span></dd>
+  </dl>
+</div>
+<div id="div_group_9" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_9" class="passed">facebook sign in</dt>
+  </dl>
+</div>
+<div id="div_group_10" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_10" class="passed">when trying to signin with facebook</dt>
+    <script type="text/javascript">moveProgressBar('18.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should text &quot;You are in..!!! Go to edit profile to see the status for the accounts&quot;</span><span class='duration'>0.11620s</span></dd>
+    <script type="text/javascript">moveProgressBar('19.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should text &quot;John&quot;</span><span class='duration'>0.07753s</span></dd>
+  </dl>
+</div>
+<div id="div_group_11" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_11" class="passed">EventListingForm</dt>
+  </dl>
+</div>
+<div id="div_group_12" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_12" class="passed">Validations</dt>
+    <script type="text/javascript">moveProgressBar('20.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require name to be set</span><span class='duration'>0.00510s</span></dd>
+    <script type="text/javascript">moveProgressBar('21.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require location_id to be set</span><span class='duration'>0.00389s</span></dd>
+    <script type="text/javascript">moveProgressBar('22.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require category_id to be set</span><span class='duration'>0.00360s</span></dd>
+    <script type="text/javascript">moveProgressBar('23.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require listed_type to be set</span><span class='duration'>0.00341s</span></dd>
+    <script type="text/javascript">moveProgressBar('24.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require listed_day to be set</span><span class='duration'>0.00382s</span></dd>
+  </dl>
+</div>
+<div id="div_group_13" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_13" class="passed">#submit</dt>
+  </dl>
+</div>
+<div id="div_group_14" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_14" class="passed">regular</dt>
+    <script type="text/javascript">moveProgressBar('25.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq Wed, 09 Sep 2015 00:00:00 +0000</span><span class='duration'>0.04425s</span></dd>
+    <script type="text/javascript">moveProgressBar('26.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 1</span><span class='duration'>0.00781s</span></dd>
+    <script type="text/javascript">moveProgressBar('27.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq &quot;Regular&quot;</span><span class='duration'>0.00677s</span></dd>
+    <script type="text/javascript">moveProgressBar('28.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq &quot;Wednesday&quot;</span><span class='duration'>0.00699s</span></dd>
+    <script type="text/javascript">moveProgressBar('29.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq &quot;September&quot;</span><span class='duration'>0.00719s</span></dd>
+    <script type="text/javascript">moveProgressBar('30.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be valid</span><span class='duration'>0.00679s</span></dd>
+  </dl>
+</div>
+<div id="div_group_15" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_15" class="passed">weekly</dt>
+    <script type="text/javascript">moveProgressBar('31.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be valid</span><span class='duration'>0.00730s</span></dd>
+  </dl>
+</div>
+<div id="div_group_16" class="example_group passed">
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_16" class="passed">behaves like a recurring event</dt>
+  </dl>
+</div>
+<div id="div_group_17" class="example_group passed">
+  <dl style="margin-left: 60px;">
+  <dt id="example_group_17" class="passed">.recurring_flg</dt>
+    <script type="text/javascript">moveProgressBar('32.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should equal true</span><span class='duration'>0.01052s</span></dd>
+  </dl>
+</div>
+<div id="div_group_18" class="example_group passed">
+  <dl style="margin-left: 60px;">
+  <dt id="example_group_18" class="passed">.start_dt</dt>
+    <script type="text/javascript">moveProgressBar('33.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be nil</span><span class='duration'>0.00709s</span></dd>
+  </dl>
+</div>
+<div id="div_group_19" class="example_group passed">
+  <dl style="margin-left: 60px;">
+  <dt id="example_group_19" class="passed">.end_dt</dt>
+    <script type="text/javascript">moveProgressBar('34.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be nil</span><span class='duration'>0.00618s</span></dd>
+  </dl>
+</div>
+<div id="div_group_20" class="example_group passed">
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_20" class="passed">.category_id</dt>
+    <script type="text/javascript">moveProgressBar('35.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 2</span><span class='duration'>0.00592s</span></dd>
+  </dl>
+</div>
+<div id="div_group_21" class="example_group passed">
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_21" class="passed">.listed_type</dt>
+    <script type="text/javascript">moveProgressBar('36.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should equal &quot;Every&quot;</span><span class='duration'>0.00732s</span></dd>
+  </dl>
+</div>
+<div id="div_group_22" class="example_group passed">
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_22" class="passed">.listed_day</dt>
+    <script type="text/javascript">moveProgressBar('37.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq &quot;Tuesdays&quot;</span><span class='duration'>0.00642s</span></dd>
+  </dl>
+</div>
+<div id="div_group_23" class="example_group passed">
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_23" class="passed">.listed_month</dt>
+    <script type="text/javascript">moveProgressBar('38.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be nil</span><span class='duration'>0.00565s</span></dd>
+  </dl>
+</div>
+<div id="div_group_24" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_24" class="passed">monthly</dt>
+    <script type="text/javascript">moveProgressBar('39.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be valid</span><span class='duration'>0.00631s</span></dd>
+  </dl>
+</div>
+<div id="div_group_25" class="example_group passed">
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_25" class="passed">behaves like a recurring event</dt>
+  </dl>
+</div>
+<div id="div_group_26" class="example_group passed">
+  <dl style="margin-left: 60px;">
+  <dt id="example_group_26" class="passed">.recurring_flg</dt>
+    <script type="text/javascript">moveProgressBar('40.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should equal true</span><span class='duration'>0.00675s</span></dd>
+  </dl>
+</div>
+<div id="div_group_27" class="example_group passed">
+  <dl style="margin-left: 60px;">
+  <dt id="example_group_27" class="passed">.start_dt</dt>
+    <script type="text/javascript">moveProgressBar('41.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be nil</span><span class='duration'>0.00621s</span></dd>
+  </dl>
+</div>
+<div id="div_group_28" class="example_group passed">
+  <dl style="margin-left: 60px;">
+  <dt id="example_group_28" class="passed">.end_dt</dt>
+    <script type="text/javascript">moveProgressBar('42.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be nil</span><span class='duration'>0.00654s</span></dd>
+  </dl>
+</div>
+<div id="div_group_29" class="example_group passed">
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_29" class="passed">.category_id</dt>
+    <script type="text/javascript">moveProgressBar('43.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 3</span><span class='duration'>0.00636s</span></dd>
+  </dl>
+</div>
+<div id="div_group_30" class="example_group passed">
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_30" class="passed">.listed_type</dt>
+    <script type="text/javascript">moveProgressBar('44.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should equal &quot;Third&quot;</span><span class='duration'>0.00688s</span></dd>
+  </dl>
+</div>
+<div id="div_group_31" class="example_group passed">
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_31" class="passed">.listed_day</dt>
+    <script type="text/javascript">moveProgressBar('45.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq &quot;Wednesdays&quot;</span><span class='duration'>0.00556s</span></dd>
+  </dl>
+</div>
+<div id="div_group_32" class="example_group passed">
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_32" class="passed">.listed_month</dt>
+    <script type="text/javascript">moveProgressBar('46.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be nil</span><span class='duration'>0.00644s</span></dd>
+  </dl>
+</div>
+<div id="div_group_33" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_33" class="passed">annual</dt>
+    <script type="text/javascript">moveProgressBar('47.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be valid</span><span class='duration'>0.00606s</span></dd>
+  </dl>
+</div>
+<div id="div_group_34" class="example_group passed">
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_34" class="passed">behaves like a recurring event</dt>
+  </dl>
+</div>
+<div id="div_group_35" class="example_group passed">
+  <dl style="margin-left: 60px;">
+  <dt id="example_group_35" class="passed">.recurring_flg</dt>
+    <script type="text/javascript">moveProgressBar('48.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should equal true</span><span class='duration'>0.00605s</span></dd>
+  </dl>
+</div>
+<div id="div_group_36" class="example_group passed">
+  <dl style="margin-left: 60px;">
+  <dt id="example_group_36" class="passed">.start_dt</dt>
+    <script type="text/javascript">moveProgressBar('49.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be nil</span><span class='duration'>0.00589s</span></dd>
+  </dl>
+</div>
+<div id="div_group_37" class="example_group passed">
+  <dl style="margin-left: 60px;">
+  <dt id="example_group_37" class="passed">.end_dt</dt>
+    <script type="text/javascript">moveProgressBar('50.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be nil</span><span class='duration'>0.00566s</span></dd>
+  </dl>
+</div>
+<div id="div_group_38" class="example_group passed">
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_38" class="passed">.category_id</dt>
+    <script type="text/javascript">moveProgressBar('51.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 4</span><span class='duration'>0.00658s</span></dd>
+  </dl>
+</div>
+<div id="div_group_39" class="example_group passed">
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_39" class="passed">.listed_type</dt>
+    <script type="text/javascript">moveProgressBar('52.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should equal &quot;Last&quot;</span><span class='duration'>0.00670s</span></dd>
+  </dl>
+</div>
+<div id="div_group_40" class="example_group passed">
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_40" class="passed">.listed_day</dt>
+    <script type="text/javascript">moveProgressBar('53.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq &quot;Saturdays&quot;</span><span class='duration'>0.00593s</span></dd>
+  </dl>
+</div>
+<div id="div_group_41" class="example_group passed">
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_41" class="passed">.listed_month</dt>
+    <script type="text/javascript">moveProgressBar('54.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq &quot;March&quot;</span><span class='duration'>0.00579s</span></dd>
+  </dl>
+</div>
+<div id="div_group_42" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_42" class="passed">EventsHelper</dt>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
+    <script type="text/javascript">makeYellow('div_group_42');</script>
+    <script type="text/javascript">makeYellow('example_group_42');</script>
+    <script type="text/javascript">moveProgressBar('55.0');</script>
+    <dd class="example not_implemented"><span class="not_implemented_spec_name">add some examples to (or delete) /Users/dwilson/Documents/my_apps/partygps/spec/helpers/events_helper_spec.rb (PENDING: Not yet implemented)</span></dd>
+  </dl>
+</div>
+<div id="div_group_43" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_43" class="passed">PagesHelper</dt>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
+    <script type="text/javascript">makeYellow('div_group_43');</script>
+    <script type="text/javascript">makeYellow('example_group_43');</script>
+    <script type="text/javascript">moveProgressBar('56.0');</script>
+    <dd class="example not_implemented"><span class="not_implemented_spec_name">add some examples to (or delete) /Users/dwilson/Documents/my_apps/partygps/spec/helpers/pages_helper_spec.rb (PENDING: Not yet implemented)</span></dd>
+  </dl>
+</div>
+<div id="div_group_44" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_44" class="passed">Authorization</dt>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
+    <script type="text/javascript">makeYellow('div_group_44');</script>
+    <script type="text/javascript">makeYellow('example_group_44');</script>
+    <script type="text/javascript">moveProgressBar('57.0');</script>
+    <dd class="example not_implemented"><span class="not_implemented_spec_name">add some examples to (or delete) /Users/dwilson/Documents/my_apps/partygps/spec/models/authorization_spec.rb (PENDING: Not yet implemented)</span></dd>
+  </dl>
+</div>
+<div id="div_group_45" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_45" class="passed">Event</dt>
+    <script type="text/javascript">moveProgressBar('58.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #name</span><span class='duration'>0.78686s</span></dd>
+    <script type="text/javascript">moveProgressBar('59.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #location_id</span><span class='duration'>0.76723s</span></dd>
+    <script type="text/javascript">moveProgressBar('60.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #photo</span><span class='duration'>0.76761s</span></dd>
+    <script type="text/javascript">moveProgressBar('61.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #start_dt</span><span class='duration'>0.78951s</span></dd>
+    <script type="text/javascript">moveProgressBar('62.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #end_dt</span><span class='duration'>0.77268s</span></dd>
+    <script type="text/javascript">moveProgressBar('63.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #description</span><span class='duration'>0.76682s</span></dd>
+    <script type="text/javascript">moveProgressBar('64.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #adm</span><span class='duration'>0.76920s</span></dd>
+    <script type="text/javascript">moveProgressBar('65.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #location</span><span class='duration'>0.76070s</span></dd>
+    <script type="text/javascript">moveProgressBar('66.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #listing</span><span class='duration'>0.76067s</span></dd>
+    <script type="text/javascript">moveProgressBar('67.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be valid</span><span class='duration'>0.76885s</span></dd>
+  </dl>
+</div>
+<div id="div_group_46" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_46" class="passed">Listing</dt>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
+    <script type="text/javascript">makeYellow('div_group_46');</script>
+    <script type="text/javascript">makeYellow('example_group_46');</script>
+    <script type="text/javascript">moveProgressBar('68.0');</script>
+    <dd class="example not_implemented"><span class="not_implemented_spec_name">add some examples to (or delete) /Users/dwilson/Documents/my_apps/partygps/spec/models/listing_spec.rb (PENDING: Not yet implemented)</span></dd>
+  </dl>
+</div>
+<div id="div_group_47" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_47" class="passed">Location</dt>
+    <script type="text/javascript">moveProgressBar('69.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #name</span><span class='duration'>0.80427s</span></dd>
+    <script type="text/javascript">moveProgressBar('70.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #street_address</span><span class='duration'>0.77462s</span></dd>
+    <script type="text/javascript">moveProgressBar('71.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #city_town</span><span class='duration'>0.78341s</span></dd>
+    <script type="text/javascript">moveProgressBar('72.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #state_parish</span><span class='duration'>0.77820s</span></dd>
+    <script type="text/javascript">moveProgressBar('73.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #zipcode</span><span class='duration'>0.77750s</span></dd>
+    <script type="text/javascript">moveProgressBar('74.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #country</span><span class='duration'>0.77793s</span></dd>
+    <script type="text/javascript">moveProgressBar('75.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #photo</span><span class='duration'>0.77509s</span></dd>
+    <script type="text/javascript">moveProgressBar('76.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #longitude</span><span class='duration'>0.77704s</span></dd>
+    <script type="text/javascript">moveProgressBar('77.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #latitude</span><span class='duration'>0.79258s</span></dd>
+    <script type="text/javascript">moveProgressBar('78.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #events</span><span class='duration'>0.78376s</span></dd>
+    <script type="text/javascript">moveProgressBar('79.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be valid</span><span class='duration'>0.77487s</span></dd>
+  </dl>
+</div>
+<div id="div_group_48" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_48" class="passed">User</dt>
+    <script type="text/javascript">moveProgressBar('80.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #email</span><span class='duration'>0.00809s</span></dd>
+    <script type="text/javascript">moveProgressBar('81.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #first_name</span><span class='duration'>0.00622s</span></dd>
+    <script type="text/javascript">moveProgressBar('82.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #last_name</span><span class='duration'>0.00534s</span></dd>
+    <script type="text/javascript">moveProgressBar('83.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #username</span><span class='duration'>0.00533s</span></dd>
+    <script type="text/javascript">moveProgressBar('84.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #address</span><span class='duration'>0.00498s</span></dd>
+    <script type="text/javascript">moveProgressBar('85.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #address2</span><span class='duration'>0.00528s</span></dd>
+    <script type="text/javascript">moveProgressBar('86.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #city</span><span class='duration'>0.00565s</span></dd>
+    <script type="text/javascript">moveProgressBar('87.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #state</span><span class='duration'>0.00582s</span></dd>
+    <script type="text/javascript">moveProgressBar('88.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #zipcode</span><span class='duration'>0.00632s</span></dd>
+    <script type="text/javascript">moveProgressBar('89.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #country</span><span class='duration'>0.00572s</span></dd>
+    <script type="text/javascript">moveProgressBar('90.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #password</span><span class='duration'>0.00494s</span></dd>
+    <script type="text/javascript">moveProgressBar('91.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #password_confirmation</span><span class='duration'>0.00574s</span></dd>
+    <script type="text/javascript">moveProgressBar('92.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond to #role</span><span class='duration'>0.00588s</span></dd>
+    <script type="text/javascript">moveProgressBar('93.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be valid</span><span class='duration'>0.00587s</span></dd>
+  </dl>
+</div>
+<div id="div_group_49" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_49" class="passed">when address is not present</dt>
+    <script type="text/javascript">moveProgressBar('94.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be valid</span><span class='duration'>0.00718s</span></dd>
+  </dl>
+</div>
+<div id="div_group_50" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_50" class="passed">when first name is not present</dt>
+    <script type="text/javascript">moveProgressBar('95.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be valid</span><span class='duration'>0.00713s</span></dd>
+  </dl>
+</div>
+<div id="div_group_51" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_51" class="passed">when last name is not present</dt>
+    <script type="text/javascript">moveProgressBar('96.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be valid</span><span class='duration'>0.00658s</span></dd>
+  </dl>
+</div>
+<div id="div_group_52" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_52" class="passed">when password is less than 8 characters</dt>
+    <script type="text/javascript">moveProgressBar('97.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not be valid</span><span class='duration'>0.00709s</span></dd>
+  </dl>
+</div>
+<div id="div_group_53" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_53" class="passed">after creation</dt>
+    <script type="text/javascript">moveProgressBar('98.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have the correct role</span><span class='duration'>0.00645s</span></dd>
+    <script type="text/javascript">moveProgressBar('99.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have the correct username</span><span class='duration'>0.00689s</span></dd>
+  </dl>
+</div>
+<div id="div_group_54" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_54" class="passed">pages/home.html.erb</dt>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
+    <script type="text/javascript">makeYellow('div_group_54');</script>
+    <script type="text/javascript">makeYellow('example_group_54');</script>
+    <script type="text/javascript">moveProgressBar('100.0');</script>
+    <dd class="example not_implemented"><span class="not_implemented_spec_name">add some examples to (or delete) /Users/dwilson/Documents/my_apps/partygps/spec/views/pages/home.html.erb_spec.rb (PENDING: Not yet implemented)</span></dd>
+  </dl>
+</div>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>17.66046 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "100 examples, 0 failures, 5 pending";</script>
 </div>
 </div>
 </body>

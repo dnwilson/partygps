@@ -1,6 +1,6 @@
 = form_for(@event_listing_form, url: path , html: { method: type, class: "form-horizontal style-form" }) do |f|
-  
-  / = devise_error_messages!
+   
+  = render 'shared/error_messages', object: f.object
   div class="form-group" style="border-top: 2px solid #eff2f7; padding-top: 15px; margin-top: 15px"
     = f.label :name, class: "col-sm-2 col-md-2 control-label"
     div.col-sm-10
@@ -45,7 +45,7 @@
     div.col-sm-2
       = f.label "Recurring?"
     div.col-sm-10
-      = f.check_box :recurring_flg, {id: 'recurring'}, true, false
+      = f.check_box :recurring_flg, {id: 'recurring'}, "true", "false"
 
   div class="box-footer" style="text-align:right;"
     = f.submit "Submit", class: "btn btn-primary"
