@@ -1,6 +1,6 @@
 class Admin::EventsController < Admin::BaseController
-  # before_action :set_event, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  authorize_resource
   # GET /events
   # GET /events.json
   def index
@@ -22,13 +22,13 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def new
-    @event_listing_form = EventListingForm.new
+    @event = Event.new
   end
 
   def create
-    @event_listing_form = EventListingForm.new(params[:event_listing_form])
-    if @event_listing_form.submit
-      flash[:notice] = "Successfully created event." 
+    @event = Event.new(event_params)
+    if @event.save
+      flash[:success] = "Successfully created event." 
       redirect_to admin_events_path
     else
       render :action => 'new'
@@ -36,16 +36,12 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def edit
-    @event_listing = EventListing.submit(event_params)
-    # @event.build_weekly_event
-    # if @event.recurring? 
-    #   @event.build_recurring_event
-    # end
+    @event = Event.new(event_params)
   end
 
   def update
     if @event.update_attributes(event_params)
-      flash[:notice] = "Successfully updated event."
+      flash[:success] = "Successfully updated event."
       redirect_to admin_events_path
     else
       render :action => 'edit'
@@ -61,18 +57,15 @@ class Admin::EventsController < Admin::BaseController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    # def set_event
-    #   @event = Event.find(params[:id])
-    # end
+    def set_event
+      @event = Event.find(params[:id])
+    end
 
-    # def set_location
-    #   @location = Location.find(params[:event][:location_id])
-    # end
-
-    # def event_params
-    #   params.require(:event).permit(:name, :photo, :location_id, :start_dt, 
-    #                                 :end_dt, :adm, :description, :recurring_flg)
-    # end
+    def event_params
+      params.require(:event).permit(:name, :photo, :location_id, :start_dt, 
+                                    :end_dt, :adm, :description, :listed_day, 
+                                    :listed_type, :listed_month, :category_id)
+    end
 
     # def event_listing_params
     #   params.require(:event).permit( :name, :photo, :recurring_flg, :start_dt, :end_dt, :adm,:description, :location_id, :listed_day, :listed_month, :listed_type, :category_id)

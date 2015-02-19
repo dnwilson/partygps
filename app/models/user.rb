@@ -22,10 +22,10 @@ class User < ActiveRecord::Base
 	validates :zipcode, length: {maximum: 20 }
 	validates :role, presence: true
 	
-	ROLES = %w[user admin]
+	ROLES = %w[guest user admin super_admin]
 
 	def role?(base_role)
-		role.present? && ROLES.index(base_role.to_s) <= ROLES.index(role)
+		ROLES.index(base_role.to_s) <= ROLES.index(role)
 	end
 
 	def fullname
@@ -33,11 +33,11 @@ class User < ActiveRecord::Base
 	end
 
 	def is_admin?
-		role.eql?("admin")
+		role.eql?("admin") rescue nil
 	end
 
 	def is_user?
-		role.eql?("user")
+		role.eql?("user") rescue nil
 	end
 
 	def ensure_authentication_token

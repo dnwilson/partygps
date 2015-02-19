@@ -1,6 +1,7 @@
 class Location < ActiveRecord::Base
 
 	include PgSearch
+	
 	# Setup searchable fields
 	multisearchable against: [:name, :street_address, :city_town, :state_parish]
 
@@ -8,16 +9,16 @@ class Location < ActiveRecord::Base
 
 	mount_uploader :photo, ImageUploader
 
-	geocoded_by :get_coordinates, if: ->(obj){ obj.address.present? and obj.address_changed? }
-	after_validation :geocode          # auto-fetch coordinates
+	geocoded_by :get_coordinates
+	before_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 	
 	# validates :street_address, presence: true
 	# validates :city_town, length: { minimum: 2, maximum: 50 }
-	validates :state_parish, presence: true, length: { minimum: 2, maximum: 50 }
-	validates :country, presence: true
+	# validates :state_parish, presence: true, length: { minimum: 2, maximum: 50 }
+	# validates :country, presence: true
 
-	# validates :latitude, presence: {message: "Not a valid location on Google Maps. Please check name, address and parish on fields."}
-	# validates :longitude, presence: {message: "Not a valid location on Google Maps. Please check name, address and parish on fields."}
+	validates :latitude, presence: {message: "Not a valid location on Google Maps. Please check name, address and parish on fields."}
+	validates :longitude, presence: {message: "Not a valid location on Google Maps. Please check name, address and parish on fields."}
 
 	# scope :upcoming_events, 
 
@@ -29,6 +30,11 @@ class Location < ActiveRecord::Base
 	def get_coordinates
 		[self.name, self.street_address, self.city_town, self.state_parish, self.country].compact.join(' ')
 	end
+
+	def address_changed?
+	  attrs = %w(name street_address city_town state_parish country)
+	  attrs.any?{|a| send "#{a}_changed?"}
+  end
 
 	def upcoming_events
 		self.events.where("date IS NULL OR date >= ?", Date.today)

@@ -4,9 +4,9 @@ class EventListingForm
 
   # delegate :name, :photo, :recurring_flg, :start_dt, :end_dt, :adm, :description, :location_id, to: :event
   # delegate :listed_day, :listed_month, :listed_type, :category_id, to: :listing
+  
   validates :name, presence: true, length: { minimum: 2, maximum: 30 }
   validates_presence_of :location_id, :category_id, :listed_day, :listed_type
-  # validate :valid_start_dt
   validate :presence_of_date_or_category
 
   attr_accessor(
@@ -23,6 +23,23 @@ class EventListingForm
     :listed_type, 
     :category_id
   )
+
+  # def initialize(event)
+  #   binding.pry
+  #   name          = event.name
+  #   photo         = event.photo 
+  #   recurring_flg = event.recurring_flg
+  #   start_dt      = event.start_dt
+  #   end_dt        = event.end_dt 
+  #   adm           = event.adm
+  #   description   = event.description 
+  #   location_id   = event.location_id
+  #   listed_day    = event.listing.listed_day
+  #   listed_month  = event.listing.listed_month
+  #   listed_type   = event.listing.listed_type 
+  #   category_id   = event.listing.category_id
+  #   binding.pry
+  # end
   
   def submit
     setup_listing
@@ -42,7 +59,7 @@ class EventListingForm
 
   def presence_of_date_or_category
     if start_dt.present?
-      errors.add(:start_dt, "cannot be in the past") unless DateTime.parse(self.start_dt) >= DateTime.now rescue false
+      errors.add(:start_dt, "cannot be in the past") unless self.start_dt >= DateTime.now rescue false
     else
       errors.add(:start_dt, "must be entered unless this is a recurring event") unless category_id.present? rescue errors.add(:start_dt, "must be entered unless this is a recuring event")
     end
@@ -52,8 +69,10 @@ class EventListingForm
     def persist!
       @event   = Event.new(name: name, photo: photo, start_dt: start_dt, adm: adm,recurring_flg: recurring_flg, description: description,location_id: location_id)
       @listing = @event.build_listing(listed_type: listed_type, listed_day: listed_day, listed_month: listed_month, category_id: category_id)
-      @event.save
-      @listing.save
+      ActiveRecord::Base.transaction do
+        @event.save
+        @listing.save
+      end
     end
 
     def set_recurring

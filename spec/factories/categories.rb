@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :category do
-    name "Test"
+    name Event::REG
   end
 end

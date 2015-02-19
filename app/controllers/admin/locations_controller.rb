@@ -19,7 +19,7 @@ class Admin::LocationsController < Admin::BaseController
   def create
     @location = Location.new(location_params)
     if @location.save
-      flash[:notice] = "Successfully created location." 
+      flash[:success] = "Successfully created location." 
       redirect_to admin_locations_path
     else
       render :action => 'new'
@@ -31,7 +31,7 @@ class Admin::LocationsController < Admin::BaseController
 
   def update
     if @location.update_attributes(location_params)
-      flash[:notice] = "Successfully updated location."
+      flash[:success] = "Successfully updated location."
       redirect_to admin_locations_path
     else
       render :action => 'edit'

@@ -1,6 +1,6 @@
-RSpec.configure do |config|
-  config.extend StubOutFacebookApi
-end
+# RSpec.configure do |config|
+#   config.extend StubOutFacebookApi
+# end
 
 module StubOutFacebookApi
   def stub_out_facebook_api!
@@ -18,8 +18,8 @@ module StubOutFacebookApi
         first_name:   "John",
         last_name: "Doe",
         email: 'johndoe@example.com'
-       }
-       creditials:{
+       },
+       creditials: {
         token: 'mock_token',
         secret: 'mock_secret'
        }

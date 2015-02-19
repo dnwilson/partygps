@@ -27,6 +27,29 @@ if Rails.env.test?
     ]
   )
   Geocoder::Lookup::Test.add_stub(
+    "New Name 1 Testing Way Testville Kingston Jamaica", [
+      {
+        'latitude'     =>  18,
+        'longitude'    =>  -76.8,
+        'region'      => '',
+        'city'        => 'Kingston',
+        'country'      => 'Jamaica',
+        'country_code' => 'JM'
+      }
+    ]
+  )
+  Geocoder::Lookup::Test.add_stub(
+    "Test HQ 1 Testing Way Testville Kingston", [
+      {
+        'latitude'     =>  18,
+        'region'      => '',
+        'city'        => 'Kingston',
+        'country'      => 'Jamaica',
+        'country_code' => 'JM'
+      }
+    ]
+  )
+  Geocoder::Lookup::Test.add_stub(
     "Kingston, Jamaica", [
       {
         'latitude'     =>  18,

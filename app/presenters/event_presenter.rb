@@ -10,8 +10,8 @@ class EventPresenter
   end
 
   def display_date
-    if @event.recurring_flg?
-      @event.listing.category.name
+    if @event.recurring?
+      @event.category.name
     else
       @event.start_dt.strftime("%b %-d, %Y")
     end

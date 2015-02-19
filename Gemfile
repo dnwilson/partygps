@@ -67,6 +67,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers', require: false
   gem 'guard-rspec'
+  gem 'webmock'
   gem 'pry-nav'
   gem 'rb-fsevent' if `uname` =~ /Darwin/
 end

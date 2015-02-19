@@ -22,33 +22,16 @@ RSpec.describe Location, :type => :model do
 	it{should respond_to(:latitude)}
 	it{should respond_to(:events)}
 	it{should be_valid}
+	
+	context "when latitude is not present" do
+		before{@location.latitude = nil}
+		it{should_not be_valid}
+	end
 
-	# context "when country is not present" do
-	# 	before{@location.longitude = nil}
-	# 	it{should_not be_valid}
-	# end
-
-	# context "when latitude is not present" do
-	# 	before{@location.latitude = nil}
-	# 	it{should_not be_valid}
-	# end
-
-	# context "when longitude is not present" do
-	# 	before{@location.longitude = nil}
-	# 	it{should_not be_valid}
-	# end
-
-	# GPS specs
-
-	# context "when latitude is not present" do
-	# 	before{@location.latitude = nil}
-	# 	it{should_not be_valid}
-	# end
-
-	# context "when longitude is not present" do
-	# 	before{@location.longitude = nil}
-	# 	it{should_not be_valid}
-	# end
+	context "when longitude is not present" do
+		before{@location.longitude = nil}
+		it{should_not be_valid}
+	end
 
 
 end

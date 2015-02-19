@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211024220) do
+ActiveRecord::Schema.define(version: 20150210031230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,30 +37,23 @@ ActiveRecord::Schema.define(version: 20150211024220) do
 
   create_table "events", force: true do |t|
     t.integer  "location_id"
+    t.integer  "category_id"
     t.string   "name"
     t.string   "photo"
     t.datetime "start_dt"
     t.datetime "end_dt"
     t.text     "description"
-    t.decimal  "adm",           precision: 8, scale: 2
-    t.integer  "listing_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "recurring_flg",                         default: false
-  end
-
-  add_index "events", ["id", "listing_id"], name: "index_events_on_id_and_listing_id", using: :btree
-  add_index "events", ["id", "location_id"], name: "index_events_on_id_and_location_id", unique: true, using: :btree
-
-  create_table "listings", force: true do |t|
-    t.integer  "category_id"
-    t.integer  "event_id"
     t.string   "listed_day"
     t.string   "listed_month"
     t.string   "listed_type"
+    t.decimal  "adm",          precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "events", ["id", "category_id"], name: "index_events_on_id_and_category_id", using: :btree
+  add_index "events", ["id", "location_id", "category_id"], name: "index_events_on_id_and_location_id_and_category_id", using: :btree
+  add_index "events", ["id", "location_id"], name: "index_events_on_id_and_location_id", unique: true, using: :btree
 
   create_table "locations", force: true do |t|
     t.string   "name"

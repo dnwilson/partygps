@@ -6,4 +6,4 @@ div.row
         h4
           i.fa.fa-user.fa-fw
           | Edit #{@event.name}
-      = render 'form', path: admin_event_path(@event), type: :put
+      = render 'form', path: admin_event_path(@event), method: :put

@@ -15,6 +15,7 @@ User.create!(first_name: "Admin", last_name:"Admin", email: "admin@pgps.com", us
 User.create!(first_name: "Test", last_name:"User", email: "tester@pgps.com",username: "tester", password: "foobar123", password_confirmation: "foobar123", role: "user")
 p "Created #{User.count} users"
 
+Category.create!(name: Event::REG)
 Event::EVENT_TYPE.each do |category|
   Category.create!(name: category)
 end

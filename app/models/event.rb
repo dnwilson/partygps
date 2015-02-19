@@ -14,7 +14,17 @@ class Event < ActiveRecord::Base
 	multisearchable against: [:name, :description]
 
 	belongs_to :location
-	has_one :listing, dependent: :destroy 
+	belongs_to :category
+
+	before_save :setup_category
+	# before_save :setup_listing #, if: :occurs_once?
+
+	validates :name, presence: true, length: { minimum: 2, maximum: 30 }
+  validates_presence_of :location_id, :category_id
+  validate :date_format, unless: :recurring?
+  validate :presence_of_date_or_category, :check_date_format
+  validates :start_dt, date: {on_or_after: DateTime.now}
+  # validates_presence_of :category_id, :listed_type, :listed_day, :listed_month, if: :recurring?
 
 	mount_uploader :photo, ImageUploader
 
@@ -46,7 +56,8 @@ class Event < ActiveRecord::Base
  #  end
 
 	# def occurs_once?
-	# 	listing.category.name.eql?(REG) || listing.category.name.nil?
+	# 	binding.pry
+	# 	self.try(:category).name.eql?(REG) || self.try(:category).name.nil? rescue true
 	# end
 
 	# def recurring?
@@ -83,8 +94,57 @@ class Event < ActiveRecord::Base
 	# def self.on_this_date(event_date)
 	# 	where(event_date: event_date)
 	# end
+	# def occurs_once?
+ #  	category.name.eql?(REG)
+ #  end
+  def recurring?
+    true unless self.try(:category).name.eql?(REG) rescue false
+  end
 
 	private
+		def presence_of_date_or_category
+	    if start_dt.present?
+	      errors.add(:start_dt, "cannot be in the past") unless self.start_dt >= DateTime.now rescue false
+	    else
+	      errors.add(:start_dt, "must be entered unless this is a recurring event") unless category_id.present? rescue errors.add(:start_dt, "must be entered unless this is a recuring event")
+	    end
+	  end
 
+    def check_date_format
+			self.errors[:start_dt] << "must be a valid date" unless DateTime.parse(self.start_dt) rescue false
+		end
+
+    def setup_category
+      # self.category_id = Category.where(name: Event::REG).first.id if category_id.nil?
+      if recurring?
+        self.start_dt = nil
+        self.end_dt = nil
+      end
+      case category.name
+      when REG
+      	self.listed_day    = start_dt.to_datetime.strftime("%A")
+        self.listed_type   = Event::REG
+        self.listed_month  = start_dt.to_datetime.strftime("%B")
+      when WEEKLY
+        self.listed_month = nil
+        self.listed_type = EVERY
+      when MONTHLY
+        self.listed_month = nil
+      end
+    end
+
+    # def setup_regular
+    #   begin
+    #     self.category_id   = Category.where(name: REG).first.id
+    #   rescue 
+    #     errors.add(:start_dt, "must be entered unless this is a recurring event")
+    #   end
+    # end
+
+	  def date_format
+	  	Rails.logger.debug "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+	  	Rails.logger.debug errors.add(:start_dt, "cannot be in the past") unless self.start_dt >= DateTime.now rescue false
+	    errors.add(:start_dt, "cannot be in the past") unless self.start_dt >= DateTime.now rescue false
+	  end
 
 end

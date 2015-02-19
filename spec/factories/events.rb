@@ -2,12 +2,12 @@
 
 FactoryGirl.define do
   factory :event do
-    association :location
-    association :listing
-    name        "Some Event"
-    photo       File.new(Rails.root + "spec/fixtures/rails.png")
-    event_date  Date.tomorrow.strftime("%m/%d/%Y")
-    description "Some random rambings"
-    adm         15.00
+    location
+    category
+    name            Forgery::LoremIpsum.words(2)
+    photo           File.new(Rails.root + "spec/fixtures/rails.png")
+    start_dt        DateTime.tomorrow
+    description     Forgery::LoremIpsum.paragraphs(1)
+    adm             15.00
   end
 end
