@@ -3,16 +3,16 @@ showAdvancedOptions = ->
   if recurring is false
     $('.date-entry').removeClass 'hidden'
     $('.advanced-event').addClass 'hidden'    
-    $('#category option[value=4]').attr("selected","selected")
+    $('#category option[value=2]').attr("selected","selected")
   else
     $('.date-entry').addClass 'hidden'
     $('.advanced-event').removeClass 'hidden'
     showRecurring()
 
 showRecurring = ->
-  category = $('#category-select option:selected').text()
+  category = $('#category option:selected').text()
   if category is "Weekly" or category is ""
-    $('#category option[value=1]').attr("selected","selected")
+    $('#category option[value=2]').attr("selected","selected")
     hidden_fields = ['.listed_type', '.listed_month']
     remove_fields = ['.col-sm-2', '.col-md-2']
     $('.listed_type').addClass 'hidden'

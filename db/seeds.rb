@@ -24,14 +24,15 @@ p "Created #{Category.count} event categories"
 l1 = Location.create!(name: "The Quad", state_parish: "Kingston", country: "Jamaica")
 l2 = Location.create!(name: "Cuddyz", state_parish: "Kingston", country: "Jamaica")
 l3 = Location.create!(name: "Fiction", state_parish: "Kingston", country: "Jamaica")
-l4 = Location.create!(name: "Mass Camp", state_parish: "Portmore", country: "Jamaica")
+l4 = Location.create!(name: "Mass Camp", state_parish: "Kingston", country: "Jamaica")
 l5 = Location.create!(name: "Sugarman's Beach", state_parish: "Portmore", country: "Jamaica")
 l6 = Location.create!(name: "Hellshire Beach", state_parish: "Portmore", country: "Jamaica")
-l7 = Location.create!(name: "V Club", state_parish: "Kingston", country: "Jamaica")
+l7 = Location.create!(name: "V Club", state_parish: "Portmore", country: "Jamaica")
 l8 = Location.create!(name: "Tracks & Records", state_parish: "Kingston", country: "Jamaica")
 l9 = Location.create!(name: "Mr Tires", street_address: "Waltham Park Road", state_parish: "Kingston", country: "Jamaica")
 l10 = Location.create!(name: "Oneil's Place", state_parish: "Kingston", country: "Jamaica")
-l10 = Location.create!(name: "Tripple Century", state_parish: "Kingston", country: "Jamaica")
+l11 = Location.create!(name: "Tripple Century", state_parish: "Kingston", country: "Jamaica")
+l12 = Location.create!(name: "Margarita Ville", state_parish: "Negril", country: "Jamaica")
 p "Created #{Location.count} locations"
 
 # Event.create!()

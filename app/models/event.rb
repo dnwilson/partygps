@@ -28,12 +28,18 @@ class Event < ActiveRecord::Base
 
 	mount_uploader :photo, ImageUploader
 
-	REG 			= "Regular"
-	WEEKLY 	 	= "Weekly"
-	BI_WEEKLY	= "Bi-Weekly"
-	MONTHLY 	= "Monthly"
-	ANNUAL 		= "Annual"
-	EVENT_TYPE = [WEEKLY, MONTHLY, ANNUAL]
+  scope :weekly,          -> { where('category_id = ?', Category.where(name: WEEKLY).first.id) }
+  scope :monthly,         -> { where('category_id = ?', Category.where(name: MONTHLY).first.id) }
+  scope :annual,          -> { where('category_id = ?', Category.where(name: ANNUAL).first.id) }
+  # scope :happening_now,   -> { where('start_dt = ? OR ', ) }
+  # scope :weekly, -> { where(listed_type: WEEKLY) }
+
+	# REG 			= "Regular"
+	# WEEKLY 	 	= "Weekly"
+	# BI_WEEKLY	= "Bi-Weekly"
+	# MONTHLY 	= "Monthly"
+	# ANNUAL 		= "Annual"
+	# EVENT_TYPE = [WEEKLY, MONTHLY, ANNUAL]
 
 	def location_name
 		location.name
@@ -46,6 +52,12 @@ class Event < ActiveRecord::Base
 	def address
 		[location.street_address, location.city_town, location.state_parish]
 	end
+
+  def self.happening_now
+    # includes(:person).joins(:user_type_histories).where("user_type_histories.effective_end_dt is null or user_type_histories.effective_end_dt >= '#{ Time.now.utc }'")
+    joins(:category).where('categories.name != "Regular" AND events.listed_day = ? OR events.start_dt = ?', DateTime.today.strftime("%A"), DateTime.today)
+    # where (start_dt: DateTime.today || (listed_day: DateTime.today.strftime("%A") && category_id: Category.where(name: MONTHLY).first.id) )
+  end
 
 	# def display_date
  #    if @event.recurring_flg?
@@ -123,7 +135,7 @@ class Event < ActiveRecord::Base
       case category.name
       when REG
       	self.listed_day    = start_dt.to_datetime.strftime("%A")
-        self.listed_type   = Event::REG
+        self.listed_type   = REG
         self.listed_month  = start_dt.to_datetime.strftime("%B")
       when WEEKLY
         self.listed_month = nil

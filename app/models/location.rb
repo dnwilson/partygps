@@ -12,6 +12,15 @@ class Location < ActiveRecord::Base
 	geocoded_by :get_coordinates
 	before_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 	
+	reverse_geocoded_by :latitude, :longitude do |obj,results|
+	  if geo = results.first
+	  	obj.street_address	= geo.street_address
+	    obj.city_town    		= geo.city
+	    obj.state_parish 		= geo.postal_code
+	    obj.country 		 		= geo.country
+	  end
+	end
+	after_validation :reverse_geocode
 	# validates :street_address, presence: true
 	# validates :city_town, length: { minimum: 2, maximum: 50 }
 	# validates :state_parish, presence: true, length: { minimum: 2, maximum: 50 }
@@ -28,7 +37,7 @@ class Location < ActiveRecord::Base
 	end
 
 	def get_coordinates
-		[self.name, self.street_address, self.city_town, self.state_parish, self.country].compact.join(' ')
+		[self.name, self.state_parish, self.country].compact.join(', ')
 	end
 
 	def address_changed?

@@ -64,10 +64,6 @@ group :development, :test do
   gem 'forgery'
   gem 'factory_girl_rails'
   gem 'spring-commands-rspec'
-  gem 'rspec-rails'
-  gem 'shoulda-matchers', require: false
-  gem 'guard-rspec'
-  gem 'webmock'
   gem 'pry-nav'
   gem 'rb-fsevent' if `uname` =~ /Darwin/
 end
@@ -84,6 +80,10 @@ group :test do
   gem 'capybara', '~> 2.1'
   gem 'capybara-webkit'
   gem 'database_cleaner'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers', require: false
+  gem 'guard-rspec'
+  gem 'webmock'
 end
 
 group :production do
