@@ -37,6 +37,7 @@ gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'slim-rails'
 gem "browser"
+gem 'google_places'
 
 # For QR Codes
 gem 'rqrcode-with-patches', '~> 0.5.4'
