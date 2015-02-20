@@ -6,7 +6,7 @@ FactoryGirl.define do
     category
     name            Forgery::LoremIpsum.words(2)
     photo           File.new(Rails.root + "spec/fixtures/rails.png")
-    start_dt        DateTime.tomorrow
+    start_dt        Forgery::Date.date(future: true, max_delta: 365)
     description     Forgery::LoremIpsum.paragraphs(1)
     adm             15.00
   end

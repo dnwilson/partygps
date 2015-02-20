@@ -54,9 +54,11 @@ class Event < ActiveRecord::Base
 	end
 
   def self.happening_now
-    # includes(:person).joins(:user_type_histories).where("user_type_histories.effective_end_dt is null or user_type_histories.effective_end_dt >= '#{ Time.now.utc }'")
-    joins(:category).where('categories.name != "Regular" AND events.listed_day = ? OR events.start_dt = ?', DateTime.today.strftime("%A"), DateTime.today)
-    # where (start_dt: DateTime.today || (listed_day: DateTime.today.strftime("%A") && category_id: Category.where(name: MONTHLY).first.id) )
+    joins(:category).where('events.start_dt = ?', Date.today)
+  end
+
+  def self.on_a(day)
+    where(listed_day: day)
   end
 
 	# def display_date
@@ -131,6 +133,7 @@ class Event < ActiveRecord::Base
       if recurring?
         self.start_dt = nil
         self.end_dt = nil
+        self.listed_day = listed_day.slice!(listed_day.length - 1)
       end
       case category.name
       when REG

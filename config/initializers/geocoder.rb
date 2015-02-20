@@ -39,7 +39,7 @@ if Rails.env.test?
     ]
   )
   Geocoder::Lookup::Test.add_stub(
-    "Test HQ 1 Testing Way Testville Kingston Jamaica", [
+    "Test HQ, 1 Testing Way, Testville, Kingston, Jamaica", [
       {
         'latitude'     =>  18,
         'longitude'    =>  -76.8,
@@ -63,7 +63,7 @@ if Rails.env.test?
     ]
   )
   Geocoder::Lookup::Test.add_stub(
-    "Test HQ 1 Testing Way Testville Kingston", [
+    "Test HQ, 1 Testing Way, Testville, Kingston", [
       {
         'latitude'     =>  18,
         'region'      => '',
@@ -114,7 +114,7 @@ else
     # geocoding service (see below for supported options):
     # :lookup => :yandex,
     # lookup: :bing,
-    # key: "AsfNsF1veuhARaTdpIlFSk7czMXyscbi0YCWpZeyF4ns4KCMxyQR4GFmJJ7La6vC",
+    # api_key: "AsfNsF1veuhARaTdpIlFSk7czMXyscbi0YCWpZeyF4ns4KCMxyQR4GFmJJ7La6vC",
     # lookup: :google
     # api_key: 
 
