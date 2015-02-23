@@ -89,7 +89,6 @@ class Event < ActiveRecord::Base
     end
 
 	  def date_format
-	  	Rails.logger.debug "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 	  	Rails.logger.debug errors.add(:start_dt, "cannot be in the past") unless self.start_dt >= DateTime.now rescue false
 	    errors.add(:start_dt, "cannot be in the past") unless self.start_dt >= DateTime.now rescue false
 	  end

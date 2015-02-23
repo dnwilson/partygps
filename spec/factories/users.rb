@@ -2,15 +2,15 @@
 
 FactoryGirl.define do
   factory :user do
-  	sequence(:email)	     {Forgery::Internet.email_address}
-  	first_name			       Forgery::Name.first_name
-  	last_name			         Forgery::Name.last_name
+  	email	                 Faker::Internet.email
+  	first_name			       Faker::Name.first_name
+  	last_name			         Faker::Name.last_name
   	dob 				           20.years.ago
-  	address                Forgery::Address.street_address
-  	state 				         Forgery::Address.state 
-  	city				           Forgery::Address.city 
-  	zipcode                Forgery::Address.zip 
-  	country			           Forgery::Address.country
+  	address                Faker::Address.street_address
+  	# state 				         Faker::Address.state 
+  	city				           Faker::Address.city 
+  	zipcode                Faker::Address.zip_code
+  	country			           Faker::Address.country
   	role                   "user"
     password               "foobar123"
     password_confirmation  "foobar123"

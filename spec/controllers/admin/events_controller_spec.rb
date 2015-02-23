@@ -9,7 +9,7 @@ RSpec.describe Admin::EventsController, :type => :controller do
   let(:event){ create :event, location: location, category: category }
   let(:valid_attributes) { 
     { 
-      name:           Forgery::LoremIpsum.words(2), 
+      name:           Faker::Company.catch_phrase, 
       photo:          '', 
       recurring_flg:  'false', 
       start_dt:       '09/09/2015', 

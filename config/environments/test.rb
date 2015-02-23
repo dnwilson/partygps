@@ -66,4 +66,6 @@ Rails.application.configure do
       'secret' => 'mock_secret'
     }
   }
+
+  # Faker::Config.locale = 'en-JM'
 end

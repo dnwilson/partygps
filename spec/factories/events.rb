@@ -4,10 +4,11 @@ FactoryGirl.define do
   factory :event do
     location
     category
-    sequence(:name)         {Forgery::LoremIpsum.words(2)}
+    sequence(:name)         {Faker::Company.catch_phrase}
     photo                   File.new(Rails.root + "spec/fixtures/rails.png")
-    start_dt                Forgery::Date.date(future: true, max_delta: 365)
-    sequence(:description)  {Forgery::LoremIpsum.paragraphs(1)}
-    sequence(:adm)          {rand(15..2500)}
+    start_dt                {Faker::Time.between(Time.now, 60.days.from_now, :night)}
+    sequence(:description)  {Faker::Lorem.sentences(2)}
+    adm                     rand(15..2500)
   end
 end
+

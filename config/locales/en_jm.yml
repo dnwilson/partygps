@@ -1,0 +1,5 @@
+en_jm:
+  faker:
+    address:
+      state: [Clarendon, Hanover, Kingston, Manchester, Portland, St. Andrew, St. Ann, St. Catherine, St. Elizabeth, St. James, St. Mary, St. Thomas, Trelawny, Westmoreland]
+      default_country: [Jamaica]
