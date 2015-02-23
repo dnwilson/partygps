@@ -4,7 +4,7 @@ require 'faker'
 module Fakeout
   class Builder
  
-    FAKEABLE = %w(User Location Event)
+    FAKEABLE = %w(User Category Location Event)
  
     attr_accessor :report
  
