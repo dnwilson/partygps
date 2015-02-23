@@ -6,7 +6,7 @@ namespace :events do
       i = 0
       7.times do
         if category.name.eql?("Regular")
-          FactoryGirl.create(:event, category: category, location: Location.all.sample)
+          FactoryGirl.create(:event, category: category, name: "#{Forgery::Name.full_name} Party", category: category, location: Location.all.sample)
         else 
           FactoryGirl.create(:event, category: category, location: Location.all.sample,
             listed_type: OCCURRENCE.sample, listed_day: DAYNAMES.sample, listed_month: MONTHNAMES.sample)
