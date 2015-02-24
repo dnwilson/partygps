@@ -33,16 +33,19 @@ module Fakeout
     def events(count = 1, options = {}, recurring = false)
       1.upto(count) do
         attributes   = { name:          Faker::Company.catch_phrase,
-                         location_id:   Location.all.sample,
+                         location:      Location.all.sample,
                          category_id:   Category.where(name: REG).first.id, 
-                         adm:           20+Random.rand(11), 
-                         description:   Faker::Lorem.paragraph(2) }.merge(options)
+                         adm:           20+Random.rand(11),
+                         start_dt:      Faker::Time.between(Time.now, 60.days.from_now, :night), 
+                         description:   Faker::Lorem.paragraph(2) }.merge(options),
+                         photo:         Faker::Avatar.image 
         event      = Event.new(attributes)
         event.save
         if recurring
           event.update_attributes(listed_type:    OCCURRENCE.sample,
                                   listed_day:     DAYNAMES.sample,
-                                  listed_month:   MONTHNAMES.sample)
+                                  listed_month:   MONTHNAMES.sample,
+                                  category:       Category.where.not(name: REG).sample)
         end
         
       end

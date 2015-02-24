@@ -20,10 +20,8 @@ class Location < ActiveRecord::Base
 	  end
 	end
 	after_validation :reverse_geocode
-	# validates :street_address, presence: true
-	# validates :city_town, length: { minimum: 2, maximum: 50 }
-	# validates :state_parish, presence: true, length: { minimum: 2, maximum: 50 }
-	# validates :country, presence: true
+
+	# scope :upcoming_events, -> { happening_now || where('events.listed_day IN (?)', [DateTime.now.strftime("%A"), DateTime.tomorrow.strftime("%A"), 2.days.from_now.strftime("%A")] ) }
 
 	validates :latitude, presence: {message: "Not a valid location on Google Maps. Please check name, address and parish on fields."}
 	validates :longitude, presence: {message: "Not a valid location on Google Maps. Please check name, address and parish on fields."}
@@ -41,7 +39,12 @@ class Location < ActiveRecord::Base
 	  attrs.any?{|a| send "#{a}_changed?"}
   end
 
+  def current_events
+  	self.events.where('events.start_dt >= ? AND events.start_dt <= ? OR events.category_id != ? AND events.listed_day = ?', 
+                                Date.today.to_time, DateTime.tomorrow, Category.where(name: REG).first.id, DateTime.now.strftime("%A"))
+  end
+
 	def upcoming_events
-		self.events.where("date IS NULL OR date >= ?", Date.today)
+		current_events || self.events.where('events.listed_day IN (?)', [DateTime.now.strftime("%A"), DateTime.tomorrow.strftime("%A"), 2.days.from_now.strftime("%A")])
 	end
 end

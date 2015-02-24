@@ -51,7 +51,7 @@ if Rails.env.test?
     ]
   )
   Geocoder::Lookup::Test.add_stub(
-    "New Name, Kingston, Jamaica", [
+    "New Name, 1 Testing Way, Testville, Kingston, Jamaica", [
       {
         'latitude'     =>  18,
         'longitude'    =>  -76.8,

@@ -21,6 +21,7 @@ class Event < ActiveRecord::Base
 
 	validates :name, presence: true, length: { minimum: 2, maximum: 30 }, uniqueness: {case_sensitive: false}
   validates_presence_of :location_id, :category_id
+  validates_presence_of :listed_day, if: :recurring?
   validate :date_format, unless: :recurring?
   validate :presence_of_date_or_category, :check_date_format
   validates :start_dt, date: {on_or_after: DateTime.now}
@@ -32,7 +33,7 @@ class Event < ActiveRecord::Base
   scope :monthly,         -> { where('category_id = ?', Category.where(name: MONTHLY).first.id) }
   scope :annual,          -> { where('category_id = ?', Category.where(name: ANNUAL).first.id) }
   scope :happening_now,   -> { where('events.start_dt >= ? AND events.start_dt <= ? OR events.category_id != ? AND events.listed_day = ?', 
-                                Date.today, DateTime.tomorrow, Category.where(name: REG).first.id, DateTime.now.strftime("%A")) }
+                                Date.today.to_time, DateTime.tomorrow, Category.where(name: REG).first.id, DateTime.now.strftime("%A")) }
   scope :upcoming,        -> { happening_now || where('events.listed_day IN (?)', [DateTime.now.strftime("%A"), DateTime.tomorrow.strftime("%A"), 2.days.from_now.strftime("%A")] ) }
   scope :happening_on,    -> (day){ where(listed_day: day) }
 	
@@ -54,6 +55,10 @@ class Event < ActiveRecord::Base
 
   def recurring?
     true unless self.try(:category).name.eql?(REG) rescue false
+  end
+
+  def nearby_events
+    location.nearbys(1) && Event.happening_now
   end
 
 	private

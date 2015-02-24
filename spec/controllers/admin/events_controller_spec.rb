@@ -9,12 +9,11 @@ RSpec.describe Admin::EventsController, :type => :controller do
   let(:event){ create :event, location: location, category: category }
   let(:valid_attributes) { 
     { 
-      name:           Faker::Company.catch_phrase, 
+      name:           Faker::Commerce.product_name, 
       photo:          '', 
-      recurring_flg:  'false', 
-      start_dt:       '09/09/2015', 
+      start_dt:       Faker::Time.between(Time.now, 60.days.from_now, :night), 
       end_dt:         '', 
-      adm:            500.00,
+      adm:            Faker::Commerce.price,
       description:    'Some description', 
       location_id:    location.id,
       category_id:    category.id

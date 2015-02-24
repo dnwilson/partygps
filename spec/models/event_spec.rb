@@ -34,4 +34,13 @@ RSpec.describe Event, :type => :model do
   it{should validate_length_of(:name)}
   it{should be_valid}
 
+  describe "when recurring" do
+    before{
+      category = Category.create!(name: WEEKLY)
+      @event.category_id = category.id
+      @event.listed_day = nil
+    }
+    it{should_not be_valid}
+  end
+
 end
