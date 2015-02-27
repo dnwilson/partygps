@@ -37,8 +37,8 @@ module Fakeout
                          category_id:   Category.where(name: REG).first.id, 
                          adm:           20+Random.rand(11),
                          start_dt:      Faker::Time.between(Time.now, 60.days.from_now, :night), 
-                         description:   Faker::Lorem.paragraph(2) }.merge(options),
-                         photo:         Faker::Avatar.image 
+                         description:   Faker::Lorem.paragraph(2),
+                         photo:         Faker::Avatar.image }.merge(options)
         event      = Event.new(attributes)
         event.save
         if recurring

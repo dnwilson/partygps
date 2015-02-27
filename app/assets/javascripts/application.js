@@ -12,14 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require underscore
+//= require gmaps/google
 // require turbolinks
 //= require bootstrap
 //= require jquery.dcjqaccordion.2.7
 //= require jquery.scrollTo.min
 //= require jquery.nicescroll
 //= require jquery.sparkline
-//= require underscore
-//= require gmaps/google
 //= require common-scripts
 //= require gritter/js/jquery.gritter
 //= require gritter-conf

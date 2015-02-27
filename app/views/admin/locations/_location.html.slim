@@ -2,7 +2,7 @@ tr
 	td.hidden-phone
 		/ = image_tag(location.photo)
 	td
-		= location.name
+		= link_to location.name, admin_location_path(location), 'data-no-turbolink' => true
 	td
 		= location.street_address
 	td.hidden-phone

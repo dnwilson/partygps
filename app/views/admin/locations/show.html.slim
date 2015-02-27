@@ -1,2 +1,33 @@
-= @location.name
-= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}"
+- present(@location) do |location_presenter|
+= render 'shared/map_prereq'
+	div.col-lg-12
+		div.row.mt
+			div.col-lg-8.col-md-8.col-sm-8.col-xs-12
+				div.row
+				  div.panel.event-show-panel
+				    div.panel-heading
+				      h2
+				        = @location.name
+				    hr
+				    div.panel-body
+				    	= @location.description
+				div.row
+				  div.panel.event-show-panel
+				    div.panel-heading
+				      h5 UPCOMING EVENTS 
+				div.row
+					table class="table table-striped table-advance table-hover"
+						tbody
+							- if @location.upcoming_events.present? 
+								- @location.upcoming_events.each do |event|
+									= render 'admin/shared/event', event: event
+							- elsif @location.events
+								div.panel
+									div.panel-heading 
+										h5 There are no upcoming events at this location
+			div.col-lg-4.col-md-4.col-sm-4.hidden-xs.sidebar
+			  - if @location.photo.present?
+			  	div.panel.location-img-panel
+				    div.panel-body
+				    	= location_presenter.photo
+			  = render 'shared/map_module', hash: @hash

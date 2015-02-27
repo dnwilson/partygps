@@ -1,5 +1,6 @@
 class Admin::LocationsController < Admin::BaseController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
+  before_action :google_map, only: [:show, :index]
   load_and_authorize_resource
   # GET /locations
   # GET /locations.json
@@ -54,5 +55,14 @@ class Admin::LocationsController < Admin::BaseController
     def location_params
       params.require(:location).permit(:name, :street_address, :street_address2, :city_town, :state_parish, :zipcode, 
                                     :country, :description, :photo )
+    end
+
+    def google_map
+      @hash = Gmaps4rails.build_markers(@location) do |location, marker|
+        marker.lat location.latitude
+        marker.lng location.longitude
+        marker.title location.name
+        marker.infowindow location.name
+      end
     end
 end

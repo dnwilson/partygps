@@ -44,7 +44,15 @@ class Location < ActiveRecord::Base
                                 Date.today.to_time, DateTime.tomorrow, Category.where(name: REG).first.id, DateTime.now.strftime("%A"))
   end
 
-	def upcoming_events
+	def todays_events
 		current_events || self.events.where('events.listed_day IN (?)', [DateTime.now.strftime("%A"), DateTime.tomorrow.strftime("%A"), 2.days.from_now.strftime("%A")])
+	end
+
+	def upcoming_events
+		events.includes(:category).where('listed_day >= ?', Date.today.to_time).order(:start_dt, :listed_type, :listed_day)
+	end
+
+	def recurring_events
+		events.includes(:category).where('category_id != ?', Category.where(name: REG).first.id)
 	end
 end

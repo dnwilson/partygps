@@ -4,6 +4,7 @@ html
 		title
 			= full_title
 		= stylesheet_link_tag 'application', params[:controller], media: 'all', 'data-turbolinks-track' => true
+		= javascript_include_tag 'application', params[:controller], 'data-turbolinks-track' => true
 		= csrf_meta_tags
 	body
 		section id="container"
@@ -14,4 +15,3 @@ html
 					= render 'layouts/messages'
 					= yield
 					= debug(params) if Rails.env.development?
-	= javascript_include_tag 'application', params[:controller], 'data-turbolinks-track' => true

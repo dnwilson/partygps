@@ -1,0 +1,36 @@
+.event-photo img{
+	max-width: 120px;
+}
+.info{
+	padding-left: 5px;
+}
+hr{
+	margin:0px;
+}
+
+.btn{
+	border: 1px solid transparent;
+	&:hover{
+		border: 1px solid transparent;
+	}
+}
+
+.event-listing-date{
+	font-style: italic;
+	font-size: 12px;
+	margin-top: 10px;
+}
+.separator{
+	font-style: normal;
+	vertical-align: middle;
+	font-size: 4px;
+	padding: 0 10px;
+}
+.event-listing-adm{
+	font-size: 10px;
+	margin-top: 10px;
+}
+
+.location-img-panel img{
+	width: 100%;
+}

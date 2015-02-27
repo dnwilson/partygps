@@ -29,13 +29,13 @@ class Event < ActiveRecord::Base
 
 	mount_uploader :photo, ImageUploader
 
-  scope :weekly,          -> { where('category_id = ?', Category.where(name: WEEKLY).first.id) }
-  scope :monthly,         -> { where('category_id = ?', Category.where(name: MONTHLY).first.id) }
-  scope :annual,          -> { where('category_id = ?', Category.where(name: ANNUAL).first.id) }
-  scope :happening_now,   -> { where('events.start_dt >= ? AND events.start_dt <= ? OR events.category_id != ? AND events.listed_day = ?', 
+  scope :weekly,          -> { joins(:category).where('categories.name = ?', WEEKLY) }
+  scope :monthly,         -> { joins(:category).where('categories.name = ?', MONTHLY) }
+  scope :annual,          -> { joins(:category).where('categories.name = ?', ANNUAL) }
+  scope :happening_now,   -> { includes(:location).where('events.start_dt >= ? AND events.start_dt <= ? OR events.category_id != ? AND events.listed_day = ?', 
                                 Date.today.to_time, DateTime.tomorrow, Category.where(name: REG).first.id, DateTime.now.strftime("%A")) }
-  scope :upcoming,        -> { happening_now || where('events.listed_day IN (?)', [DateTime.now.strftime("%A"), DateTime.tomorrow.strftime("%A"), 2.days.from_now.strftime("%A")] ) }
-  scope :happening_on,    -> (day){ where(listed_day: day) }
+  scope :upcoming,        -> { includes(:location).happening_now || where('events.listed_day IN (?)', [DateTime.now.strftime("%A"), DateTime.tomorrow.strftime("%A"), 2.days.from_now.strftime("%A")] ) }
+  scope :happening_on,    -> (day){ includes(:location).where(listed_day: day) }
 	
   def location_name
 		location.name
