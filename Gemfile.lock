@@ -116,6 +116,8 @@ GEM
     gmaps4rails (2.1.2)
     google_places (0.29.0)
       httparty (~> 0.13.1)
+    groupdate (2.4.0)
+      activesupport (>= 3)
     guard (2.6.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -125,8 +127,6 @@ GEM
     guard-rspec (4.3.1)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
-    haml (4.0.5)
-      tilt
     hashie (3.3.1)
     hike (1.2.3)
     hitimes (1.2.2)
@@ -148,13 +148,8 @@ GEM
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    jquery-ui-rails (4.2.1)
-      railties (>= 3.2.16)
     json (1.8.1)
     jwt (1.0.0)
-    kaminari (0.16.1)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     kgio (2.9.2)
     koala (1.10.1)
       addressable
@@ -180,7 +175,6 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     naught (1.0.0)
-    nested_form (0.3.2)
     newrelic_rpm (3.9.5.251)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
@@ -226,9 +220,6 @@ GEM
     pry-rails (0.3.2)
       pry (>= 0.9.10)
     rack (1.5.2)
-    rack-pjax (0.8.0)
-      nokogiri (~> 1.5)
-      rack (~> 1.1)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.1.5)
@@ -244,20 +235,6 @@ GEM
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_admin (0.6.3)
-      builder (~> 3.1)
-      coffee-rails (~> 4.0)
-      font-awesome-rails (>= 3.0)
-      haml (~> 4.0)
-      jquery-rails (~> 3.0)
-      jquery-ui-rails (~> 4.0)
-      kaminari (~> 0.14)
-      nested_form (~> 0.3)
-      rack-pjax (~> 0.7)
-      rails (~> 4.0)
-      remotipart (~> 1.0)
-      safe_yaml (~> 1.0)
-      sass-rails (~> 4.0)
     rails_layout (1.0.22)
     rails_serve_static_assets (0.0.2)
     rails_stdout_logging (0.0.3)
@@ -273,7 +250,6 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.1.2)
       json (~> 1.4)
-    remotipart (1.2.1)
     rqrcode-with-patches (0.5.4)
       chunky_png
     rspec (3.1.0)
@@ -407,6 +383,7 @@ DEPENDENCIES
   geocoder
   gmaps4rails
   google_places
+  groupdate
   guard-rspec
   jbuilder (~> 2.0)
   jquery-colorbox-rails
@@ -427,7 +404,6 @@ DEPENDENCIES
   pry-rails
   rails (= 4.1.5)
   rails_12factor
-  rails_admin
   rails_layout
   rb-fsevent
   rqrcode-with-patches (~> 0.5.4)

@@ -5,7 +5,18 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    if params[:category]
+      case params[:category]
+      when WEEKLY
+        @events = Event.weekly
+      when MONTHLY
+        @events = Event.monthly
+      when ANNUAL
+        @events = Event.annual
+      end
+    else
+      @events = Event.upcoming
+    end
   end
 
   # GET /events/1

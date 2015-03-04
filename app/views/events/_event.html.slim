@@ -1,12 +1,21 @@
-div class="col-lg-4 col-md-4 col-sm-12 mar-bot15"
-	div class="content-panel pn" id="event-#{event.id}"
-		div id="event" style="background:url('#{event.photo.lg.url}') no-repeat center top" 
-			div.name= link_to event.name, event
-		div.pn-footer.left
-			div.date
-				div.day 1
-				div.mon JAN
+- present(event) do |event_presenter|
+	/ div class="col-lg-4 col-md-4 col-sm-12 mar-bot15"
+	/ 	div class="content-panel pn" id="event-#{event.id}"
+	/ 		div id="event" style="background:url('#{event.photo.lg.url}') no-repeat center top" 
+	/ 			div.name= link_to event.name, event
+	/ 		div.pn-footer.left
+	/ 			div.date
+	/ 				div.day 1
+	/ 				div.mon JAN
+	/ 			div.details
+	/ 				=link_to event.location do
+	/ 					i.fa.fa-map-marker 
+	/ 					span.location=event.location_name
+	div class="col-lg-4 col-md-4 col-sm-12 mar-bot15"
+		div class="event-panel" id="event-#{event.id}"
+			= event_presenter.photo("sm")
 			div.details
-				=link_to event.location do
-					i.fa.fa-map-marker 
-					span.location=event.location_name
+				div.name = link_to event.name.truncate(28), event
+				=event_presenter.date
+				h5 =link_to event.location.name.truncate(28), event_path(event)
+	

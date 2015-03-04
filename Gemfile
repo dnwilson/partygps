@@ -20,7 +20,6 @@ gem 'font-awesome-rails'
 gem "jquery-fileupload-rails"
 gem 'jquery-colorbox-rails'
 gem 'mini_magick'
-gem 'rails_admin'
 gem 'thin'
 gem 'bourbon'
 gem 'twitter'
@@ -38,6 +37,7 @@ gem 'underscore-rails'
 gem 'slim-rails'
 gem "browser"
 gem 'google_places'
+gem 'groupdate'
 
 # For QR Codes
 gem 'rqrcode-with-patches', '~> 0.5.4'

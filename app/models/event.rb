@@ -17,7 +17,6 @@ class Event < ActiveRecord::Base
 	belongs_to :category
 
 	before_save :setup_category
-	# before_save :setup_listing #, if: :occurs_once?
 
 	validates :name, presence: true, length: { minimum: 2, maximum: 30 }, uniqueness: {case_sensitive: false}
   validates_presence_of :location_id, :category_id
@@ -25,17 +24,20 @@ class Event < ActiveRecord::Base
   validate :date_format, unless: :recurring?
   validate :presence_of_date_or_category, :check_date_format
   validates :start_dt, date: {on_or_after: DateTime.now}
-  # validates_presence_of :category_id, :listed_type, :listed_day, :listed_month, if: :recurring?
+
+  serialize :listed_day
 
 	mount_uploader :photo, ImageUploader
 
-  scope :weekly,          -> { joins(:category).where('categories.name = ?', WEEKLY) }
-  scope :monthly,         -> { joins(:category).where('categories.name = ?', MONTHLY) }
-  scope :annual,          -> { joins(:category).where('categories.name = ?', ANNUAL) }
-  scope :happening_now,   -> { includes(:location).where('events.start_dt >= ? AND events.start_dt <= ? OR events.category_id != ? AND events.listed_day = ?', 
+  scope :weekly,          -> { includes(:category, :location).where(categories: {name: WEEKLY}).sort_by{ |e| DAYS[e.listed_day.parameterize.to_sym] } }
+  scope :monthly,         -> { includes(:category, :location).where(categories: {name: MONTHLY}) }
+  scope :annual,          -> { includes(:category, :location).where(categories: {name: ANNUAL}) }
+  scope :live,            -> { includes(:category, :location).where('events.start_dt >= ? AND events.start_dt <= ? OR events.category_id != ? AND events.listed_day = ?', 
                                 Date.today.to_time, DateTime.tomorrow, Category.where(name: REG).first.id, DateTime.now.strftime("%A")) }
-  scope :upcoming,        -> { includes(:location).happening_now || where('events.listed_day IN (?)', [DateTime.now.strftime("%A"), DateTime.tomorrow.strftime("%A"), 2.days.from_now.strftime("%A")] ) }
-  scope :happening_on,    -> (day){ includes(:location).where(listed_day: day) }
+  scope :upcoming,        -> { includes(:category, :location).where('events.start_dt >= ? OR events.category_id != ? AND events.listed_day = ?', 
+                                Date.today.to_time, Category.where(name: REG).first.id, DateTime.now.strftime("%A")).order("events.start_dt ASC NULLS FIRST")}
+  # -> { includes(:location).happening_now || where('events.listed_day IN (?)', [DateTime.now.strftime("%A"), DateTime.tomorrow.strftime("%A"), 2.days.from_now.strftime("%A")] ) }
+  scope :happening_on,    -> (day){ includes(:category, :location).where(listed_day: day) }
 	
   def location_name
 		location.name

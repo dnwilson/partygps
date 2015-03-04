@@ -1,7 +1,7 @@
 - present(event) do |event_presenter|
 	tr
 		td.event-photo
-			= event_presenter.photo
+			= event_presenter.photo('sm')
 		td
 			h4 = link_to event.name, admin_event_path(event), 'data-no-turbolink' => true
 			= event_presenter.date.html_safe

@@ -19,7 +19,7 @@ Premium: http://www.gridgum.com
 /* BASIC THEME CONFIGURATION */
 body {
     color: $darkMain;
-    background: $gray;
+    background: $offWhite;
     font-family: 'Ruda', sans-serif;
     padding: 0px !important;
     margin: 0px !important;

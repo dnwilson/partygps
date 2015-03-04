@@ -1,0 +1,9 @@
+div.col-lg-12
+	div.panel.nav-panel
+		ul.nav.nav-pills
+			li class="#{'active' if params[:category].eql?("Live")}"
+				= link_to "Live", events_path(category: "Live")
+			li class="#{'active' if current_page?(events_path) && params[:category].nil?}"
+				= link_to "Upcoming", events_path
+			li class="#{'active' if params[:category].eql?("Weekly")}"
+				= link_to "Weekly", events_path(category: "Weekly")

@@ -3,9 +3,9 @@
     div.panel.event-show-panel
       div.panel-heading
         h2.mar-top15.mar-bot15
-          = @event.name
-          div.date.label.label-date.label-sm 
-            = event_presenter.display_date
+          span.event-name= @event.name
+          span.event-date
+            = link_to event_presenter.display_date, events_path ,class: 'btn btn-primary'
       hr
       div.panel-body
         - if @event.photo?
@@ -16,7 +16,7 @@
   div.col-lg-5.col-md-5.col-sm-5.hidden-xs.sidebar
     div.panel.venue-panel
       div.panel-body
-        h2 = @event.location_name 
+        h2 = link_to @event.location_name, location_path(@event.location) 
         hr.mar-top15.mar-bot15
         = @event.location_address 
         / br 

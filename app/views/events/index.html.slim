@@ -1,9 +1,10 @@
 div.center
-		div.col-lg-8.col-md-8.col-sm-12
-			- if params[:query]
-				= render 'search'
-			- else
-				= render @events
-		div.col-lg-4.col-md-4.hidden-sm.hidden-xs
-			div.panel
-				div.panel-body Some Sidebar Stuff
+	div.col-lg-9.col-md-9.col-sm-12
+		= render 'event_nav'
+		- if params[:query]
+			= render 'search'
+		- else
+			= render partial: "event", collection: @events
+	div.col-lg-3.col-md-3.hidden-sm.hidden-xs
+		div.panel
+			div.panel-body Some Sidebar Stuff
