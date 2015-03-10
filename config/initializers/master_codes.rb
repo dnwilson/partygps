@@ -3,7 +3,7 @@ SECOND  = "Second"
 THIRD   = "Third"
 FOURTH  = "Fourth"
 LAST    = "Last"
-OTHER   = "Every Other"
+OTHER   = "Other"
 EVERY   = "Every"
 
 REG     = "Regular"

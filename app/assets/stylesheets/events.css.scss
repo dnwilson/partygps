@@ -56,10 +56,32 @@
     }
   }
 }
-.nav-panel{
-  padding: 10px;
+.event-nav{
   .nav > li > a{
     padding: 7px 10px;
+    background-color: $lightGray;
+    border: 1px solid $lightGray;
+    color: $darkGray;
+    &:hover{
+      background-color: transparent;
+      border: 1px solid $darkBrand;
+      color: $darkBrand;
+    }
+  }
+  .nav > li.active{
+    a{
+      background-color: $darkBrand;
+      border: 1px solid $darkBrand;
+      color: $white;
+      &:hover{
+        background-color: transparent;
+        border: 1px solid $darkBrand;
+        color: $darkBrand;
+      }
+    }
+  }
+  li{
+    margin-right: 20px
   }
 }
 

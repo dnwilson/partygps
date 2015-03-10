@@ -1,9 +1,10 @@
-div.col-lg-12
-	div.panel.nav-panel
-		ul.nav.nav-pills
-			li class="#{'active' if params[:category].eql?("Live")}"
-				= link_to "Live", events_path(category: "Live")
-			li class="#{'active' if current_page?(events_path) && params[:category].nil?}"
-				= link_to "Upcoming", events_path
-			li class="#{'active' if params[:category].eql?("Weekly")}"
-				= link_to "Weekly", events_path(category: "Weekly")
+div.col-lg-12.event-nav
+	ul.nav.nav-pills.mar-bot15
+		li class="#{active_page?("index")}"
+			= link_to "All", events_path
+		li class="#{active_page?("live")}"
+			= link_to "Today's Events", events_path(option: "live")
+		li class="#{active_page?("upcoming")}"
+			= link_to "Upcoming", events_path
+		li class="#{active_page?("recurring")}"
+			= link_to "Recurring", events_path(option: "recurring")

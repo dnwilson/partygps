@@ -8,8 +8,10 @@ describe PagesController do
 		
 		let(:user)  { FactoryGirl.create(:user) }
 		let(:admin) { FactoryGirl.create(:admin) }
+		let(:category) { FactoryGirl.create(:category) }
 
 		before(:each) do
+			category
 			visit root_path
 		end
 

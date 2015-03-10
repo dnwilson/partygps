@@ -14,8 +14,7 @@ class CreateEvents < ActiveRecord::Migration
       t.decimal   :adm,           precision: 8, scale: 2
       t.timestamps
     end
-    add_index :events, [:id, :location_id], unique: true
-    add_index :events, [:id, :category_id]
-    add_index :events, [:id, :location_id, :category_id]
+    add_index :events, :location_id, unique: true
+    add_index :events, :category_id
   end
 end

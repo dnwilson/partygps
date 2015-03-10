@@ -1,0 +1,8 @@
+- present(event) do |event_presenter|
+	tr
+		td.event-photo
+			= event_presenter.photo('thumb')
+		td
+			h4 = link_to event.name, event_presenter.path, 'data-no-turbolink' => true
+			= event_presenter.date.html_safe
+			div.desc.mar-top15= event.description

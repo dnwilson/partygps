@@ -17,5 +17,5 @@
 			div.details
 				div.name = link_to event.name.truncate(28), event
 				=event_presenter.date
-				h5 =link_to event.location.name.truncate(28), event_path(event)
+				h5 =link_to event.location.name.truncate(28), event.location
 	

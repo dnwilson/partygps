@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Event, :type => :model do
   
   before do 
-    @event = Event.create(name:         Faker::Company.catch_phrase,
+    @event = Event.create(name:         Faker::App.name,
                           location:     create(:location),
                           photo:        File.new(Rails.root + "spec/fixtures/rails.png"),
                           start_dt:     DateTime.tomorrow,

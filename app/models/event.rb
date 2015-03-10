@@ -25,18 +25,15 @@ class Event < ActiveRecord::Base
   validate :presence_of_date_or_category, :check_date_format
   validates :start_dt, date: {on_or_after: DateTime.now}
 
-  serialize :listed_day
-
 	mount_uploader :photo, ImageUploader
 
-  scope :weekly,          -> { includes(:category, :location).where(categories: {name: WEEKLY}).sort_by{ |e| DAYS[e.listed_day.parameterize.to_sym] } }
+  scope :recurring,       -> { includes(:category, :location).where.not(categories: {name: REG}) }
+  scope :weekly,          -> { includes(:category, :location).where(categories: {name: WEEKLY}) }
   scope :monthly,         -> { includes(:category, :location).where(categories: {name: MONTHLY}) }
   scope :annual,          -> { includes(:category, :location).where(categories: {name: ANNUAL}) }
-  scope :live,            -> { includes(:category, :location).where('events.start_dt >= ? AND events.start_dt <= ? OR events.category_id != ? AND events.listed_day = ?', 
-                                Date.today.to_time, DateTime.tomorrow, Category.where(name: REG).first.id, DateTime.now.strftime("%A")) }
+  scope :live,            -> { weekly.where(listed_day: DateTime.now.strftime("%A")) || includes(:category, :location).where(start_dt: Date.today.to_time..DateTime.tomorrow).order('events.start_dt ASC')}
   scope :upcoming,        -> { includes(:category, :location).where('events.start_dt >= ? OR events.category_id != ? AND events.listed_day = ?', 
-                                Date.today.to_time, Category.where(name: REG).first.id, DateTime.now.strftime("%A")).order("events.start_dt ASC NULLS FIRST")}
-  # -> { includes(:location).happening_now || where('events.listed_day IN (?)', [DateTime.now.strftime("%A"), DateTime.tomorrow.strftime("%A"), 2.days.from_now.strftime("%A")] ) }
+                                Date.today.to_time, Category.where(name: REG).first.id, DateTime.now.strftime("%A")).order("events.start_dt ASC NULLS FIRST", "events.listed_type ASC")}
   scope :happening_on,    -> (day){ includes(:category, :location).where(listed_day: day) }
 	
   def location_name

@@ -36,7 +36,7 @@ module Fakeout
                          location:      Location.all.sample,
                          category_id:   Category.where(name: REG).first.id, 
                          adm:           20+Random.rand(11),
-                         start_dt:      Faker::Time.between(Time.now, 60.days.from_now, :night), 
+                         start_dt:      Faker::Time.between(Time.now, 180.days.from_now, :night), 
                          description:   Faker::Lorem.paragraph(2),
                          photo:         Faker::Avatar.image }.merge(options)
         event      = Event.new(attributes)

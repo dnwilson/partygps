@@ -12,9 +12,11 @@ $main: rgb(112, 112, 112);
 $darkMain: darken($main, 10%);
 
 $gray: #9c9c9c;
-$lightGray: lighten($gray, 10%);
+$darkGray: darken($gray, 10%);
+
 $white: #fff;
 $offWhite: darken($white, 5%);
+$lightGray: darken($white, 10%);
 
 // $darkestGreen: #00733C;
 // $lightGreen: #36D88A;

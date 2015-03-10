@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 	before_create :ensure_authentication_token
 
 	has_many :authorizations
+	has_many :user_addresses
 
 	mount_uploader :photo, ImageUploader
 
