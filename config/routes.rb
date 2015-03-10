@@ -4,15 +4,15 @@ Rails.application.routes.draw do
                       controllers: {registrations: "users/registrations", sessions: "users/sessions", 
                                       omniauth_callbacks: "omniauth_callbacks" }
   devise_scope :user do
-    get "login",   :to =>"users/sessions#new"
-    delete "logout",   :to => "users/sessions#destroy"
-    get "register", :to => "users/registrations#new"
-    get "delete",   :to => "users/registrations#destroy"
-    get "dashboard",  to: "users/registrations#edit"
-    get "dashboard/password",   to: "users/registrations#password"
-    put "dashboard/password",   to: "users/registrations#update_password"
-    patch "dashboard/password", to: "users/registrations#update_password"
-    get "dashboard/location",   to: "users/registrations#location"
+    get "login",              to:"users/sessions#new"
+    delete "logout",          to: "users/sessions#destroy"
+    get "register",           to: "users/registrations#new"
+    get "delete",             to: "users/registrations#destroy"
+    get "profile",            to: "users/registrations#edit"
+    get "profile/password",   to: "users/registrations#password"
+    put "profile/password",   to: "users/registrations#update_password"
+    patch "profile/password", to: "users/registrations#update_password"
+    get "profile/location",   to: "users/registrations#location"
   end 
 
   resources :events
@@ -21,12 +21,12 @@ Rails.application.routes.draw do
     get "users/:id" => "users#show"
   end
 
-  namespace :admin do
-    get 'dashboard', to: 'dashboard#index'
-    resources :users, controller: 'users'
-    resources :locations, controller: 'locations'
+  namespace :dashboard do
+    get '',                 to: "base#show"
+    resources :users,       controller: 'users'
+    resources :locations,   controller: 'locations'
     resources :events do
-      get 'manager', to: 'events#manager'
+      get 'manager',        to: 'events#manager'
       get 'render_snippet', on: :collection
     end
   end

@@ -11,4 +11,3 @@ FactoryGirl.define do
     adm                     Faker::Commerce.price
   end
 end
-

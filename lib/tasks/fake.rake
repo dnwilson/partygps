@@ -27,12 +27,14 @@ task :fake => :environment do
   p "Created #{Location.count} locations"
  
   # fake users
-  faker.users(9)
+  faker.users(9, {}, false)
   faker.users(1, { first_name: "Admin", last_name:"Admin", email: "admin@pgps.com", username: "admin" }, true)
- 
+  p "Created #{User.count} users"
+
   # fake events
-  faker.events(100)
+  faker.events(100, {}, false)
   faker.events(100, {}, true)
+  p "Created #{Event.count} events"
  
   # report
   puts "Faked!\n#{faker.report}"

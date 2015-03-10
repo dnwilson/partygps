@@ -14,10 +14,10 @@ aside
             span style="padding-left: 10px;"
              | Dashboard
 
-      = render 'admin/sidebar_nav_item', admin_action: "my_profile"
+      = render 'dashboard/sidebar_nav_item', dashboard_action: "my_profile"
 
-      = render 'admin/sidebar_nav_item', admin_action: "admin_users", heading: "Users", item: "users", icon: "users"
+      = render 'dashboard/sidebar_nav_item', dashboard_action: "dashboard_users", heading: "Users", item: "users", icon: "users" if current_user.is_admin?
 
-      = render 'admin/sidebar_nav_item', admin_action: "admin_locations", heading: "Locations", item: "locations", icon: "map-marker"
+      = render 'dashboard/sidebar_nav_item', dashboard_action: "dashboard_locations", heading: "Locations", item: "locations", icon: "map-marker" if current_user.is_admin?
 
-      = render 'admin/sidebar_nav_item', admin_action: "admin_events", heading: "Events", item: "events", icon: "calendar"
+      = render 'dashboard/sidebar_nav_item', dashboard_action: "dashboard_events", heading: "Events", item: "events", icon: "calendar" if current_user.is_admin?

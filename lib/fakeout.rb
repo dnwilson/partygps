@@ -15,8 +15,10 @@ module Fakeout
  
     # create users (can be admins)
     def users(count = 1, options = {}, is_admin = false)
-      1.upto(count) do 
-        user = User.new({ email:                  random_unique_email, 
+      count.times do 
+        user = User.new({ email:                  random_unique_email,
+                          first_name:             Faker::Name.first_name,
+                          last_name:              Faker::Name.last_name, 
                           password:               'test1234', 
                           password_confirmation:  'test1234' }.merge(options))
         user.save
@@ -31,8 +33,8 @@ module Fakeout
  
     # create event (can be free)
     def events(count = 1, options = {}, recurring = false)
-      1.upto(count) do
-        attributes   = { name:          Faker::Company.catch_phrase,
+      count.times do
+        attributes   = { name:          Faker::Lorem.word,
                          location:      Location.all.sample,
                          category_id:   Category.where(name: REG).first.id, 
                          adm:           20+Random.rand(11),

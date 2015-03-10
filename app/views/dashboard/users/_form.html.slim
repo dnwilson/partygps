@@ -1,0 +1,39 @@
+= form_for(@user, url: dashboard_user_path(@user), html: { method: :put, class: "form-horizontal style-form" }) do |f|
+  = render 'shared/error_messages', object: f.object
+  div class="form-group" style="border-top: 2px solid #eff2f7; padding-top: 15px; margin-top: 15px"
+    = f.label :photo, class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.file_field :photo, autofocus: true, class: "form-control"
+  div class="form-group"
+    = f.label :first_name, class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.text_field :first_name, autofocus: true, placeholder: "First Name", class: "form-control"
+  div class="form-group"
+    = f.label :last_name, class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.text_field :last_name, placeholder: "Last Name", class: "form-control"
+  div class="form-group"
+    = f.label :username, class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.text_field :username, autofocus: true, placeholder: "Username", class: "form-control"
+  div class="form-group"
+    = f.label :email, class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.email_field :email, placeholder: "Email", class: "form-control"
+  / if devise_mapping.confirmable? && resource.pending_reconfirmation?
+  /  div
+  /    | Currently waiting confirmation for: #{resource.unconfirmed_email}
+  div class="form-group"
+    = f.label :dob, class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.date_field :dob, class: "form-control"
+  div class="form-group"
+    = f.label :sex, class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      select.form-control
+        option value="Male"
+          | Male
+        option value="Female"
+          | Female
+  div class="box-footer" style="text-align:right;"
+    = f.submit "Update", class: "btn btn-primary"

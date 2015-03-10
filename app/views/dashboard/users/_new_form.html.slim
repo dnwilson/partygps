@@ -1,0 +1,28 @@
+= form_for(@user, url: dashboard_users_path(@user), html: { method: :post, class: "form-horizontal style-form", autocomplete: :off }) do |f|
+  = render 'shared/error_messages', object: f.object
+  div class="form-group" style="border-top: 2px solid #eff2f7; padding-top: 15px; margin-top: 15px"
+    = f.label :first_name, class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.text_field :first_name, autofocus: true, placeholder: "First Name", class: "form-control"
+  div class="form-group"
+    = f.label :last_name, class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.text_field :last_name, placeholder: "Last Name", class: "form-control"
+  div class="form-group"
+    = f.label :email, class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.email_field :email, placeholder: "Email", class: "form-control"
+  div class="form-group"
+    = f.label :dob, class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.date_field :dob, class: "form-control"
+  div class="form-group"
+    = f.label :password, class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.password_field :password, autofocus: true, placeholder: "Password", class: "form-control"
+  div class="form-group"
+    = f.label :password_confirmation, "Confirmation", class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.password_field :password_confirmation, autofocus: true, placeholder: "Confirmation", class: "form-control"
+  div class="box-footer" style="text-align:right;"
+    = f.submit "Create User", class: "btn btn-primary"

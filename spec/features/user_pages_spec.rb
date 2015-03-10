@@ -36,12 +36,7 @@ describe "UserPages" do
 		end
 
 		context "when user is valid" do
-			before do
-				visit login_path
-				fill_in "Email", 				with: user.email
-				fill_in "Password", 			with: user.password
-				click_button "LOGIN"
-			end
+			before{valid_user_login}
 
 			it { is_expected.to have_text "#{user.first_name}" }
 		end
@@ -50,17 +45,22 @@ describe "UserPages" do
 			before do
 				visit login_path
 				fill_in "Email", 				with: "someguy@test.com"
-				fill_in "Password", 			with: "password"
+				fill_in "Password", 		with: "password"
 				click_button "LOGIN"
 			end
 
 			it { is_expected.to have_text "Invalid email address or password." }
 		end
 
-	end 
+	end
+
+	feature "dashboard" do 
+		before{valid_user_login}
+		before{ visit dashboard_dashboard_path}
+
+	end
 
 	feature	"facebook sign in" do
-
 		before do
 			create :category
 			stub_request(:get, "https://graph.facebook.com/me?access_token=mock_token").
@@ -80,9 +80,16 @@ describe "UserPages" do
 		before do
 			visit login_path
 			fill_in "Email Address", 		with: user.email
-			fill_in "Password", 			with: user.password
+			fill_in "Password", 				with: user.password
 			click_button "LOGIN"
 			visit settings_path
 		end
 	end
+end
+
+def valid_user_login
+  visit login_path
+  fill_in "Email",        with: user.email
+  fill_in "Password",     with: user.password
+  click_button "LOGIN"
 end

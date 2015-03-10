@@ -1,0 +1,27 @@
+tr
+	td
+		= link_to image_tag(user.photo.thumb, class: "avatar")
+	td.hidden-phone
+		= user.first_name
+	td
+		= user.last_name
+	td.hidden-phone
+		= user.username
+	td
+		= user.email
+	td
+		= user.city
+	td
+		= user.country
+	td.hidden-phone
+		span class="label label-success label-mini"
+			= user.role.humanize
+	td
+		= link_to dashboard_user_path(user), class: "btn btn-success btn-xs" do
+			i class="fa fa-check"
+		|  
+		= link_to edit_dashboard_user_path(user), class: "btn btn-warning btn-xs" do
+			i class="fa fa-pencil"
+		|   
+		= link_to dashboard_user_path(user), method: :delete, class: "btn btn-danger btn-xs" do
+			i class="fa fa-trash-o"

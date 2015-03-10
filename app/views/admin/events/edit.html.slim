@@ -1,9 +1,0 @@
-= content_for(:title, 'Edit Event')
-div.row
-  div.col-lg-10.col-lg-offset-1.mt
-    div.form-panel
-      div.white-header
-        h4
-          i.fa.fa-user.fa-fw
-          | Edit #{@event.name}
-      = render 'form', path: admin_event_path(@event), method: :put

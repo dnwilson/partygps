@@ -1,0 +1,25 @@
+- if dashboard_action == "my_profile"
+	li class="sub-menu"
+		a href="javascript:;" class="#{'active' if current_page?(profile_path) | current_page?(profile_location_path) | current_page?(profile_password_path)}"
+			i class="fa fa-user"
+				span style="padding-left: 10px;"
+					| My Profile
+		ul.sub
+			li class="#{ 'active' if current_page?(profile_path) }"
+				= link_to "Personal", profile_path
+			li class="#{ 'active' if current_page?(profile_location_path) }"
+				= link_to "Location", profile_location_path
+			li class="#{ 'active' if current_page?(profile_password_path) }"
+				= link_to "Password", profile_password_path
+- else
+	li class="sub-menu"
+		a href="javascript:;" class="#{ 'active' if current_page?("/dashboard/#{item}") | current_page?("/dashboard/#{item}/new") | current_page?("/dashboard/#{item}/edit") }"
+			i class="fa fa-#{icon}"
+				span style="padding-left: 10px;"
+					= heading
+		ul.sub
+			li class="#{ 'active' if current_page?(dashboard_action_path(item, 'new')) }"
+				= link_to "Add #{heading} ", dashboard_action_path(item, 'new')
+			
+			li class="#{ 'active' if current_page?(dashboard_action_path(item, opts={})) }"
+				= link_to "Manage #{heading}", dashboard_action_path(item, opts={})

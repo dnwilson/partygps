@@ -1,0 +1,60 @@
+= form_for(@event, url: dashboard_event_path(@event), html: { method: :put, class: "form-horizontal style-form" }) do |f|
+   = render 'shared/error_messages', object: f.object
+  div class="form-group" style="border-top: 2px solid #eff2f7; padding-top: 15px; margin-top: 15px"
+    = f.label :name, class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.text_field :name, autofocus: true, placeholder: "Event Name", class: "form-control"
+  div class="form-group"
+    = f.label :photo, "Flyer", class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.file_field :photo, class: "form-control", html: {accept: "image/*"}
+
+  div class="form-group"
+    = f.label :location_id, "Location", class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.collection_select :location_id, Location.all, :id, :name, {}, { class: "form-control"}
+  div class="form-group date-entry"
+    = f.label :date, class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-5
+      = f.date_field :date, placeholder: "Event Date", class: "form-control"
+    div.col-offset-sm-2.col-sm-5
+      = f.time_field :time, class: "form-control"
+  div.advanced
+    div class="form-group"
+      = f.label :frequency, "Type", class: "col-sm-2 col-sm-2 control-label"
+      div.col-sm-10
+        = f.select :frequency, options_for_select(Event::EVENT_OCCURRENCE, selected: Event::ONE_TIME_EVENT),{}, {class: "form-control occurrence-edi"}
+    div class="form-group weekly"
+      = f.label :occurrence_type, "When", class: "col-sm-2 col-sm-2 control-label"
+      div.col-sm-10
+        = f.select(:occurrence_type, Event::WEEKLY_OCCURRENCE_DETAILS, {}, {class: "form-control"})
+    div class="form-group monthly-edit"
+      = f.label :occurs, "When", class: "col-sm-2 col-sm-2 control-label"
+      div.col-sm-5
+        = f.select(:occurs, Event::INTERMITTENT_OCCURRENCE, {}, {class: "form-control"})
+      div.col-offset-sm-1.col-sm-5
+        = f.select(:day_of_occurrence_mthly, Date::DAYNAMES, {}, {class: "form-control"})
+    div class="form-group annual-edit"
+      = f.label :occurs, "When", class: "col-sm-2 col-sm-2 control-label"
+      div.col-sm-4
+        = f.select(:occurs, Event::INTERMITTENT_OCCURRENCE, {}, {class: "form-control"})
+      div.col-offset-sm-1.col-sm-3
+        = f.select(:day_of_occurrence, Date::DAYNAMES, {}, {class: "form-control"})
+      div.col-offset-sm-1.col-sm-3
+        = f.select(:month_of_occurrence, Event::MONTHLY_OCCURRENCE_DETAILS, {}, {class: "form-control"})
+  div class="form-group"
+    = f.label :adm, class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.number_field :adm, placeholder: "0.00", class: "form-control"
+  div class="form-group"
+    = f.label :description, class: "col-sm-2 col-sm-2 control-label"
+    div.col-sm-10
+      = f.text_area :description, placeholder: "Describe your event...", class: "form-control"
+
+  div class="form-group"
+    div.col-sm-10
+      div class='advanced-toggle' style="cursor:pointer;" + Recurring Event?
+ 
+
+  div class="box-footer" style="text-align:right;"
+    = f.submit "Submit", class: "btn btn-primary"

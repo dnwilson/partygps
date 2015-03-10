@@ -34,7 +34,7 @@ class EventPresenter
     if h.current_page?(h.location_path)
       h.event_path
     else
-      h.admin_event_path
+      h.dashboard_event_path
     end
   end
 
