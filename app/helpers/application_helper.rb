@@ -14,4 +14,8 @@ module ApplicationHelper
     yield(presenter) if block_given?
     presenter
   end
+
+  def login_or_register_page?
+    current_page?(login_path) || current_page?(register_path)
+  end
 end

@@ -1,0 +1,37 @@
+div#register-page
+	div.container
+		= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-login"}) do |f| 
+			
+			h2.form-login-heading =link_to "partygps", root_path
+			= devise_error_messages! 
+
+			div.login-wrap
+				= f.text_field :first_name, required: true, autofocus: true, placeholder: "First Name", class: "form-control"
+				br 
+				= f.text_field :last_name, required: true, placeholder: "Last Name", class: "form-control" 
+				br
+				= f.email_field :email, required: true, placeholder: "Email", class: "form-control" 
+				br
+				= f.date_field :dob, required: true, placeholder: "Birthday", class: "form-control" 
+				br
+				= f.password_field :password, required: true, placeholder: "Password", class: "form-control" 
+				br
+				= f.password_field :password_confirmation, placeholder: "Confirmation", required: true, class: "form-control" 
+				br
+
+				button class="btn btn-theme btn-block" type="submit"
+					i.fa.fa-lock   SIGN UP
+				hr
+				div.login-social-link.centered
+					p or you can sign in via your social network
+					= link_to omniauth_authorize_path(resource_name, :facebook), class: "btn btn-facebook" do 
+						i.fa.fa-facebook  Facebook
+
+					= link_to omniauth_authorize_path(resource_name, :google_oauth2), class: "btn btn-google" do 
+						i.fa.fa-google  Google 
+					br
+
+					div.registration.mar-top15 
+						|Already have an account? 
+						br
+						= link_to "Login", login_path

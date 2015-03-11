@@ -9,17 +9,19 @@ html
     = csrf_meta_tags
 
   body
-    header.banner.center
-      = render 'layouts/navigation'
-      / = render 'layouts/banner'
+    - unless login_or_register_page?
+      header.banner.center
+        = render 'layouts/navigation' 
+        / = render 'layouts/banner'
     main.main.container.mar-bot15
       div.row
         = render 'layouts/messages'
         = yield 
       = debug(params) if Rails.env.development?
-    footer
-      = render 'layouts/footer'
-    - if current_page?(login_path) || current_page?(register_path)
+    - unless login_or_register_page?
+      footer
+        = render 'layouts/footer'
+    - if login_or_register_page?
       script type="text/javascript" src="/assets/jquery.backstretch.min.js"
       javascript:
         $.backstretch("/assets/login-bg.jpg");

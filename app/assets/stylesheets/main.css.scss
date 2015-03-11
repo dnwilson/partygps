@@ -125,6 +125,10 @@
 	text-align: center;
 }
 
+.left{
+	text-align: left;
+}
+
 
 #error_explanation{
 	color: red;
@@ -133,7 +137,19 @@
 /*===========================
 --- User Pages ----
 =========================== */
-
+#login-page{
+	margin-top: -320px;
+}
+#register-page{
+	margin-top: -340px;
+}
+h2.form-login-heading a{
+	color: $white;
+	font-weight: bold;
+	&:hover{
+		color: $offWhite;
+	}
+}
 #registration, #login{
 	background-color: $white;
 	margin-top: 30px;
@@ -179,8 +195,8 @@
 	}
 }
 
-.center{
-	text-align: center;
+.btn-facebook{
+	margin-right: 10px;
 }
 
 .mar-top15{
