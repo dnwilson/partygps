@@ -54,12 +54,6 @@ describe "UserPages" do
 
 	end
 
-	feature "dashboard" do 
-		before{valid_user_login}
-		before{ visit dashboard_dashboard_path}
-
-	end
-
 	feature	"facebook sign in" do
 		before do
 			create :category

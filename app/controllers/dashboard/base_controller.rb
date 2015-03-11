@@ -1,5 +1,5 @@
 class Dashboard::BaseController < ApplicationController
-  # before_filter :verify_admin 
+  before_filter :authenticate_user!
 
 	helper :dashboard
 	layout 'dashboard'
