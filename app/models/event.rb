@@ -27,15 +27,42 @@ class Event < ActiveRecord::Base
 
 	mount_uploader :photo, ImageUploader
 
-  scope :recurring,       -> { includes(:category, :location).where.not(categories: {name: REG}) }
-  scope :weekly,          -> { includes(:category, :location).where(categories: {name: WEEKLY}) }
-  scope :monthly,         -> { includes(:category, :location).where(categories: {name: MONTHLY}) }
-  scope :annual,          -> { includes(:category, :location).where(categories: {name: ANNUAL}) }
-  scope :live,            -> { weekly.where(listed_day: DateTime.now.strftime("%A")) || includes(:category, :location).where(start_dt: Date.today.to_time..DateTime.tomorrow).order('events.start_dt ASC')}
-  scope :upcoming,        -> { includes(:category, :location).where('events.start_dt >= ? OR events.category_id != ? AND events.listed_day = ?', 
-                                Date.today.to_time, Category.where(name: REG).first.id, DateTime.now.strftime("%A")).order("events.start_dt ASC NULLS FIRST", "events.listed_type ASC")}
-  scope :happening_on,    -> (day){ includes(:category, :location).where(listed_day: day) }
+  scope :weekly,        -> { includes(:category, :location).where(categories: {name: WEEKLY}) }
+  scope :monthly,       -> { includes(:category, :location).where(categories: {name: MONTHLY}) }
+  scope :annual,        -> { includes(:category, :location).where(categories: {name: ANNUAL}) }
+  scope :future_events, -> { includes(:category, :location).where(events: {start_dt: [Date.today.to_time..1.month.from_now]}) }
+  scope :recurring_on_this_day,  -> { includes(:category, :location).where.not(categories: {name: REG})
+                                  .where(events: {listed_day: DateTime.now.strftime("%A"), listed_month: [nil, DateTime.now.strftime("%B")]}) }
+  scope :live,          -> { todays_recurring | future_events.where(start_dt: [Date.today.beginning_of_day..Date.today.end_of_day]).order('events.start_dt ASC')}
+  scope :happening_on,  -> (day){ includes(:category, :location).where(listed_day: day) }
 	
+  def self.recurring
+    events = Event.includes(:category, :location)
+         .where.not(categories: {name: REG})
+
+    events.sort_by{ |e| [ DAYS[e.listed_day.parameterize.to_sym], LISTED_ORDER[e.listed_type.parameterize.to_sym] ] }
+  end
+
+  def self.upcoming
+    this_weeks_recurring.sort_by{ |e| [ DAYS[e.listed_day.parameterize.to_sym], LISTED_ORDER[e.listed_type.parameterize.to_sym] ] } | future_events.where(start_dt: [Date.today..1.week.from_now])
+  end
+
+  def self.todays_recurring
+    list = []
+    recurring_on_this_day.each do |e|
+      list << e if Time.now.week_of_month.eql?(LISTED_ORDER[e.listed_type.parameterize.to_sym]) | e.listed_type.eql?(EVERY)
+    end
+    list    
+  end
+
+  def self.this_weeks_recurring
+    list = []
+    recurring.each do |e|
+      list << e if e.recurs_this_week?
+    end
+    list
+  end
+
   def location_name
 		location.name
 	end
@@ -54,6 +81,13 @@ class Event < ActiveRecord::Base
 
   def recurring?
     true unless self.try(:category).name.eql?(REG) rescue false
+  end
+
+  # Checks if a recurring event happens this week and returns on events on days
+  # that have not passed in the week
+  def recurs_this_week?
+   (Time.now.week_of_month.eql?(LISTED_ORDER[listed_type.downcase.to_sym]) || listed_type.eql?(EVERY)) &&
+   Date.today.wday <= DAYS[listed_day.downcase.to_sym]
   end
 
   def nearby_events
@@ -77,7 +111,6 @@ class Event < ActiveRecord::Base
       if recurring?
         self.start_dt = nil
         self.end_dt = nil
-        # self.listed_day = listed_day.delete!(listed_day.last)
       end
       case category.name
       when REG
@@ -93,7 +126,6 @@ class Event < ActiveRecord::Base
     end
 
 	  def date_format
-	  	Rails.logger.debug errors.add(:start_dt, "cannot be in the past") unless self.start_dt >= DateTime.now rescue false
 	    errors.add(:start_dt, "cannot be in the past") unless self.start_dt >= DateTime.now rescue false
 	  end
 

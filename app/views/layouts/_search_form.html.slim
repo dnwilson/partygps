@@ -1,0 +1,8 @@
+/ ul.nav.pull-left.top-menu
+= form_tag search_path, method: :get, class: "form-inline search-form mar-top15 mar-bot15" do 
+	div.form-group
+		div.col-md-12
+			= text_field_tag :query, params[:query], placeholder: "Find an event...", class: "form-control transparent"
+			/ input type="text" class="form-control transparent" value="#{params[:keyword]}" name="keyword" placeholder="Find an event..."
+			button type="submit" class="btn btn-notify"
+				i.fa.fa-search	

@@ -26,6 +26,80 @@
 	}
 }
 
+/*===========================
+--- General Styling ----
+=========================== */
+.main{
+	margin-top: 80px;
+}
+
+.center{
+	text-align: center;
+}
+
+.left{
+	text-align: left;
+}
+
+.pull-left{
+	float: left;
+}
+
+
+#error_explanation{
+	color: red;
+}
+
+
+/*===========================
+--- Nav Styling ----
+=========================== */
+.navbar-brand{
+	padding: 0px;
+	img{
+		max-height: 50px;
+	}
+}
+
+a.logo{
+	line-height: 34px;
+}
+
+.nav-dropdown{
+	left: -40px !important;;
+	min-width: 100px;
+	text-align: right;
+}
+
+.open .dropdown-toggle.btn-logout{
+	color: $white;
+	background: $alt;
+	border: 1px solid $alt;
+}
+
+.logout{
+	margin-right: 0px !important;
+}
+
+.btn-logout{
+	color: $brand;
+	font-size: 12px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border: 1px solid $white;
+	padding: 5px 15px;
+	background: $white;
+	margin: 15px 0;
+	&:hover, &:active{
+		color: $white;
+		background: $alt;
+		border: 1px solid $alt;
+	}
+}
+
+/*===========================
+--- Banner Styling ----
+=========================== */
 .banner{
 	background-position: top center;
 	background: url(/assets/banner.jpg) top center;
@@ -86,52 +160,53 @@
 		color: $white;
 	}
 }
-.main{
-	margin-top: 320px;
-}
-.nav-dropdown{
-	left: -40px !important;;
-	min-width: 100px;
-	text-align: right;
+
+
+.main-content{
+	margin-top: 80px;
 }
 
-.logout{
-	margin-right: 0px !important;
+.alert{
+	margin-top: 20px;
 }
 
-.btn-logout{
-	color: $brand;
+/*===========================
+--- Button Styling ----
+=========================== */
+.btn{
+	border: 0px;
+}
+
+.btn-bordered{
+  border: 2px solid $brand;
+  color: $brand;
+  background-color: $white;
+  &:hover{
+    color: $white;
+    background-color: $brand;
+  }
+}
+
+
+/*===========================
+--- Event Styling ----
+=========================== */
+.separator{
+	font-style: normal;
+	vertical-align: middle;
+	font-size: 4px;
+	padding: 0 10px;
+}
+
+.event-listing-date{
+	font-style: italic;
 	font-size: 12px;
-	border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border: 1px solid $white;
-	padding: 5px 15px;
-	background: $white;
-	margin: 15px 0;
-	&:hover, &:active{
-		color: $white;
-		background: $alt;
-		border: 1px solid $alt;
-	}
+	margin-top: 10px;
 }
 
-.open .dropdown-toggle.btn-logout{
-	color: $white;
-	background: $alt;
-	border: 1px solid $alt;
-}
-
-.center{
-	text-align: center;
-}
-
-.left{
-	text-align: left;
-}
-
-
-#error_explanation{
-	color: red;
+.event-listing-adm{
+	font-size: 10px;
+	margin-top: 10px;
 }
 
 /*===========================

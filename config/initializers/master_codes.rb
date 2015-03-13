@@ -22,4 +22,14 @@ DAYS       = {  sunday:    0,
                 friday:    5,
                 saturday:  6
               }
+LISTED_ORDER = {
+                every:  0, 
+                first:  1, 
+                second: 2, 
+                third:  3, 
+                fourth: 4, 
+                last:   5, 
+                other:  6
+              }
+
 MONTHNAMES = Date::MONTHNAMES.compact.map{|m| m unless m.nil?}

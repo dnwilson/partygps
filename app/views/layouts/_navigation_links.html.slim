@@ -1,4 +1,6 @@
 ul class="nav pull-right top-menu"
+  li
+    = render "layouts/search_form"
   - if signed_in?
   	div.btn-group.logout-group
   		button class="btn btn-logout dropdown-toggle" data-toggle="dropdown"
