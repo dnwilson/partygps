@@ -4,9 +4,8 @@ include Devise::TestHelpers
 
 RSpec.describe Dashboard::EventsController, :type => :controller do
 
-  let(:location){ create(:location) }
   let(:category){ create(:category) }
-  let(:event){ create :event, location: location, category: category }
+  let(:event){ create :event, name: "Awesome", category: category}
   let(:valid_attributes) { 
     { 
       name:           Faker::Commerce.product_name, 
@@ -15,7 +14,7 @@ RSpec.describe Dashboard::EventsController, :type => :controller do
       end_dt:         '', 
       adm:            Faker::Commerce.price,
       description:    'Some description', 
-      location_id:    location.id,
+      location_id:    1,
       category_id:    category.id
     } 
   }
@@ -26,7 +25,7 @@ RSpec.describe Dashboard::EventsController, :type => :controller do
       recurring_flg:  'false', 
       start_dt:       '09/10/2015', 
       description:    'Some description', 
-      location_id:    location.id
+      location_id:    1
     } 
   }
 

@@ -81,19 +81,33 @@ a.logo{
 	margin-right: 0px !important;
 }
 
-.btn-logout{
-	color: $brand;
+.btn-logout, .btn-login{
+	color: $white;
 	font-size: 12px;
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
-	border: 1px solid $white;
-	padding: 5px 15px;
-	background: $white;
+	border: 0px solid $brand;
+	padding: 8.5px 15px;
+	background: $brand;
 	margin: 15px 0;
 	&:hover, &:active{
-		color: $white;
-		background: $alt;
-		border: 1px solid $alt;
+		color: $brand;
+		background: $white;
+		border: 0px solid $white;
+	}
+}
+
+
+.search-form{
+	display: inline-block;
+	width:500px;
+	.form-group{
+		width: 300px;
+	}
+	.search-tb{
+		border: 0px solid $white;
+		height: 34px;
+		width: 100%;
 	}
 }
 
@@ -173,9 +187,22 @@ a.logo{
 /*===========================
 --- Button Styling ----
 =========================== */
-.btn{
-	border: 0px;
+.btn-primary, .btn-lg, .btn-map{
+	border: 1px solid transparent;
+	&:hover{
+		border: 1px solid transparent;
+	}
 }
+
+.btn-default{
+	color: $gray;
+	&:hover, &:active, &:focus, .dropdown-toggle{
+		color: $gray;
+		border: 1px solid #ccc;
+		background-color: $white;
+	}
+}
+
 
 .btn-bordered{
   border: 2px solid $brand;
@@ -212,12 +239,6 @@ a.logo{
 /*===========================
 --- User Pages ----
 =========================== */
-#login-page{
-	margin-top: -320px;
-}
-#register-page{
-	margin-top: -340px;
-}
 h2.form-login-heading a{
 	color: $white;
 	font-weight: bold;

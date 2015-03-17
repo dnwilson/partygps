@@ -7,18 +7,6 @@ class EventsController < ApplicationController
   def index
     if params[:option]
       @events = Event.send(params[:option].downcase)
-      # case params[:option]
-      # when WEEKLY
-      #   @events = Event.weekly.sort_by{ |e| DAYS[e.listed_day.parameterize.to_sym]}
-      # when MONTHLY
-      #   @events = Event.monthly.sort_by{ |e| DAYS[e.listed_day.parameterize.to_sym]}
-      # when ANNUAL
-      #   @events = Event.annual.sort_by{ |e| DAYS[e.listed_day.parameterize.to_sym]}
-      # when "Live"
-      #   @events = Event.live
-      # when "Recurring"
-      #   @events = Event.recurring
-      # end
     else
       @events = Event.upcoming
     end

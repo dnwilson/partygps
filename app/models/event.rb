@@ -30,10 +30,10 @@ class Event < ActiveRecord::Base
   scope :weekly,        -> { includes(:category, :location).where(categories: {name: WEEKLY}) }
   scope :monthly,       -> { includes(:category, :location).where(categories: {name: MONTHLY}) }
   scope :annual,        -> { includes(:category, :location).where(categories: {name: ANNUAL}) }
-  scope :future_events, -> { includes(:category, :location).where(events: {start_dt: [Date.today.to_time..1.month.from_now]}) }
+  scope :future_events, -> { includes(:category, :location).where(events: {start_dt: [Time.now..1.month.from_now]}) }
   scope :recurring_on_this_day,  -> { includes(:category, :location).where.not(categories: {name: REG})
-                                  .where(events: {listed_day: DateTime.now.strftime("%A"), listed_month: [nil, DateTime.now.strftime("%B")]}) }
-  scope :live,          -> { todays_recurring | future_events.where(start_dt: [Date.today.beginning_of_day..Date.today.end_of_day]).order('events.start_dt ASC')}
+                                  .where(events: {listed_day: Time.now.strftime("%A"), listed_month: [nil, Time.now.strftime("%B")]}) }
+  scope :live,          -> { todays_recurring | future_events.where(start_dt: [Time.now.beginning_of_day..Time.now.end_of_day]).order('events.start_dt ASC')}
   scope :happening_on,  -> (day){ includes(:category, :location).where(listed_day: day) }
 	
   def self.recurring
@@ -44,7 +44,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.upcoming
-    this_weeks_recurring.sort_by{ |e| [ DAYS[e.listed_day.parameterize.to_sym], LISTED_ORDER[e.listed_type.parameterize.to_sym] ] } | future_events.where(start_dt: [Date.today..1.week.from_now])
+    this_weeks_recurring.sort_by{ |e| [ DAYS[e.listed_day.parameterize.to_sym], LISTED_ORDER[e.listed_type.parameterize.to_sym], e.name ] } | future_events.where(start_dt: [Time.now..1.week.from_now])
   end
 
   def self.todays_recurring
@@ -87,7 +87,7 @@ class Event < ActiveRecord::Base
   # that have not passed in the week
   def recurs_this_week?
    (Time.now.week_of_month.eql?(LISTED_ORDER[listed_type.downcase.to_sym]) || listed_type.eql?(EVERY)) &&
-   Date.today.wday <= DAYS[listed_day.downcase.to_sym]
+   Time.now.wday <= DAYS[listed_day.downcase.to_sym]
   end
 
   def nearby_events
@@ -97,14 +97,14 @@ class Event < ActiveRecord::Base
 	private
 		def presence_of_date_or_category
 	    if start_dt.present?
-	      errors.add(:start_dt, "cannot be in the past") unless self.start_dt >= DateTime.now rescue false
+	      errors.add(:start_dt, "cannot be in the past") unless self.start_dt >= Time.now rescue false
 	    else
 	      errors.add(:start_dt, "must be entered unless this is a recurring event") unless category_id.present? rescue errors.add(:start_dt, "must be entered unless this is a recuring event")
 	    end
 	  end
 
     def check_date_format
-			self.errors[:start_dt] << "must be a valid date" unless DateTime.parse(self.start_dt) rescue false
+			self.errors[:start_dt] << "must be a valid date" unless Time.parse(self.start_dt) rescue false
 		end
 
     def setup_category
@@ -114,9 +114,9 @@ class Event < ActiveRecord::Base
       end
       case category.name
       when REG
-      	self.listed_day    = start_dt.to_datetime.strftime("%A")
+      	self.listed_day    = start_dt.to_time.strftime("%A")
         self.listed_type   = REG
-        self.listed_month  = start_dt.to_datetime.strftime("%B")
+        self.listed_month  = start_dt.to_time.strftime("%B")
       when WEEKLY
         self.listed_month = nil
         self.listed_type = EVERY
@@ -126,7 +126,7 @@ class Event < ActiveRecord::Base
     end
 
 	  def date_format
-	    errors.add(:start_dt, "cannot be in the past") unless self.start_dt >= DateTime.now rescue false
+	    errors.add(:start_dt, "cannot be in the past") unless self.start_dt >= Time.now rescue false
 	  end
 
 end

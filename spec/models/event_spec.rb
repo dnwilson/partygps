@@ -42,5 +42,4 @@ RSpec.describe Event, :type => :model do
     }
     it{should_not be_valid}
   end
-
 end
