@@ -22,10 +22,6 @@ describe "UserPages" do
 		end
 
 		context 'when not logged in' do
-			it { is_expected.to have_link "login" }
-			it { is_expected.to have_link "signup" }
-			it { is_expected.to have_link "about" }
-			it { is_expected.to have_link "contact" }
 			it { is_expected.to have_selector ".registration" }
 			it { is_expected.to have_selector "#user_email" }
 			it { is_expected.to have_selector "#user_password" }
@@ -46,7 +42,7 @@ describe "UserPages" do
 				visit login_path
 				fill_in "Email", 				with: "someguy@test.com"
 				fill_in "Password", 		with: "password"
-				click_button "LOGIN"
+				click_button "LOG IN"
 			end
 
 			it { is_expected.to have_text "Invalid email address or password." }
@@ -72,10 +68,7 @@ describe "UserPages" do
 
 	feature "edit" do
 		before do
-			visit login_path
-			fill_in "Email Address", 		with: user.email
-			fill_in "Password", 				with: user.password
-			click_button "LOGIN"
+			valid_user_login
 			visit settings_path
 		end
 	end
@@ -85,5 +78,5 @@ def valid_user_login
   visit login_path
   fill_in "Email",        with: user.email
   fill_in "Password",     with: user.password
-  click_button "LOGIN"
+  click_button "LOG IN"
 end

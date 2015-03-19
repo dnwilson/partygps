@@ -72,13 +72,51 @@ a.logo{
 }
 
 .open .dropdown-toggle.btn-logout{
-	color: $white;
-	background: $alt;
-	border: 1px solid $alt;
+	color: $brand;
+	background: $white;
+	border: 0px solid transparent;
 }
 
-.logout{
-	margin-right: 0px !important;
+.search-form{
+	display: inline-block;
+	width:500px;
+	.form-group{
+		width: 300px;
+	}
+	.search-tb{
+		border: 0px solid $white;
+		height: 34px;
+		width: 100%;
+	}
+}
+
+/*===========================
+--- Button Styling ----
+=========================== */
+.btn-primary, .btn-lg, .btn-map{
+	border: 0px solid transparent;
+	&:hover{
+		border: 0px solid transparent;
+	}
+}
+
+.btn-default{
+	color: $gray;
+	&:hover, &:active, &:focus, .dropdown-toggle{
+		color: $gray;
+		border: 0px solid #ccc;
+		background-color: $white;
+	}
+}
+
+.btn-bordered{
+  border: 2px solid $brand;
+  color: $brand;
+  background-color: $white;
+  &:hover{
+    color: $white;
+    background-color: $brand;
+  }
 }
 
 .btn-logout, .btn-login{
@@ -94,20 +132,6 @@ a.logo{
 		color: $brand;
 		background: $white;
 		border: 0px solid $white;
-	}
-}
-
-
-.search-form{
-	display: inline-block;
-	width:500px;
-	.form-group{
-		width: 300px;
-	}
-	.search-tb{
-		border: 0px solid $white;
-		height: 34px;
-		width: 100%;
 	}
 }
 
@@ -183,37 +207,6 @@ a.logo{
 .alert{
 	margin-top: 20px;
 }
-
-/*===========================
---- Button Styling ----
-=========================== */
-.btn-primary, .btn-lg, .btn-map{
-	border: 1px solid transparent;
-	&:hover{
-		border: 1px solid transparent;
-	}
-}
-
-.btn-default{
-	color: $gray;
-	&:hover, &:active, &:focus, .dropdown-toggle{
-		color: $gray;
-		border: 1px solid #ccc;
-		background-color: $white;
-	}
-}
-
-
-.btn-bordered{
-  border: 2px solid $brand;
-  color: $brand;
-  background-color: $white;
-  &:hover{
-    color: $white;
-    background-color: $brand;
-  }
-}
-
 
 /*===========================
 --- Event Styling ----
