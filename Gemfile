@@ -21,6 +21,7 @@ gem "jquery-fileupload-rails"
 gem 'jquery-colorbox-rails'
 gem 'mini_magick'
 gem 'thin'
+gem 'acts_as_votable', '~> 0.10.0'
 gem 'bourbon'
 gem 'twitter'
 gem 'json'

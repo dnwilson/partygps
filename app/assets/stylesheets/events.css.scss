@@ -34,15 +34,22 @@
   border: 1px solid $brand;
   padding: 10px;
   border-radius: 4px;
-  height: 300px;
+  height: 340px;
   img{
     width: 100%;
   }
   .details{
     text-align: center;
+    hr{
+      margin-top: 10px;
+      border-top: 1px solid $lightGray;
+    }
     .name{
       margin: 10px 0;
       font-size: 16px;
+    }
+    .separator{
+      color: $lightGray;
     }
     .event-date, .event-adm{
       font-style: italic;
@@ -53,7 +60,7 @@
       &:hover{
         color: $darkAlt;
       }
-    }
+    } 
   }
 }
 .event-nav{
