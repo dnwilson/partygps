@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -19,7 +18,7 @@ ActiveRecord::Schema.define(version: 20150319210756) do
   enable_extension "fuzzystrmatch"
   enable_extension "unaccent"
 
-  create_table "authorizations", force: true do |t|
+  create_table "authorizations", force: :cascade do |t|
     t.string   "provider"
     t.string   "uid"
     t.integer  "user_id"
@@ -29,13 +28,13 @@ ActiveRecord::Schema.define(version: 20150319210756) do
     t.datetime "updated_at"
   end
 
-  create_table "categories", force: true do |t|
+  create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "events", force: true do |t|
+  create_table "events", force: :cascade do |t|
     t.integer  "location_id"
     t.integer  "category_id"
     t.string   "name"
@@ -49,13 +48,11 @@ ActiveRecord::Schema.define(version: 20150319210756) do
     t.decimal  "adm",          precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["category_id"], name: "index_events_on_category_id", using: :btree
+    t.index ["location_id"], name: "index_events_on_location_id", unique: true, using: :btree
   end
 
-  add_index "events", ["id", "category_id"], name: "index_events_on_id_and_category_id", using: :btree
-  add_index "events", ["id", "location_id", "category_id"], name: "index_events_on_id_and_location_id_and_category_id", using: :btree
-  add_index "events", ["id", "location_id"], name: "index_events_on_id_and_location_id", unique: true, using: :btree
-
-  create_table "locations", force: true do |t|
+  create_table "locations", force: :cascade do |t|
     t.string   "name"
     t.string   "image"
     t.string   "street_address"
@@ -70,19 +67,19 @@ ActiveRecord::Schema.define(version: 20150319210756) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
+    t.index ["id", "longitude", "latitude"], name: "index_locations_on_id_and_longitude_and_latitude", using: :btree
+    t.index ["name"], name: "index_locations_on_name", using: :btree
   end
 
-  add_index "locations", ["id", "longitude", "latitude"], name: "index_locations_on_id_and_longitude_and_latitude", using: :btree
-
-  create_table "pg_search_documents", force: true do |t|
+  create_table "pg_search_documents", force: :cascade do |t|
     t.text     "content"
-    t.integer  "searchable_id"
     t.string   "searchable_type"
+    t.integer  "searchable_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
-  create_table "user_addresses", force: true do |t|
+  create_table "user_addresses", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "street_address"
     t.string   "street_address2"
@@ -95,7 +92,7 @@ ActiveRecord::Schema.define(version: 20150319210756) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "phone"
@@ -124,26 +121,25 @@ ActiveRecord::Schema.define(version: 20150319210756) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "authentication_token"
+    t.string   "auth_token"
+    t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 
-  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "votes", force: true do |t|
-    t.integer  "votable_id"
+  create_table "votes", force: :cascade do |t|
     t.string   "votable_type"
-    t.integer  "voter_id"
+    t.integer  "votable_id"
     t.string   "voter_type"
+    t.integer  "voter_id"
     t.boolean  "vote_flag"
     t.string   "vote_scope"
     t.integer  "vote_weight"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
   end
-
-  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
-  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
 end

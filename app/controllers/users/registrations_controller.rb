@@ -8,7 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @disable_chan = true
     @user = current_user
     Rails.logger.info "entered update_password"
-    if @user.update_with_password(devise_parameter_sanitizer.sanitize(:edit_password))        
+    if @user.update_with_password(devise_parameter_sanitizer.sanitize(:edit_password))
       #Sign in the user by passing validation in case his password has changed
       sign_in @user, :bypass => true
       flash[:success] = "Password updated"
@@ -34,7 +34,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @disable_chan = true
     build_resource(sign_up_params)
-    binding.pry
     if resource.save
       if resource.active_for_authentication?
         # set_flash_message :notice, :signed_up if is_navigational_format?
@@ -84,8 +83,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     def needs_password?(user, params)
       user.email != params[:user][:email] ||
       params[:user][:password].present?
-    end 
-  
+    end
+
   protected
     def after_update_path_for(resource)
       session[:next] || super

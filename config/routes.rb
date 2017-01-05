@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register'},
-                      controllers: {registrations: "users/registrations", sessions: "users/sessions", 
+                      controllers: {registrations: "users/registrations", sessions: "users/sessions",
                                       omniauth_callbacks: "omniauth_callbacks" }
   devise_scope :user do
     get "login",              to:"users/sessions#new"
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     put "profile/password",   to: "users/registrations#update_password"
     patch "profile/password", to: "users/registrations#update_password"
     get "profile/location",   to: "users/registrations#location"
-  end 
+  end
 
   resources :events
   resources :locations
@@ -48,10 +48,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       devise_scope :user do
-        post 'registrations' => 'registrations#create', :as => 'register'
-        post 'sessions' => 'sessions#create', :as => 'login'
-        delete 'sessions' => 'sessions#destroy', :as => 'logout'
+        post 'register',  to: 'registrations#create'
+        post 'login',     to: 'sessions#create'
+        delete 'logout',  to: 'sessions#destroy'
       end
+
+      get 'check_user', to: 'users#check_user'
     end
   end
 

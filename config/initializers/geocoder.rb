@@ -20,7 +20,7 @@ if Rails.env.test?
         'street_address' => '1 Testing Way',
         'city'           => 'Testville',
         'region'         => '',
-        'city'           => 'Kingston',
+        'state'           => 'Kingston',
         'country'        => 'Jamaica',
         'country_code'   => 'JM'
       }
@@ -115,11 +115,12 @@ else
     # :lookup => :yandex,
     # lookup: :bing,
     # api_key: "AsfNsF1veuhARaTdpIlFSk7czMXyscbi0YCWpZeyF4ns4KCMxyQR4GFmJJ7La6vC",
-    # lookup: :google
-    # api_key: 
+    lookup: :google,
+    api_key: "AIzaSyBDgXGzXPSdB-221eXjLmPnXlT71heCMO4",
+    use_https: true,
 
     # IP address geocoding service (see below for supported options):
-    ip_lookup: :telize,
+    # ip_lookup: :telize,
 
     # to use an API key:
     # :api_key => "...",
