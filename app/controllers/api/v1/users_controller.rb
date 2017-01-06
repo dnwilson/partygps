@@ -5,4 +5,5 @@ class Api::V1::UsersController < ApplicationController
     @user = User.find_by_login(params[:login])
     render json: @user, status: :ok
   end
+
 end

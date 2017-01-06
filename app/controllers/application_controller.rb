@@ -20,6 +20,8 @@ class ApplicationController < ActionController::Base
   # This is Devise's authentication
   # before_filter :authenticate_user!
 
+  before_action :check_authentication
+
   # For CanCan authorization failure
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to main_app.root_path, :alert => exception.message
