@@ -9,19 +9,18 @@ class User < ActiveRecord::Base
 	before_create :ensure_auth_token
 
 	has_many :authorizations
-	has_many :user_addresses
+	has_many :addresses, as: :addressable, dependent: :destroy
+	has_many :events
 
 	attr_accessor :login
+
+	delegate :street_address, :street_address2, :address, :city, :state, :zipcode, :country,
+					 :longitude, :latitude, to: :addresses
 
 	mount_uploader :photo, ImageUploader
 
 	validates :first_name, presence: true, length: {minimum: 2, maximum: 50 }
 	validates :last_name, presence: true, length: {minimum: 2, maximum: 50 }
-	validates :address, length: {maximum: 100 }
-	validates :address2, length: {maximum: 50 }
-	validates :state, length: {maximum: 50 }
-	validates :city, length: {maximum: 50 }
-	validates :zipcode, length: {maximum: 20 }
 	validates :role, presence: true
 	validate :validates_presence_of_login
 	validate :validate_username

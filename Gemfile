@@ -9,6 +9,7 @@ gem 'pg'
 gem 'pg_search'
 
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'acts_as_follower'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'airbrake'
 gem 'bootstrap-sass', '~>3.3.5'

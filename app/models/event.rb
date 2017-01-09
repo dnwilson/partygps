@@ -1,25 +1,26 @@
 class Event < ActiveRecord::Base
 
 	include PgSearch
+	include Taggable
 
-	# Set up search 
+	# Set up search
 	# To remove search documents for this class
-	# PgSearch::Document.delete_all(searchable_type: "Event") 
+	# PgSearch::Document.delete_all(searchable_type: "Event")
 	# To build seach documents for this class
 	# rake pg_search:multisearch:rebuild[Event] or PgSearch::Document.rebuild(Event)
-	# pg_search_scope :search_full_text, 
+	# pg_search_scope :search_full_text,
 	# 								:against => [[:name, 'A'], [:description, 'B']],
 	# 								:using => [ :tsearch => [:dictionary => "simple", :prefix => true]],
 	# 								:ignoring => [:accents]
 	multisearchable against: [:name, :description]
 
-	belongs_to :location
+	belongs_to :venue
 	belongs_to :category
 
 	before_save :setup_category
 
 	validates :name, presence: true, length: { minimum: 2, maximum: 30 }, uniqueness: {case_sensitive: false}
-  validates_presence_of :location_id, :category_id
+  validates_presence_of :venue_id, :category_id
   validates_presence_of :listed_day, if: :recurring?
   validate :date_format, unless: :recurring?
   validate :presence_of_date_or_category, :check_date_format
@@ -27,17 +28,24 @@ class Event < ActiveRecord::Base
 
 	mount_uploader :photo, ImageUploader
 
-  scope :weekly,        -> { includes(:category, :location).where(categories: {name: WEEKLY}) }
-  scope :monthly,       -> { includes(:category, :location).where(categories: {name: MONTHLY}) }
-  scope :annual,        -> { includes(:category, :location).where(categories: {name: ANNUAL}) }
-  scope :future_events, -> { includes(:category, :location).where(events: {start_dt: [Time.now..1.month.from_now]}) }
-  scope :recurring_on_this_day,  -> { includes(:category, :location).where.not(categories: {name: REG})
+  scope :weekly,        -> { includes(:category, :venue).where(categories: {name: WEEKLY}) }
+  scope :monthly,       -> { includes(:category, :venue).where(categories: {name: MONTHLY}) }
+  scope :annual,        -> { includes(:category, :venue).where(categories: {name: ANNUAL}) }
+  scope :future_events, -> { includes(:category, :venue).where(events: {start_dt: [Time.now..1.month.from_now]}) }
+  scope :recurring_on_this_day,  -> { includes(:category, :venue).where.not(categories: {name: REG})
                                   .where(events: {listed_day: Time.now.strftime("%A"), listed_month: [nil, Time.now.strftime("%B")]}) }
   scope :live,          -> { todays_recurring | future_events.where(start_dt: [Time.now.beginning_of_day..Time.now.end_of_day]).order('events.start_dt ASC')}
-  scope :happening_on,  -> (day){ includes(:category, :location).where(listed_day: day) }
-	
+  scope :happening_on,  -> (day){ includes(:category, :venue).where(listed_day: day) }
+
+
+	# For tags
+	def self.tagged_with(name)
+		Tag.find_by_name!(name).articles
+	end
+
+
   def self.recurring
-    events = Event.includes(:category, :location)
+    events = Event.includes(:category, :venue)
          .where.not(categories: {name: REG})
 
     events.sort_by{ |e| [ DAYS[e.listed_day.parameterize.to_sym], LISTED_ORDER[e.listed_type.parameterize.to_sym] ] }
@@ -52,7 +60,7 @@ class Event < ActiveRecord::Base
     recurring_on_this_day.each do |e|
       list << e if Time.now.week_of_month.eql?(LISTED_ORDER[e.listed_type.parameterize.to_sym]) | e.listed_type.eql?(EVERY)
     end
-    list    
+    list
   end
 
   def self.this_weeks_recurring
@@ -63,16 +71,16 @@ class Event < ActiveRecord::Base
     list
   end
 
-  def location_name
-		location.name
+  def venue_name
+		venue.name
 	end
 
-	def location_address
-		location.address
+	def venue_address
+		venue.address
 	end
 
 	def address
-		[location.street_address, location.city_town, location.state_parish]
+		[venue.street_address, venue.city_town, venue.state_parish]
 	end
 
 	def occurs_once?
@@ -91,7 +99,7 @@ class Event < ActiveRecord::Base
   end
 
   def nearby_events
-    location.nearbys(1) && Event.happening_now
+    venue.nearbys(1) && Event.happening_now
   end
 
 	private

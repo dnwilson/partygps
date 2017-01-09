@@ -11,24 +11,23 @@ module AuthenticatingController
     # end
 
     def render_login_success
-      render  json: current_user, meta: {success: true, status: 200, info: "Registation Completed!", is_logged_in: current_user.present?}
+      render  json: current_user, status: 200, meta: {info: "Registation Completed!"}
     end
 
     def render_logout
-      render  json: { data:{message: "Logged out. See you soon!"},
-                      meta: {success: true, status: 200, info: "Successful log out", is_logged_in: current_user.present?}}
+      render  json: { meta: {title: "Log Out", details: "Logged out. See you soon!"}}
     end
 
     def render_unauthorized
       self.headers['HTTP_CONTENT_TYPE'] = 'Token realm="Application"'
       self.headers['Content-Type'] = 'application/json'
-      render json: {error: {message: "Unauthorized access. You must be logged in to perform this action."},
-                    meta: {success: false, status: 401, info: "Unauthorized access", is_logged_in: current_user.present?}}, status: 401
+      render json: {error: {status: 401, title: "Unauthorized Access", message: "Unauthorized
+        access. You must be logged in to perform this action."}}, status: 401
     end
 
     def render_login_failure
-      render json: {error:{message: "Invalid email or password. Please try again."},
-                    meta: {success: false, status: 401, info: "Failed log in"}}, status: 401
+      render json: {error:{title: "Login Failure", detail: "Invalid email or password. Please try
+        again."}, status: 200 }
     end
   end
 end

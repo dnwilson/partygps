@@ -1,7 +1,7 @@
 class CreateEvents < ActiveRecord::Migration
   def change
     create_table :events do |t|
-      t.integer   :location_id
+      t.integer   :venue_id
       t.integer   :category_id
       t.string    :name
       t.string    :photo
@@ -14,7 +14,7 @@ class CreateEvents < ActiveRecord::Migration
       t.decimal   :adm,           precision: 8, scale: 2
       t.timestamps
     end
-    add_index :events, :location_id, unique: true
+    add_index :events, :venue_id, unique: true
     add_index :events, :category_id
   end
 end

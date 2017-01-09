@@ -9,17 +9,11 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :last_name
       t.string :username
       t.date :dob
-      t.string :address
-      t.string :address2
-      t.string :state 
-      t.string :city
-      t.string :zipcode
-      t.string :country
       t.string :provider
-      t.string :uid 
+      t.string :uid
       t.string :role
       t.string :sex
-      t.string :photo 
+      t.string :photo
 
       ## Recoverable
       t.string   :reset_password_token

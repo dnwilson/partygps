@@ -1,6 +1,6 @@
 class Api::V1::RegistrationsController < Devise::RegistrationsController
 	skip_before_action :verify_authenticity_token,
-					   :if => Proc.new{ |c| c.request.format == "application/json" }
+					   :if => Proc.new{ |c| c.request.format == "application/vnd.api+json" }
 
 	before_action :check_authentication, only: :update
 	respond_to :json
