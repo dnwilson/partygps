@@ -12,11 +12,11 @@ Rails.application.routes.draw do
     get "profile/password",   to: "users/registrations#password"
     put "profile/password",   to: "users/registrations#update_password"
     patch "profile/password", to: "users/registrations#update_password"
-    get "profile/location",   to: "users/registrations#location"
+    get "profile/venue",      to: "users/registrations#venue"
   end
 
   resources :events
-  resources :locations
+  resources :venues
   resources :users do
     get "users/:id" => "users#show"
   end
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   namespace :dashboard do
     get '',                 to: "base#show"
     resources :users,       controller: 'users'
-    resources :locations,   controller: 'locations'
+    resources :venues,      controller: 'venues'
     resources :events do
       get 'manager',        to: 'events#manager'
       get 'render_snippet', on: :collection
@@ -53,6 +53,8 @@ Rails.application.routes.draw do
         delete 'logout',  to: 'sessions#destroy'
       end
 
+      resources :events
+      resources :venues
       get 'check_user', to: 'users#check_user'
     end
   end

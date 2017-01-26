@@ -14,6 +14,7 @@ class Event < ActiveRecord::Base
 	# 								:ignoring => [:accents]
 	multisearchable against: [:name, :description]
 
+	belongs_to :user
 	belongs_to :venue
 	belongs_to :category
 

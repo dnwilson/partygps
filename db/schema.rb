@@ -10,13 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109182748) do
+ActiveRecord::Schema.define(version: 20170109185447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pg_trgm"
   enable_extension "fuzzystrmatch"
   enable_extension "unaccent"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "street_address"
+    t.string   "street_address2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "country"
+    t.boolean  "primary_flg"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["addressable_id"], name: "index_addresses_on_addressable_id", using: :btree
+    t.index ["addressable_type"], name: "index_addresses_on_addressable_type", using: :btree
+    t.index ["id", "addressable_id"], name: "index_addresses_on_id_and_addressable_id", using: :btree
+    t.index ["id", "longitude", "latitude"], name: "index_addresses_on_id_and_longitude_and_latitude", using: :btree
+  end
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider"
@@ -35,7 +55,8 @@ ActiveRecord::Schema.define(version: 20170109182748) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.integer  "location_id"
+    t.integer  "venue_id"
+    t.integer  "user_id"
     t.integer  "category_id"
     t.string   "name"
     t.string   "photo"
@@ -49,26 +70,20 @@ ActiveRecord::Schema.define(version: 20170109182748) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["category_id"], name: "index_events_on_category_id", using: :btree
-    t.index ["location_id"], name: "index_events_on_location_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_events_on_user_id", using: :btree
+    t.index ["venue_id"], name: "index_events_on_venue_id", using: :btree
   end
 
-  create_table "locations", force: :cascade do |t|
-    t.string   "name"
-    t.string   "image"
-    t.string   "street_address"
-    t.string   "street_address2"
-    t.string   "city_town"
-    t.string   "state_parish"
-    t.string   "zipcode"
-    t.string   "country"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "photo"
+  create_table "follows", force: :cascade do |t|
+    t.string   "followable_type",                 null: false
+    t.integer  "followable_id",                   null: false
+    t.string   "follower_type",                   null: false
+    t.integer  "follower_id",                     null: false
+    t.boolean  "blocked",         default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "description"
-    t.index ["id", "longitude", "latitude"], name: "index_locations_on_id_and_longitude_and_latitude", using: :btree
-    t.index ["name"], name: "index_locations_on_name", using: :btree
+    t.index ["followable_id", "followable_type"], name: "fk_followables", using: :btree
+    t.index ["follower_id", "follower_type"], name: "fk_follows", using: :btree
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
@@ -94,19 +109,6 @@ ActiveRecord::Schema.define(version: 20170109182748) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "user_addresses", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "street_address"
-    t.string   "street_address2"
-    t.string   "city_town"
-    t.string   "state_parish"
-    t.string   "zipcode"
-    t.string   "country"
-    t.boolean  "primary_flg"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -115,12 +117,6 @@ ActiveRecord::Schema.define(version: 20170109182748) do
     t.string   "last_name"
     t.string   "username"
     t.date     "dob"
-    t.string   "address"
-    t.string   "address2"
-    t.string   "state"
-    t.string   "city"
-    t.string   "zipcode"
-    t.string   "country"
     t.string   "provider"
     t.string   "uid"
     t.string   "role"
@@ -141,6 +137,15 @@ ActiveRecord::Schema.define(version: 20170109182748) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
+  end
+
+  create_table "venues", force: :cascade do |t|
+    t.string   "name"
+    t.string   "photo"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["name"], name: "index_venues_on_name", using: :btree
   end
 
   create_table "votes", force: :cascade do |t|

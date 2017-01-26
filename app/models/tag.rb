@@ -1,4 +1,4 @@
 class Tag < ApplicationRecord
   has_many :taggings
-  has_many :events, thru: :taggings
+  has_many :events, through: :taggings
 end

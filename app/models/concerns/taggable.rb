@@ -5,7 +5,7 @@ module Taggable
 
   included do
     has_many :taggings
-    has_many :tags, through: :taggings
+    has_many :tags, through: :taggings, dependent: :destroy
   end
 
   def self.tag_counts

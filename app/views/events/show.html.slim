@@ -16,13 +16,13 @@
   div.col-lg-5.col-md-5.col-sm-5.hidden-xs.sidebar
     div.panel.venue-panel
       div.panel-body
-        h2 = link_to @event.location_name, location_path(@event.location) 
+        h2 = link_to @event.venue_name, venue_path(@event.venue) 
         hr.mar-top15.mar-bot15
-        = @event.location_address 
+        = @event.venue_address 
         / br 
         / = @event.location.city_town + ", " + @event.location.state_parish + ", " + @event.location.country 
     div.panel.event-photo-panel
       div.panel-body
         / div id="map" style='width: 100%; height: 346px;'
-        = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@event.location.latitude}%2C#{@event.location.longitude}"
+        = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@event.venue.latitude}%2C#{@event.venue.longitude}"
         = link_to "GET DIRECTIONS", "#", class: "btn btn-primary btn-map mar-top15"

@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	include AddressModel
+	
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :registerable, :omniauthable,
@@ -13,9 +15,6 @@ class User < ActiveRecord::Base
 	has_many :events
 
 	attr_accessor :login
-
-	delegate :street_address, :street_address2, :address, :city, :state, :zipcode, :country,
-					 :longitude, :latitude, to: :addresses
 
 	mount_uploader :photo, ImageUploader
 
