@@ -21,3 +21,8 @@
 /public/uploads
 tags
 .tags_swap
+/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity

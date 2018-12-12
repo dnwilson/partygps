@@ -1,5 +1,4 @@
 class Event < ActiveRecord::Base
-
 	include PgSearch
 	include Taggable
 
@@ -35,7 +34,7 @@ class Event < ActiveRecord::Base
   scope :future_events, -> { includes(:category, :venue).where(events: {start_dt: [Time.now..1.month.from_now]}) }
   scope :recurring_on_this_day,  -> { includes(:category, :venue).where.not(categories: {name: REG})
                                   .where(events: {listed_day: Time.now.strftime("%A"), listed_month: [nil, Time.now.strftime("%B")]}) }
-  scope :live,          -> { todays_recurring | future_events.where(start_dt: [Time.now.beginning_of_day..Time.now.end_of_day]).order('events.start_dt ASC')}
+  scope :live,          -> { recurring_today || future_events.where(start_dt: [Time.now.beginning_of_day..Time.now.end_of_day]).order('events.start_dt ASC')}
   scope :happening_on,  -> (day){ includes(:category, :venue).where(listed_day: day) }
 
 
@@ -53,10 +52,10 @@ class Event < ActiveRecord::Base
   end
 
   def self.upcoming
-    this_weeks_recurring.sort_by{ |e| [ DAYS[e.listed_day.parameterize.to_sym], LISTED_ORDER[e.listed_type.parameterize.to_sym], e.name ] } | future_events.where(start_dt: [Time.now..1.week.from_now])
+    recurring_this_week.sort_by{ |e| [ DAYS[e.listed_day.parameterize.to_sym], LISTED_ORDER[e.listed_type.parameterize.to_sym], e.name ] } | future_events.where(start_dt: [Time.now..1.week.from_now])
   end
 
-  def self.todays_recurring
+  def self.recurring_today
     list = []
     recurring_on_this_day.each do |e|
       list << e if Time.now.week_of_month.eql?(LISTED_ORDER[e.listed_type.parameterize.to_sym]) | e.listed_type.eql?(EVERY)
@@ -64,12 +63,13 @@ class Event < ActiveRecord::Base
     list
   end
 
-  def self.this_weeks_recurring
-    list = []
-    recurring.each do |e|
-      list << e if e.recurs_this_week?
-    end
-    list
+  def self.recurring_this_week
+    # list = []
+    # recurring.each do |e|
+    #   list << e if e.recurs_this_week?
+    # end
+    # list
+    recurring.map(&:recurs_this_week?)
   end
 
   def venue_name

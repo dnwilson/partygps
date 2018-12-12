@@ -1,3 +1,3 @@
-class UserAddressSerializer < ActiveModel::Serializer
+class UserAddressSerializer #< ActiveModel::Serializer
 
 end

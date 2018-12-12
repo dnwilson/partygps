@@ -8,10 +8,10 @@
             = link_to event_presenter.display_date, events_path ,class: 'btn btn-primary'
       hr
       div.panel-body
-        - if @event.photo?
-          = image_tag(@event.photo.lg)
-        - else
-            div style="background:#555;height:500px;"
+        / - if @event.photo?
+        /   = image_tag(@event.photo.lg)
+        / - else
+        div style="background:#555;height:500px;"
         div.event-detail.mar-top15 = @event.description
   div.col-lg-5.col-md-5.col-sm-5.hidden-xs.sidebar
     div.panel.venue-panel

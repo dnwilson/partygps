@@ -24,5 +24,6 @@ module Partygps
     # CONFIG.each do |k,v|
     #   ENV[k.upcase] ||= v
     # end
+    # config.react.addons = true
   end
 end

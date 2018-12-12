@@ -40,7 +40,7 @@ class EventPresenter
 
   def photo(size)
     photo = @event.photo? ? @event.photo.send(size)  : "default-#{size}.svg" 
-    h.image_tag(photo)
+    # h.image_tag(photo)
   end
 
   def short_date

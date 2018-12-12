@@ -1,4 +1,5 @@
-class VenueSerializer < ActiveModel::Serializer
+class VenueSerializer #< ActiveModel::Serializer
+  include FastJsonapi::ObjectSerializer
   attributes :id, :name, :description, :photo, :thumbnail, :street_address, :apt_suite, :city,
              :state, :zipcode, :country, :latitude, :longitude
   # attributes :id, :name, :description, :street_address, :apt_suite, :city, :state, :zipcode, :country

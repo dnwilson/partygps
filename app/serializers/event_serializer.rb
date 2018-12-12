@@ -1,7 +1,8 @@
-class EventSerializer < ActiveModel::Serializer
+class EventSerializer #< ActiveModel::Serializer
+  include FastJsonapi::ObjectSerializer
   attributes :id, :user_id, :name, :description, :start_date, :end_date, :flyer, :thumbnail
 
-  belongs_to :venue, serializer: VenueSerializer
+  belongs_to :venue #, serializer: VenueSerializer
 
   def start_date
     object.start_dt
